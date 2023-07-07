@@ -1,0 +1,17 @@
+@media (max-height: 630px) {
+    #desc{
+        display: none;
+    }
+    #botonesCover{
+        margin-top: 0;
+    }
+}
+
+@media (max-height: 360px) {
+    #cronoCover{
+        display: none;
+    }
+    #botonesCover{
+        margin-top: 0;
+    }
+}

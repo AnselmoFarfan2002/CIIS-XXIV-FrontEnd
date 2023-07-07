@@ -1,0 +1,24 @@
+.bg-portada{
+    min-height: 75vh;
+    width: 100%;
+    background: 
+        linear-gradient(
+            180deg, 
+            rgba(4, 32, 41, 0.856) 0%, 
+            rgba(0, 140, 157, 0.39) 15%,
+            rgba(0, 81, 139, 0.607) 40%,
+            rgba(0, 81, 139, 0.607) 70%,  
+            rgba(0, 140, 157, 0.39) 85%,
+            rgba(4, 32, 41, 0.856) 100% 
+        );
+    position: absolute
+}
+
+#navbar {
+    transition: opacity 0.3s ease;
+}
+
+#navbar.zoom-out {
+    opacity: 0;
+    pointer-events: none;
+}
