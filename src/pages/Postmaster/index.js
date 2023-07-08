@@ -20,8 +20,6 @@ import Auspiciadores from "pages/Postmaster/sections/Auspiciadores";
 
 // Routes
 import { routesOutMain } from "routes";
-import footerRoutes from "footer.routes";
-
 // Images
 import bgImage from "assets/images/bg-posmaster.jpg";
 
@@ -72,7 +70,11 @@ function PostMaster() {
             <MKTypography variant="h5" color="white" opacity={0.8} mt={1} mb={1}>
               11/08/2023
             </MKTypography>
-            <MKButton color="default" sx={{ color: ({ palette: { dark } }) => dark.main }}>
+            <MKButton
+              href="/postmaster/inscripcion"
+              color="default"
+              sx={{ color: ({ palette: { dark } }) => dark.main }}
+            >
               Pre inscripción
             </MKButton>
             <MKTypography variant="h6" color="white" mt={1}>
@@ -124,7 +126,7 @@ function PostMaster() {
         <Auspiciadores />
       </Card>
       <MKBox pt={6} px={1} mt={6}>
-        <DefaultFooter content={footerRoutes} />
+        <DefaultFooter />
       </MKBox>
     </>
   );

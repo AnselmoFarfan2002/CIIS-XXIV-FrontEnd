@@ -91,7 +91,7 @@ CenteredFooter.defaultProps = {
     { href: "http://esis.unjbg.edu.pe/", name: "ESIS" },
     { href: "https://www.ciistacna.com", name: "CIIS" },
     { href: "http://www.unjbg.edu.pe/portal/", name: "UNJBG" },
-    { href: "", name: "POSTMASTER" },
+    { href: "/postmaster", name: "POSTMASTER" },
   ],
   socials: [
     { icon: <FacebookIcon fontSize="small" />, link: "https://www.facebook.com/ciistacna" },

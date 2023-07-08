@@ -11,6 +11,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import theme from "assets/theme";
 import Presentation from "layouts/pages/presentation";
 import PostMaster from "pages/Postmaster/index";
+import SignUpPostMaster from "pages/SignUpPostMaster/index";
 
 // Material Kit 2 React routes
 import routes from "routes";
@@ -44,6 +45,7 @@ export default function App() {
         {getRoutes(routes)}
         <Route path="/" element={<Presentation />} />
         <Route path="/postmaster" element={<PostMaster />} />
+        <Route path="/postmaster/inscripcion" element={<SignUpPostMaster />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </ThemeProvider>

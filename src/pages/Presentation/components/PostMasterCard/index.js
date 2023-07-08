@@ -43,7 +43,7 @@ function PostMasterCard() {
           </MKTypography>
           <MKTypography
             component="a"
-            href=""
+            href="/postmaster"
             target="_blank"
             rel="noreferrer"
             variant="body2"

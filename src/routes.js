@@ -22,4 +22,12 @@ export const routesOutMain = [
   },
 ];
 
+export const PMroutes = [
+  {
+    name: "PostMaster",
+    icon: <AccountBalanceIcon />,
+    href: "/postmaster",
+  },
+];
+
 export default routes;

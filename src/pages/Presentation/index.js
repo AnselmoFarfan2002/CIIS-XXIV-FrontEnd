@@ -23,7 +23,6 @@ import PostMasterCard from "pages/Presentation/components/PostMasterCard";
 
 // Routes
 import routes from "routes";
-import footerRoutes from "footer.routes";
 
 // Images
 
@@ -166,7 +165,7 @@ function Presentation() {
         <History />
       </Card>
       <MKBox px={1}>
-        <CenteredFooter content={footerRoutes} />
+        <CenteredFooter />
       </MKBox>
     </>
   );
