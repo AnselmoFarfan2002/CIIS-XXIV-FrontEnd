@@ -22,6 +22,7 @@
     "@testing-library/user-event": "14.4.3",
     "chroma-js": "2.4.2",
     "flatpickr": "4.6.13",
+    "formik": "^2.4.2",
     "medium-zoom": "^1.0.8",
     "prettier": "^2.8.8",
     "prop-types": "15.8.1",
@@ -35,7 +36,8 @@
     "react-scripts": "5.0.1",
     "react-syntax-highlighter": "15.5.0",
     "react-viewerjs": "^0.1.9",
-    "web-vitals": "3.3.1"
+    "web-vitals": "3.3.1",
+    "yup": "^1.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
