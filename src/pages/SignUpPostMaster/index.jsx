@@ -1,29 +1,11 @@
-import { React, useState } from "react";
+import { React } from "react";
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import { PMroutes } from "routes";
-import {
-  Grid,
-  Button,
-  Typography,
-  Box,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-} from "@mui/material";
+import { Grid, Typography, Box } from "@mui/material";
 import Precios1 from "../../components/login/Precios";
 import logo from "../../assets/images/logos/logo-jackelin-postmaster.jpg";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 export default function SignUpPostMaster() {
-  const [open, setOpen] = useState(false);
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
   return (
     <>
       <DefaultNavbar routes={PMroutes} transparent light></DefaultNavbar>
@@ -42,7 +24,12 @@ export default function SignUpPostMaster() {
             alt="Descripción de la imagen"
             style={{ width: "250px", height: "auto" }}
           />
-          <Typography variant="body1" color="textPrimary" align="center">
+          <Typography
+            style={{ fontWeight: "bold", color: "blue" }}
+            variant="body1"
+            color="textPrimary"
+            align="center"
+          >
             <EditNoteIcon />
             INSCRIPCIONES
           </Typography>
@@ -74,18 +61,8 @@ export default function SignUpPostMaster() {
               precio="10 lujanes"
               consumidor="publico"
               imagenPrecio="https://cdn-icons-png.flaticon.com/512/1754/1754915.png"
-              onClick={handleOpen}
             />
           </Grid>
-          <Dialog open={open} onClose={handleClose}>
-            <DialogTitle>Título del modal</DialogTitle>
-            <DialogContent>
-              <p>Contenido del modal</p>
-            </DialogContent>
-            <DialogActions>
-              <Button onClick={handleClose}>Cerrar</Button>
-            </DialogActions>
-          </Dialog>
         </Grid>
         <Grid
           container

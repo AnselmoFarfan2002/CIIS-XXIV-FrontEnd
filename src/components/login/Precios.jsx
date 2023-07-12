@@ -25,17 +25,22 @@ const Precios1 = ({ precio, consumidor, imagenPrecio }) => {
   const handleClose = () => {
     setOpen(false);
   };
+  const [selectedOption, setSelectedOption] = useState("");
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
   return (
     <>
       <Card
         sx={{
+          borderRadius: 8,
           paddingLeft: 3,
           paddingRight: 3,
           paddingTop: 5,
           paddingBottom: 5,
           mb: 4,
           marginTop: 10,
-          backgroundColor: "#ffffff",
+          backgroundColor: "#4a6ac9",
           boxShadow: ({ boxShadows: { xxl } }) => xxl,
         }}
         align="center"
@@ -43,7 +48,7 @@ const Precios1 = ({ precio, consumidor, imagenPrecio }) => {
       >
         <Box>
           <Box mt={-15} mb={5}>
-            <Avatar sx={{ width: 150, height: 150 }} fullWidth>
+            <Avatar sx={{ width: 150, height: 150, border: 3, borderColor: "#000000" }} fullWidth>
               <img
                 src={imagenPrecio}
                 alt="Descripción de la imagen"
@@ -53,20 +58,27 @@ const Precios1 = ({ precio, consumidor, imagenPrecio }) => {
           </Box>
         </Box>
         <Box>
-          <Typography variant="h4" align="center" mb={4}>
+          <Typography variant="h4" align="center" mb={4} color={"#ffffff"}>
             {precio}
           </Typography>
-          <Typography variant="h5" align="center" mb={4}>
+          <Typography variant="h5" align="center" mb={4} color={"#ffffff"}>
             {consumidor}
           </Typography>
-          <Typography align="left" paddingLeft={5}>
+          <Typography align="left" paddingLeft={5} color={"#ffffff"}>
             Incluye
           </Typography>
           <List>
             <Viñeta contenido="Certificado" />
             <Viñeta contenido="Kit postmaster" />
           </List>
-          <Button align="center" onClick={handleOpen}>
+          <Button
+            align="center"
+            onClick={handleOpen}
+            sx={{
+              backgroundColor: "#cde472",
+              borderRadius: 5,
+            }}
+          >
             INSCRIBIRSE
           </Button>
         </Box>
@@ -103,7 +115,18 @@ const Precios1 = ({ precio, consumidor, imagenPrecio }) => {
                     <input type="text" className="format-text" placeholder="Apellidos" />
                   </Grid>
                   <Grid item xs={12} md={6}>
-                    <input type="text" className="format-text" placeholder="Sexo" />
+                    <select
+                      className="format-text"
+                      value={selectedOption}
+                      onChange={handleOptionChange}
+                      style={{ width: "80%", borderWidth: "2px" }}
+                    >
+                      <option value="" disabled>
+                        Sexo
+                      </option>
+                      <option value="opcion1">Masculino</option>
+                      <option value="opcion2">Femenino</option>
+                    </select>
                   </Grid>
                   <Grid item xs={12} md={6}>
                     <input type="text" className="format-text" placeholder="Dni" />
@@ -118,10 +141,32 @@ const Precios1 = ({ precio, consumidor, imagenPrecio }) => {
                     <input type="text" className="format-text" placeholder="Ciclo" />
                   </Grid>
                   <Grid item xs={12} md={6}>
-                    <input type="text" className="format-text" placeholder="Carrera" />
+                    <select
+                      className="format-text"
+                      value={selectedOption}
+                      onChange={handleOptionChange}
+                      style={{ width: "80%", borderWidth: "2px" }}
+                    >
+                      <option value="" disabled>
+                        Carrera
+                      </option>
+                      <option value="opcion1">Masculino</option>
+                      <option value="opcion2">Femenino</option>
+                    </select>
                   </Grid>
                   <Grid item xs={12} md={6}>
-                    <input type="text" className="format-text" placeholder="Modalidad de pago" />
+                    <select
+                      className="format-text"
+                      value={selectedOption}
+                      onChange={handleOptionChange}
+                      style={{ width: "80%", borderWidth: "2px" }}
+                    >
+                      <option value="" disabled>
+                        Modalidad de Pago
+                      </option>
+                      <option value="opcion1">Masculino</option>
+                      <option value="opcion2">Femenino</option>
+                    </select>
                   </Grid>
                 </Grid>
               </form>
