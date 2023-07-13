@@ -4,9 +4,7 @@ import {
   Grid,
   Card,
   Typography,
-  List,
   Button,
-  Avatar,
   Box,
   Dialog,
   DialogTitle,
@@ -15,8 +13,15 @@ import {
 } from "@mui/material";
 import "./loginInscripcion.css";
 import PropTypes from "prop-types";
-import Viñeta from "../../assets/theme/components/vinneta/Vinneta";
-const Precios1 = ({ precio, consumidor, imagenPrecio }) => {
+// import Viñeta from "../../assets/theme/components/vinneta/Vinneta";
+import MKAvatar from "components/MKAvatar";
+import { List, ListItem, ListItemText, ListItemIcon } from "@mui/material";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
+import MKBox from "components/MKBox";
+import MKButton from "components/MKButton";
+
+const Precios1 = ({ precio, consumidor, imagenPrecio, desc, incluye }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -34,61 +39,57 @@ const Precios1 = ({ precio, consumidor, imagenPrecio }) => {
       <Card
         sx={{
           borderRadius: 8,
-          paddingLeft: 3,
-          paddingRight: 3,
           paddingTop: 5,
           paddingBottom: 5,
-          mb: 4,
-          marginTop: 10,
-          backgroundColor: "#4a6ac9",
-          boxShadow: ({ boxShadows: { xxl } }) => xxl,
         }}
         align="center"
-        fullWidth
+        shadow="lg"
       >
-        <Box>
-          <Box mt={-15} mb={5}>
-            <Avatar sx={{ width: 150, height: 150, border: 3, borderColor: "#000000" }} fullWidth>
-              <img
-                src={imagenPrecio}
-                alt="Descripción de la imagen"
-                style={{ width: "100%", height: "auto" }}
-              />
-            </Avatar>
-          </Box>
+        <Box mt={-12} mb={3}>
+          <MKAvatar src={imagenPrecio} alt="Estudiante" size="xxl" shadow="lg" bgColor="light" />
         </Box>
         <Box>
-          <Typography variant="h4" align="center" mb={4} color={"#ffffff"}>
-            {precio}
-          </Typography>
-          <Typography variant="h5" align="center" mb={4} color={"#ffffff"}>
-            {consumidor}
-          </Typography>
-          <Typography align="left" paddingLeft={5} color={"#ffffff"}>
-            Incluye
-          </Typography>
-          <List>
-            <Viñeta contenido="Certificado" />
-            <Viñeta contenido="Kit postmaster" />
-          </List>
-          <Button
-            align="center"
-            onClick={handleOpen}
-            sx={{
-              backgroundColor: "#cde472",
-              borderRadius: 5,
-            }}
-          >
-            INSCRIBIRSE
-          </Button>
+          <MKBox>
+            <Typography variant="h2" align="center" mb={0}>
+              {precio}
+            </Typography>
+            <Typography variant="h4" align="center" mb={1}>
+              {consumidor}
+            </Typography>
+            <Typography variant="body2" align="center">
+              {desc}
+            </Typography>
+          </MKBox>
+          <MKBox my={2} opacity={0.9}>
+            <Typography variant="h5" textTransform="uppercase">
+              Incluye
+            </Typography>
+          </MKBox>
+
+          <MKBox maxWidth={200} mx={"auto"} mb={3}>
+            <List>
+              {incluye.map((element, idx) => {
+                return (
+                  <ListItem key={idx}>
+                    <ListItemIcon>
+                      <CheckCircleIcon />
+                    </ListItemIcon>
+                    <ListItemText primary={element} />
+                  </ListItem>
+                );
+              })}
+            </List>
+          </MKBox>
+
+          <MKButton color="success" onClick={handleOpen}>
+            <AppRegistrationIcon /> Inscribirse
+          </MKButton>
         </Box>
         <Dialog open={open} onClose={handleClose}>
           <DialogTitle align="center">
-            <img
-              src={logo}
-              alt="Descripción de la imagen"
-              style={{ width: "250px", height: "auto" }}
-            />
+            <MKBox mx={"auto"}>
+              <MKAvatar src={logo} alt="POSTMASTER XX" size="xxl" />
+            </MKBox>
           </DialogTitle>
           <DialogContent align="center">
             <div>
@@ -101,8 +102,6 @@ const Precios1 = ({ precio, consumidor, imagenPrecio }) => {
               <form action="">
                 <Grid
                   container
-                  p={2}
-                  pb={2}
                   justifyContent="space-evenly"
                   spacing={3}
                   sx={{ width: "100%" }}
@@ -184,5 +183,7 @@ Precios1.propTypes = {
   precio: PropTypes.string.isRequired,
   consumidor: PropTypes.string.isRequired,
   imagenPrecio: PropTypes.string.isRequired,
+  desc: PropTypes.string.isRequired,
+  incluye: PropTypes.array.isRequired,
 };
 export default Precios1;

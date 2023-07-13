@@ -1,77 +1,101 @@
 import { React } from "react";
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import { PMroutes } from "routes";
-import { Grid, Typography, Box } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import Precios1 from "../../components/login/Precios";
-import logo from "../../assets/images/logos/logo-jackelin-postmaster.jpg";
-import EditNoteIcon from "@mui/icons-material/EditNote";
+import MKBox from "components/MKBox";
+import bgImage from "assets/images/campus-unjbg.jpeg";
+import MKBadge from "components/MKBadge";
+import MKTypography from "components/MKTypography";
+
+const incluido = ["Participación", "Certificado", "Kit Postmaster"];
+
 export default function SignUpPostMaster() {
   return (
     <>
-      <DefaultNavbar routes={PMroutes} transparent light></DefaultNavbar>
-      <Box
-        paddingTop={10}
-        paddingLeft={10}
-        paddingRight={7}
+      <DefaultNavbar routes={PMroutes} transparent light />
+      <MKBox
         minHeight="100vh"
         width="100%"
         component="form"
+        sx={{
+          backgroundImage: ({ functions: { linearGradient, rgba }, palette: { gradients } }) =>
+            `${linearGradient(
+              rgba(gradients.dark.main, 0.6),
+              rgba(gradients.dark.state, 0.6)
+            )}, url(${bgImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          display: "grid",
+          placeItems: "center",
+        }}
         alignItems={"center"}
+        px={6}
+        py={"auto"}
+        bgColor="info"
+        variant="gradient"
       >
-        <Grid align="center">
-          <img
-            src={logo}
-            alt="Descripción de la imagen"
-            style={{ width: "250px", height: "auto" }}
+        <Grid
+          container
+          item
+          xs={12}
+          lg={6}
+          flexDirection="column"
+          alignItems="center"
+          sx={{ textAlign: "center", my: 0, mx: "auto", px: 0.75 }}
+        >
+          <MKBadge
+            variant="contained"
+            color="info"
+            badgeContent="Detalles de inscripción"
+            container
+            sx={{ mb: 2 }}
           />
-          <Typography
-            style={{ fontWeight: "bold", color: "blue" }}
-            variant="body1"
-            color="textPrimary"
-            align="center"
-          >
-            <EditNoteIcon />
-            INSCRIPCIONES
-          </Typography>
+          <MKTypography variant="h2" fontWeight="bold" color="light">
+            Precios de inscripción
+          </MKTypography>
         </Grid>
+
         <Grid
           container
-          p={0}
-          pb={0}
-          justifyContent="space-evenly"
-          spacing={3}
+          mx={"auto"}
+          justifyContent="center"
+          alignItems={"center"}
+          gap={3}
+          mt={-10}
           sx={{ width: "100%" }}
         >
-          <Grid item xs={12} md={4}>
+          <Grid item xs={8} md={5} lg={5} xl={3}>
             <Precios1
-              precio="30 lujanes"
-              consumidor="egresado"
+              precio="S/. 15"
+              consumidor="Legado de la ESIS"
+              desc="Estudiante o egresado"
               imagenPrecio="https://cdn-icons-png.flaticon.com/512/201/201565.png"
+              incluye={incluido}
             />
           </Grid>
-          <Grid item xs={12} md={4}>
+          <Grid item xs={8} md={5} lg={5} xl={3}>
             <Precios1
-              precio="20 lujanes"
-              consumidor="universitario"
+              precio="S/. 20"
+              consumidor="Estudiantes"
+              desc="Estudiante externo"
               imagenPrecio="https://cdn-icons-png.flaticon.com/512/167/167750.png"
+              incluye={incluido}
             />
           </Grid>
-          <Grid item xs={12} md={4}>
+          <Grid item xs={8} md={5} lg={5} xl={3}>
             <Precios1
-              precio="10 lujanes"
-              consumidor="publico"
+              precio="S/. 25"
+              consumidor="Público general"
+              desc="Profesionales y otros"
               imagenPrecio="https://cdn-icons-png.flaticon.com/512/1754/1754915.png"
+              incluye={incluido}
             />
           </Grid>
         </Grid>
-        <Grid
-          container
-          p={2}
-          pb={2}
-          justifyContent="space-evenly"
-          spacing={3}
-          sx={{ width: "100%" }}
-        >
+      </MKBox>
+      <MKBox>
+        <Grid container justifyContent="space-evenly" sx={{ width: "100%" }}>
           <Grid container align="center">
             <Grid item xs={12} md={12}>
               <Typography variant="h4" mb={4} textAlign="center">
@@ -181,7 +205,7 @@ export default function SignUpPostMaster() {
             </Grid>
           </Grid>
         </Grid>
-      </Box>
+      </MKBox>
     </>
   );
 }
