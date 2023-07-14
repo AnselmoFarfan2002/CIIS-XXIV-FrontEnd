@@ -7,8 +7,12 @@ import MKBox from "components/MKBox";
 import bgImage from "assets/images/campus-unjbg.jpeg";
 import MKBadge from "components/MKBadge";
 import MKTypography from "components/MKTypography";
+// import Container from "assets/theme/components/container";
 
-const incluido = ["Participación", "Certificado", "Kit Postmaster"];
+import esisLogo from "assets/images/logos/esis-logo.png";
+import profesionales from "assets/images/profesionales.jpg";
+import estudiante from "assets/images/estudiante.jpg";
+const incluido = ["Certficación", "Kit Postmaster"];
 
 export default function SignUpPostMaster() {
   return (
@@ -26,8 +30,11 @@ export default function SignUpPostMaster() {
             )}, url(${bgImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          display: "grid",
           placeItems: "center",
+          display: "grid",
+          paddingX: {
+            xs: 1,
+          },
         }}
         alignItems={"center"}
         px={6}
@@ -35,65 +42,90 @@ export default function SignUpPostMaster() {
         bgColor="info"
         variant="gradient"
       >
-        <Grid
-          container
-          item
-          xs={12}
-          lg={6}
-          flexDirection="column"
-          alignItems="center"
-          sx={{ textAlign: "center", my: 0, mx: "auto", px: 0.75 }}
-        >
-          <MKBadge
-            variant="contained"
-            color="info"
-            badgeContent="Detalles de inscripción"
+        <Grid container gap={13}>
+          <Grid
+            item
             container
-            sx={{ mb: 2 }}
-          />
-          <MKTypography variant="h2" fontWeight="bold" color="light">
-            Precios de inscripción
-          </MKTypography>
-        </Grid>
+            xs={12}
+            lg={6}
+            flexDirection="column"
+            alignItems="center"
+            sx={{ textAlign: "center", my: 0, mx: "auto", px: 0.75 }}
+          >
+            <MKBox
+              sx={{
+                marginTop: {
+                  xs: 15,
+                },
+              }}
+            >
+              <MKBadge
+                variant="contained"
+                color="info"
+                badgeContent="Detalles de inscripción"
+                container
+                sx={{ mb: 2 }}
+              />
+            </MKBox>
+            <MKTypography variant="h2" fontWeight="bold" color="light">
+              Únete al Postmaster XX
+            </MKTypography>
+          </Grid>
 
-        <Grid
-          container
-          mx={"auto"}
-          justifyContent="center"
-          alignItems={"center"}
-          gap={3}
-          mt={-10}
-          sx={{ width: "100%" }}
-        >
-          <Grid item xs={8} md={5} lg={5} xl={3}>
-            <Precios1
-              precio="S/. 15"
-              consumidor="Legado de la ESIS"
-              desc="Estudiante o egresado"
-              imagenPrecio="https://cdn-icons-png.flaticon.com/512/201/201565.png"
-              incluye={incluido}
-            />
-          </Grid>
-          <Grid item xs={8} md={5} lg={5} xl={3}>
-            <Precios1
-              precio="S/. 20"
-              consumidor="Estudiantes"
-              desc="Estudiante externo"
-              imagenPrecio="https://cdn-icons-png.flaticon.com/512/167/167750.png"
-              incluye={incluido}
-            />
-          </Grid>
-          <Grid item xs={8} md={5} lg={5} xl={3}>
-            <Precios1
-              precio="S/. 25"
-              consumidor="Público general"
-              desc="Profesionales y otros"
-              imagenPrecio="https://cdn-icons-png.flaticon.com/512/1754/1754915.png"
-              incluye={incluido}
-            />
-          </Grid>
+          <MKBox
+            width={"100%"}
+            sx={{
+              marginBottom: {
+                xs: 15,
+                sm: 15,
+              },
+            }}
+          >
+            <Grid
+              container
+              mx={"auto"}
+              justifyContent="center"
+              alignItems={"center"}
+              sx={{
+                width: "100%",
+                gap: {
+                  xs: 10,
+                  md: 3,
+                },
+              }}
+            >
+              <Grid item xs={11} sm={8} md={5} lg={5} xl={3}>
+                <Precios1
+                  precio="S/. 15"
+                  consumidor="Legado de la ESIS"
+                  desc="Estudiante o egresado"
+                  imagenPrecio={esisLogo}
+                  incluye={incluido}
+                />
+              </Grid>
+              <Grid item xs={11} sm={8} md={5} lg={5} xl={3}>
+                <Precios1
+                  precio="S/. 20"
+                  consumidor="Estudiante"
+                  desc="Visitante externo de ESIS"
+                  imagenPrecio={estudiante}
+                  incluye={incluido}
+                />
+              </Grid>
+              <Grid item xs={11} sm={8} md={5} lg={5} xl={3}>
+                <Precios1
+                  precio="S/. 25"
+                  consumidor="Público general"
+                  desc="Profesionales y otros"
+                  imagenPrecio={profesionales}
+                  incluye={incluido}
+                />
+              </Grid>
+            </Grid>
+          </MKBox>
         </Grid>
       </MKBox>
+
       <MKBox>
         <Grid container justifyContent="space-evenly" sx={{ width: "100%" }}>
           <Grid container align="center">
