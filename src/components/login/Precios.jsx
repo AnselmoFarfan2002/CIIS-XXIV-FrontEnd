@@ -1,25 +1,34 @@
-import { React, useState } from "react";
-import logo from "../../assets/images/logos/logo-jackelin-postmaster.jpg";
+import { React, useState, forwardRef } from "react";
 import {
   Grid,
   Card,
   Typography,
-  Button,
   Box,
   Dialog,
-  DialogTitle,
   DialogContent,
   DialogActions,
+  Fade,
 } from "@mui/material";
 import "./loginInscripcion.css";
 import PropTypes from "prop-types";
-// import Viñeta from "../../assets/theme/components/vinneta/Vinneta";
 import MKAvatar from "components/MKAvatar";
 import { List, ListItem, ListItemText, ListItemIcon } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
 import MKBox from "components/MKBox";
 import MKButton from "components/MKButton";
+import MKInput from "components/MKInput";
+
+import IconStepper from "components/IconStepper/IconStepper";
+import ImageUpload from "components/ImageUpload/ImageUpload";
+
+import defaultVoucher from "assets/images/deafults/default-image-voucher.png";
+
+const steps = ["Datos personales", "Documento de estudiante", "Recibo de pago"];
+
+const Transition = forwardRef(function Transition(props, ref) {
+  return <Fade direction="up" ref={ref ? ref : null} {...props} />;
+});
 
 const Precios1 = ({ precio, consumidor, imagenPrecio, desc, incluye }) => {
   const [open, setOpen] = useState(false);
@@ -30,10 +39,17 @@ const Precios1 = ({ precio, consumidor, imagenPrecio, desc, incluye }) => {
   const handleClose = () => {
     setOpen(false);
   };
-  const [selectedOption, setSelectedOption] = useState("");
-  const handleOptionChange = (event) => {
-    setSelectedOption(event.target.value);
+
+  const [activeStep, setActiveStep] = useState(0); // Estado para el paso activo
+
+  const handleNext = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
+
+  const handleBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
+
   return (
     <>
       <Card
@@ -46,7 +62,14 @@ const Precios1 = ({ precio, consumidor, imagenPrecio, desc, incluye }) => {
         shadow="lg"
       >
         <Box mt={-12} mb={3}>
-          <MKAvatar src={imagenPrecio} alt="Estudiante" size="xxl" shadow="lg" bgColor="light" />
+          <MKAvatar
+            src={imagenPrecio}
+            alt="Estudiante"
+            size="xxl"
+            shadow="lg"
+            bgColor="light"
+            sx={{ backgroundSize: "cover" }}
+          />
         </Box>
         <Box>
           <MKBox>
@@ -81,104 +104,124 @@ const Precios1 = ({ precio, consumidor, imagenPrecio, desc, incluye }) => {
             </List>
           </MKBox>
 
-          <MKButton color="success" onClick={handleOpen}>
+          <MKButton color="success" variant="gradient" onClick={handleOpen}>
             <AppRegistrationIcon /> Inscribirse
           </MKButton>
         </Box>
-        <Dialog open={open} onClose={handleClose}>
-          <DialogTitle align="center">
-            <MKBox mx={"auto"}>
-              <MKAvatar src={logo} alt="POSTMASTER XX" size="xxl" />
-            </MKBox>
-          </DialogTitle>
+
+        <Dialog open={open} onClose={handleClose} TransitionComponent={Transition}>
           <DialogContent align="center">
-            <div>
-              <Typography variant="h4" align="center" mb={4}>
-                INCRIPCION DE ESTUDIANTE
-              </Typography>
-              <Typography variant="h7" align="center" mb={4}>
-                INGRESA TUS DATOS PERSONALES
-              </Typography>
-              <form action="">
+            <MKBox mx={"auto"} mt={5}>
+              <MKAvatar src={imagenPrecio} alt="POSTMASTER XX" size="xxl" />
+            </MKBox>
+            <Typography variant="subtitle2" align="center" mb={-0.5}>
+              Inscribiendote como
+            </Typography>
+            <Typography variant="h4" align="center" my={1}>
+              {consumidor}
+            </Typography>
+            <Typography variant="subtitle2" align="center">
+              {desc}
+            </Typography>
+
+            <MKBox my={3}>
+              <IconStepper steps={steps} activeStep={activeStep} />
+            </MKBox>
+
+            {activeStep === 0 && (
+              <MKBox mt={2} mb={4}>
                 <Grid
                   container
-                  justifyContent="space-evenly"
                   spacing={3}
-                  sx={{ width: "100%" }}
+                  width="100%"
                   textAlign={"center"}
+                  justifyContent={"center"}
                 >
-                  <Grid item xs={12} md={6}>
-                    <input type="text" className="format-text" placeholder="Nombre" />
+                  <Grid item xs={12} sm={6} md={5}>
+                    <MKInput type="text" variant="standard" label="Nombre" name="name" />
                   </Grid>
-                  <Grid item xs={12} md={6}>
-                    <input type="text" className="format-text" placeholder="Apellidos" />
+                  <Grid item xs={12} sm={6} md={5}>
+                    <MKInput
+                      type="text"
+                      variant="standard"
+                      label="Primer apellido"
+                      name="firstLastName"
+                    />
                   </Grid>
-                  <Grid item xs={12} md={6}>
-                    <select
-                      className="format-text"
-                      value={selectedOption}
-                      onChange={handleOptionChange}
-                      style={{ width: "80%", borderWidth: "2px" }}
-                    >
-                      <option value="" disabled>
-                        Sexo
-                      </option>
-                      <option value="opcion1">Masculino</option>
-                      <option value="opcion2">Femenino</option>
-                    </select>
+                  <Grid item xs={12} sm={6} md={5}>
+                    <MKInput
+                      type="text"
+                      variant="standard"
+                      label="Segundo apellido"
+                      name="secondLastName"
+                    />
                   </Grid>
-                  <Grid item xs={12} md={6}>
-                    <input type="text" className="format-text" placeholder="Dni" />
+                  <Grid item xs={12} sm={6} md={5}>
+                    <MKInput type="text" variant="standard" label="DNI" name="dni" />
                   </Grid>
-                  <Grid item xs={12} md={6}>
-                    <input type="text" className="format-text" placeholder="Celular" />
+                  <Grid item xs={12} sm={6} md={5}>
+                    <MKInput type="text" variant="standard" label="Celular" name="cellphone" />
                   </Grid>
-                  <Grid item xs={12} md={6}>
-                    <input type="text" className="format-text" placeholder="Correo Institucional" />
+                  <Grid item xs={12} sm={6} md={5}>
+                    <MKInput type="email" variant="standard" label="Correo" name="email" />
                   </Grid>
-                  <Grid item xs={12} md={6}>
-                    <input type="text" className="format-text" placeholder="Ciclo" />
+                  <Grid item xs={12} sm={6} md={5}>
+                    <MKInput
+                      type="text"
+                      variant="standard"
+                      label="Centro de estudios"
+                      name="institution"
+                    />
                   </Grid>
-                  <Grid item xs={12} md={6}>
-                    <select
-                      className="format-text"
-                      value={selectedOption}
-                      onChange={handleOptionChange}
-                      style={{ width: "80%", borderWidth: "2px" }}
-                    >
-                      <option value="" disabled>
-                        Carrera
-                      </option>
-                      <option value="opcion1">Masculino</option>
-                      <option value="opcion2">Femenino</option>
-                    </select>
-                  </Grid>
-                  <Grid item xs={12} md={6}>
-                    <select
-                      className="format-text"
-                      value={selectedOption}
-                      onChange={handleOptionChange}
-                      style={{ width: "80%", borderWidth: "2px" }}
-                    >
-                      <option value="" disabled>
-                        Modalidad de Pago
-                      </option>
-                      <option value="opcion1">Masculino</option>
-                      <option value="opcion2">Femenino</option>
-                    </select>
+                  <Grid item xs={12} sm={6} md={5}>
+                    <MKInput type="text" variant="standard" label="Carrera" name="career" />
                   </Grid>
                 </Grid>
-              </form>
-            </div>
+              </MKBox>
+            )}
+            {activeStep === 1 && (
+              <MKBox mt={2} mb={4}>
+                <ImageUpload />
+              </MKBox>
+            )}
+            {activeStep === 2 && (
+              <MKBox mt={2} mb={4}>
+                <ImageUpload textButton="Seleccione imagen de pago" defaultImg={defaultVoucher} />
+              </MKBox>
+            )}
           </DialogContent>
+
           <DialogActions>
-            <Button onClick={handleClose}>Cerrar</Button>
+            <MKBox mb={1}>
+              <MKButton onClick={handleClose} variant="text" color="secondary">
+                Cerrar
+              </MKButton>
+              {activeStep > 0 ? (
+                <MKButton onClick={handleBack} variant="text" color="info">
+                  Atrás
+                </MKButton>
+              ) : (
+                <MKButton onClick={handleBack} variant="text" color="info" disabled>
+                  Atrás
+                </MKButton>
+              )}
+              {activeStep < steps.length - 1 ? (
+                <MKButton onClick={handleNext} variant="text" color="info">
+                  Siguiente
+                </MKButton>
+              ) : (
+                <MKButton onClick={handleNext} variant="text" color="info" disabled>
+                  Siguiente
+                </MKButton>
+              )}
+            </MKBox>
           </DialogActions>
         </Dialog>
       </Card>
     </>
   );
 };
+
 Precios1.propTypes = {
   precio: PropTypes.string.isRequired,
   consumidor: PropTypes.string.isRequired,
@@ -186,4 +229,5 @@ Precios1.propTypes = {
   desc: PropTypes.string.isRequired,
   incluye: PropTypes.array.isRequired,
 };
+
 export default Precios1;
