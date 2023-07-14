@@ -1,66 +1,96 @@
-import React from "react";
-import { Card, Grid, Typography } from "@mui/material";
+import { React, useState } from "react";
+import {
+  Grid,
+  Typography,
+  DialogTitle,
+  DialogContent,
+  Button,
+  Dialog,
+  DialogActions,
+} from "@mui/material";
+import MKBox from "components/MKBox";
+import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
+import MKAvatar from "components/MKAvatar";
+import MKButton from "components/MKButton";
+import logo from "../../assets/images/logos/logo-jackelin-postmaster.jpg";
 import "./loginInscripcion.css";
 export default function Login() {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
   return (
     <>
-      <Card
-        sx={{
-          paddingLeft: 3,
-          mx: { xs: 4, lg: 30 },
-          mb: 4,
-          marginTop: 10,
-          backgroundColor: "#ffffff",
-          boxShadow: ({ boxShadows: { xxl } }) => xxl,
-        }}
-      >
-        <div>
-          <Typography variant="h4" align="center" mb={4}>
-            INCRIPCION DE ESTUDIANTE
-          </Typography>
-          <Typography variant="h5" align="center" mb={4}>
-            INGRESA TUS DATOS PERSONALES
-          </Typography>
-          <form action="">
-            <Grid
-              container
-              p={2}
-              pb={2}
-              justifyContent="space-evenly"
-              spacing={3}
-              sx={{ width: "100%" }}
-            >
-              <Grid item xs={12} md={6}>
-                <input type="text" className="format-text" />
+      <MKButton color="success" onClick={handleOpen}>
+        <AppRegistrationIcon /> Inscribirse
+      </MKButton>
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle align="center">
+          <MKBox mx={"auto"}>
+            <MKAvatar src={logo} alt="POSTMASTER XX" size="xxl" />
+          </MKBox>
+        </DialogTitle>
+        <DialogContent align="center">
+          <div>
+            <Typography variant="h4" align="center" mb={4}>
+              INCRIPCION DE ESTUDIANTE
+            </Typography>
+            <Typography variant="h7" align="center" mb={4}>
+              INGRESA TUS DATOS PERSONALES
+            </Typography>
+            <form action="">
+              <Grid
+                container
+                justifyContent="space-evenly"
+                spacing={3}
+                sx={{ width: "100%" }}
+                textAlign={"center"}
+              >
+                <Grid item xs={12} md={6}>
+                  <input type="text" id="name" className="format-text" placeholder="Nombre" />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <input
+                    type="text"
+                    id="firstLastname"
+                    className="format-text"
+                    placeholder="Primer Apellido"
+                  />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <input
+                    type="text"
+                    id="secondLastname"
+                    className="format-text"
+                    placeholder="Segundo Apellido"
+                  />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <input type="text" id="email" className="format-text" placeholder="Email" />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <input type="text" id="phone" className="format-text" placeholder="Celular" />
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <input
+                    type="text"
+                    id="numvoucher"
+                    className="format-text"
+                    placeholder="Numero de Voucher"
+                  />
+                </Grid>
               </Grid>
-              <Grid item xs={12} md={6}>
-                <input type="text" className="format-text" />
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <input type="text" className="format-text" />
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <input type="text" className="format-text" />
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <input type="text" className="format-text" />
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <input type="text" className="format-text" />
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <input type="text" className="format-text" />
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <input type="text" className="format-text" />
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <input type="text" className="format-text" />
-              </Grid>
-            </Grid>
-          </form>
-        </div>
-      </Card>
+            </form>
+          </div>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Cerrar</Button>
+        </DialogActions>
+      </Dialog>
     </>
   );
 }
