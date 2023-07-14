@@ -1,7 +1,7 @@
 import { React } from "react";
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import { PMroutes } from "routes";
-import { Grid, Typography } from "@mui/material";
+import { Grid, Typography, Card } from "@mui/material";
 import Precios1 from "../../components/login/Precios";
 import MKBox from "components/MKBox";
 import bgImage from "assets/images/campus-unjbg.jpeg";
@@ -95,7 +95,11 @@ export default function SignUpPostMaster() {
         </Grid>
       </MKBox>
       <MKBox>
-        <Grid container justifyContent="space-evenly" sx={{ width: "100%" }}>
+        <Card
+          container
+          justifyContent="space-evenly"
+          sx={{ mb: 4, mt: -4, mx: { lg: 3, xs: 2 }, p: 2, background: "#ffffff" }}
+        >
           <Grid container align="center">
             <Grid item xs={12} md={12}>
               <Typography variant="h4" mb={4} textAlign="center">
@@ -204,7 +208,7 @@ export default function SignUpPostMaster() {
               />
             </Grid>
           </Grid>
-        </Grid>
+        </Card>
       </MKBox>
     </>
   );
