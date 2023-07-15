@@ -1,20 +1,52 @@
 import { React } from "react";
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import { PMroutes } from "routes";
-import { Grid, Typography } from "@mui/material";
+import { Grid, Typography, Card } from "@mui/material";
 import Precios1 from "../../components/login/Precios";
 import MKBox from "components/MKBox";
 import bgImage from "assets/images/campus-unjbg.jpeg";
 import MKBadge from "components/MKBadge";
 import MKTypography from "components/MKTypography";
 // import Container from "assets/theme/components/container";
-
+import yape from "assets/images/cuentasPagos/yape.png";
+import plin from "assets/images/cuentasPagos/plin.png";
 import esisLogo from "assets/images/logos/esis-logo.png";
 import profesionales from "assets/images/profesionales.jpg";
 import estudiante from "assets/images/estudiante.jpg";
 const incluido = ["Certficación", "Kit Postmaster"];
-
 export default function SignUpPostMaster() {
+  const cuentasAgente = [
+    {
+      url: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Interbank_logo.svg/2560px-Interbank_logo.svg.png",
+      nroCuenta: "cuenta: 003-456-567-567",
+    },
+    {
+      url: "https://enviotodo.pe/wp-content/uploads/2018/07/logo-banco-nacion-peru.png",
+      nroCuenta: "cuenta: 003-456-567-567",
+    },
+    {
+      url: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/BBVA_2019.svg/2560px-BBVA_2019.svg.png",
+      nroCuenta: "cuenta: 003-456-567-567",
+    },
+    {
+      url: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Logo_Scotiabank_%28Kanada%29.svg/2560px-Logo_Scotiabank_%28Kanada%29.svg.png",
+      nroCuenta: "cuenta: 003-456-567-567",
+    },
+    {
+      url: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Logo-bcp-vector.svg/2560px-Logo-bcp-vector.svg.png",
+      nroCuenta: "cuenta: 003-456-567-567",
+    },
+  ];
+  const depoAppMovil = [
+    {
+      app: "https://www.yape.com.pe/assets/images/logo.png",
+      qr: yape,
+    },
+    {
+      app: "https://seeklogo.com/images/P/plin-logo-0C4106153C-seeklogo.com.png",
+      qr: plin,
+    },
+  ];
   return (
     <>
       <DefaultNavbar routes={PMroutes} transparent light />
@@ -127,8 +159,12 @@ export default function SignUpPostMaster() {
       </MKBox>
 
       <MKBox>
-        <Grid container justifyContent="space-evenly" sx={{ width: "100%" }}>
-          <Grid container align="center">
+        <Card
+          container
+          justifyContent="space-evenly"
+          sx={{ mb: 4, mt: -4, mx: { lg: 3, xs: 2 }, p: 2, background: "#ffffff" }}
+        >
+          <Grid container justifyContent={"center"} align="center">
             <Grid item xs={12} md={12}>
               <Typography variant="h4" mb={4} textAlign="center">
                 MODALIDAD DE PAGO
@@ -139,56 +175,18 @@ export default function SignUpPostMaster() {
                 Deposito en agentes:
               </Typography>
             </Grid>
-            <Grid item xs={12} md={4}>
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Interbank_logo.svg/2560px-Interbank_logo.svg.png"
-                alt="Descripción de la imagen"
-                style={{ width: "250px", height: "auto" }}
-              />
-              <Typography variant="h6" mb={4}>
-                cuenta: 003-456-567-567
-              </Typography>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <img
-                src="https://enviotodo.pe/wp-content/uploads/2018/07/logo-banco-nacion-peru.png"
-                alt="Descripción de la imagen"
-                style={{ width: "250px", height: "auto" }}
-              />
-              <Typography variant="h6" mb={4}>
-                cuenta: 003-456-567-567
-              </Typography>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/BBVA_2019.svg/2560px-BBVA_2019.svg.png"
-                alt="Descripción de la imagen"
-                style={{ width: "250px", height: "auto" }}
-              />
-              <Typography variant="h6" mb={4}>
-                cuenta: 003-456-567-567
-              </Typography>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Logo_Scotiabank_%28Kanada%29.svg/2560px-Logo_Scotiabank_%28Kanada%29.svg.png"
-                alt="Descripción de la imagen"
-                style={{ width: "250px", height: "auto" }}
-              />
-              <Typography variant="h6" mb={4}>
-                cuenta: 003-456-567-567
-              </Typography>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Logo-bcp-vector.svg/2560px-Logo-bcp-vector.svg.png"
-                alt="Descripción de la imagen"
-                style={{ width: "250px", height: "auto" }}
-              />
-              <Typography variant="h6" mb={4}>
-                cuenta: 003-456-567-567
-              </Typography>
-            </Grid>
+            {cuentasAgente.map((index) => (
+              <Grid key={index} item xs={12} md={4}>
+                <img
+                  src={index.url}
+                  style={{ maxHeight: "70px", minHeight: "70px", width: "250px" }}
+                />
+                <Typography variant="h6" mb={4}>
+                  {index.nroCuenta}
+                </Typography>
+              </Grid>
+            ))}
+            <Grid item xs={12} md={4}></Grid>
           </Grid>
           <Grid item xs={12} md={12} align="left">
             <Typography variant="h4" mb={4}>
@@ -196,47 +194,21 @@ export default function SignUpPostMaster() {
             </Typography>
           </Grid>
           <Grid container align="center">
-            <Grid item xs={12} md={4}>
-              <img
-                src="https://www.yape.com.pe/assets/images/logo.png"
-                alt="Descripción de la imagen"
-                style={{ width: "150px", height: "auto" }}
-              />
-              <br />
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Codigo_QR.svg/1024px-Codigo_QR.svg.png"
-                alt="Descripción de la imagen"
-                style={{ width: "150px", height: "auto" }}
-              />
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <img
-                src="https://seeklogo.com/images/P/plin-logo-0C4106153C-seeklogo.com.png"
-                alt="Descripción de la imagen"
-                style={{ width: "150px", height: "auto" }}
-              />
-              <br />
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Codigo_QR.svg/1024px-Codigo_QR.svg.png"
-                alt="Descripción de la imagen"
-                style={{ width: "150px", height: "auto" }}
-              />
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <img
-                src="https://seeklogo.com/images/T/tunki-logo-8BAD04C387-seeklogo.com.png"
-                alt="Descripción de la imagen"
-                style={{ width: "150px", height: "auto" }}
-              />
-              <br />
-              <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Codigo_QR.svg/1024px-Codigo_QR.svg.png"
-                alt="Descripción de la imagen"
-                style={{ width: "150px", height: "auto" }}
-              />
-            </Grid>
+            {depoAppMovil.map((index) => (
+              <Grid item xs={12} md={6} key={index}>
+                <img
+                  src={index.app}
+                  style={{ maxHeight: "150px", minHeight: "150px", width: "auto" }}
+                />
+                <br />
+                <img
+                  src={index.qr}
+                  style={{ maxHeight: "150px", minHeight: "150px", width: "auto" }}
+                />
+              </Grid>
+            ))}
           </Grid>
-        </Grid>
+        </Card>
       </MKBox>
     </>
   );

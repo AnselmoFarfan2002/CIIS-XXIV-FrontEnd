@@ -17,7 +17,7 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import MKBox from "components/MKBox";
 import MKButton from "components/MKButton";
 import MKInput from "components/MKInput";
-
+import AppRegistrationIcon from "@mui/material/Icon";
 import IconStepper from "components/IconStepper/IconStepper";
 import ImageUpload from "components/ImageUpload/ImageUpload";
 
