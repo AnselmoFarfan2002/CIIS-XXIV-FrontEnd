@@ -2,18 +2,18 @@ import { React } from "react";
 import DefaultNavbar from "examples/Navbars/DefaultNavbar";
 import { PMroutes } from "routes";
 import { Grid, Typography, Card } from "@mui/material";
-import Precios1 from "../../components/login/Precios";
+import CardPrice from "../../components/login/CardPrice";
 import MKBox from "components/MKBox";
 import bgImage from "assets/images/campus-unjbg.jpeg";
 import MKBadge from "components/MKBadge";
 import MKTypography from "components/MKTypography";
-// import Container from "assets/theme/components/container";
 import yape from "assets/images/cuentasPagos/yape.png";
 import plin from "assets/images/cuentasPagos/plin.png";
 import esisLogo from "assets/images/logos/esis-logo.png";
 import profesionales from "assets/images/profesionales.jpg";
 import estudiante from "assets/images/estudiante.jpg";
 const incluido = ["Certficación", "Kit Postmaster"];
+
 export default function SignUpPostMaster() {
   const cuentasAgente = [
     {
@@ -127,7 +127,7 @@ export default function SignUpPostMaster() {
               }}
             >
               <Grid item xs={11} sm={8} md={5} lg={5} xl={3}>
-                <Precios1
+                <CardPrice
                   precio="S/. 15"
                   consumidor="Legado de la ESIS"
                   desc="Estudiante o egresado"
@@ -136,7 +136,7 @@ export default function SignUpPostMaster() {
                 />
               </Grid>
               <Grid item xs={11} sm={8} md={5} lg={5} xl={3}>
-                <Precios1
+                <CardPrice
                   precio="S/. 20"
                   consumidor="Estudiante"
                   desc="Visitante externo de ESIS"
@@ -145,7 +145,7 @@ export default function SignUpPostMaster() {
                 />
               </Grid>
               <Grid item xs={11} sm={8} md={5} lg={5} xl={3}>
-                <Precios1
+                <CardPrice
                   precio="S/. 25"
                   consumidor="Público general"
                   desc="Profesionales y otros"
@@ -159,11 +159,7 @@ export default function SignUpPostMaster() {
       </MKBox>
 
       <MKBox>
-        <Card
-          container
-          justifyContent="space-evenly"
-          sx={{ mb: 4, mt: -4, mx: { lg: 3, xs: 2 }, p: 2, background: "#ffffff" }}
-        >
+        <Card sx={{ mb: 4, mt: -4, mx: { lg: 3, xs: 2 }, p: 2, background: "#ffffff" }}>
           <Grid container justifyContent={"center"} align="center">
             <Grid item xs={12} md={12}>
               <Typography variant="h4" mb={4} textAlign="center">
@@ -175,8 +171,8 @@ export default function SignUpPostMaster() {
                 Deposito en agentes:
               </Typography>
             </Grid>
-            {cuentasAgente.map((index) => (
-              <Grid key={index} item xs={12} md={4}>
+            {cuentasAgente.map((index, idx) => (
+              <Grid key={new Date().getTime() / (idx + 1)} item xs={12} md={4}>
                 <img
                   src={index.url}
                   style={{ maxHeight: "70px", minHeight: "70px", width: "250px" }}
@@ -194,8 +190,8 @@ export default function SignUpPostMaster() {
             </Typography>
           </Grid>
           <Grid container align="center">
-            {depoAppMovil.map((index) => (
-              <Grid item xs={12} md={6} key={index}>
+            {depoAppMovil.map((index, idx) => (
+              <Grid item xs={12} md={6} key={new Date().getTime() / (idx + 1)}>
                 <img
                   src={index.app}
                   style={{ maxHeight: "150px", minHeight: "150px", width: "auto" }}

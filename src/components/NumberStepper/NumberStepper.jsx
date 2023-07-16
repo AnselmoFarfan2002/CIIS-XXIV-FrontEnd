@@ -7,7 +7,6 @@ import StepLabel from "@mui/material/StepLabel";
 import { Check } from "@mui/icons-material";
 import StepConnector, { stepConnectorClasses } from "@mui/material/StepConnector";
 import PropTypes from "prop-types";
-import MKTypography from "components/MKTypography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const colorStepper =
@@ -23,7 +22,6 @@ const QontoStepIconRoot = styled("div")(({ theme, ownerState }) => ({
   }),
   "& .QontoStepIcon-completedIcon": {
     color: "#784af4",
-    zIndex: 1,
     fontSize: 18,
   },
   "& .QontoStepIcon-circle": {
@@ -55,9 +53,7 @@ QontoStepIcon.propTypes = {
 };
 
 const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
-  [`&.${stepConnectorClasses.alternativeLabel}`]: {
-    top: 22,
-  },
+  [`&.${stepConnectorClasses.alternativeLabel}`]: {},
   [`&.${stepConnectorClasses.active}`]: {
     [`& .${stepConnectorClasses.line}`]: {
       backgroundImage: colorStepper,
@@ -76,54 +72,6 @@ const ColorlibConnector = styled(StepConnector)(({ theme }) => ({
   },
 }));
 
-const ColorlibStepIconRoot = styled("div")(({ theme, ownerState }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? theme.palette.grey[700] : "#ccc",
-  zIndex: 1,
-  color: "#fff",
-  width: 50,
-  height: 50,
-  display: "flex",
-  borderRadius: "50%",
-  justifyContent: "center",
-  alignItems: "center",
-  ...(ownerState.active && {
-    backgroundImage: colorStepper,
-    boxShadow: "0 0 10px rgba(0, 0, 0, 0.5)",
-  }),
-  ...(ownerState.completed && {
-    backgroundImage: colorStepper,
-  }),
-}));
-
-import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
-import BadgeIcon from "@mui/icons-material/Badge";
-import RequestQuoteIcon from "@mui/icons-material/RequestQuote";
-import SmartToyIcon from "@mui/icons-material/SmartToy";
-
-function ColorlibStepIcon(props) {
-  const { active, completed, className } = props;
-
-  const icons = {
-    1: <AssignmentIndIcon />,
-    2: <BadgeIcon />,
-    3: <RequestQuoteIcon />,
-    4: <SmartToyIcon />,
-  };
-
-  return (
-    <ColorlibStepIconRoot ownerState={{ completed, active }} className={className}>
-      {icons[String(props.icon)]}
-    </ColorlibStepIconRoot>
-  );
-}
-
-ColorlibStepIcon.propTypes = {
-  active: PropTypes.bool,
-  completed: PropTypes.bool,
-  className: PropTypes.string,
-  icon: PropTypes.node,
-};
-
 const theme = createTheme({
   components: {
     MuiStepper: {
@@ -139,15 +87,13 @@ const theme = createTheme({
   },
 });
 
-export default function IconStepper({ steps, activeStep }) {
+export default function NumberStepper({ steps, activeStep }) {
   return (
     <ThemeProvider theme={theme}>
       <Stepper alternativeLabel activeStep={activeStep} connector={<ColorlibConnector />}>
         {steps.map((label, idx) => (
           <Step key={new Date().getTime() / (idx + 1)}>
-            <StepLabel StepIconComponent={ColorlibStepIcon}>
-              <MKTypography variant="body3">{label}</MKTypography>
-            </StepLabel>
+            <StepLabel></StepLabel>
           </Step>
         ))}
       </Stepper>
@@ -155,7 +101,7 @@ export default function IconStepper({ steps, activeStep }) {
   );
 }
 
-IconStepper.propTypes = {
+NumberStepper.propTypes = {
   steps: PropTypes.array,
   activeStep: PropTypes.number,
 };
