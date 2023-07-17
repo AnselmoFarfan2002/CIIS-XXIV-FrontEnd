@@ -1,4 +1,4 @@
-import React, { useState, forwardRef, useEffect } from "react";
+import React, { useState, forwardRef } from "react";
 import { CardMedia, Container } from "@mui/material";
 // import { styled } from "@mui/system";
 import defaultImageUpload from "assets/images/deafults/default-image-upload.jpg";
@@ -6,7 +6,7 @@ import MKBox from "components/MKBox";
 import MKButton from "components/MKButton";
 import PropTypes from "prop-types";
 
-const ImageUpload = forwardRef(({ textButton, defaultImg, files }, ref) => {
+const ImageUpload = forwardRef(({ textButton, defaultImg, className, name }, ref) => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const handleImageChange = (e) => {
@@ -20,21 +20,8 @@ const ImageUpload = forwardRef(({ textButton, defaultImg, files }, ref) => {
     }
   };
 
-  useEffect(() => {
-    // Asignar el valor de files al input cuando se actualice
-    if (ref.current && files.length > 0) {
-      const fileList = new DataTransfer();
-      files.forEach((file) => {
-        fileList.items.add(file);
-      });
-      ref.current.files = fileList.files;
-
-      handleImageChange({ target: ref.current });
-    }
-  }, [files, ref]);
-
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="sm" className={className} ref={ref}>
       <MKBox>
         <MKBox mt={5} mb={3}>
           {selectedImage ? (
@@ -42,13 +29,14 @@ const ImageUpload = forwardRef(({ textButton, defaultImg, files }, ref) => {
               component="img"
               src={selectedImage}
               style={{ maxWidth: "100%", margin: 0 }}
-              height="200"
+              height="150"
               alt="Vista previa"
             />
           ) : (
             <CardMedia
               component="img"
               src={defaultImg ? defaultImg : defaultImageUpload}
+              style={{ maxWidth: "100%", margin: 0 }}
               height="150"
               alt="Seleccione una imagen"
             />
@@ -62,7 +50,7 @@ const ImageUpload = forwardRef(({ textButton, defaultImg, files }, ref) => {
             multiple={false}
             style={{ display: "none" }}
             onChange={handleImageChange}
-            ref={ref}
+            name={name}
           />
         </MKButton>
       </MKBox>
@@ -76,4 +64,6 @@ ImageUpload.propTypes = {
   textButton: PropTypes.string,
   defaultImg: PropTypes.string,
   files: PropTypes.array,
+  className: PropTypes.string,
+  name: PropTypes.string,
 };

@@ -24,9 +24,17 @@ import NumberStepper from "components/NumberStepper/NumberStepper";
 import IconStepper from "components/IconStepper/IconStepper";
 import ImageUpload from "components/ImageUpload/ImageUpload";
 
+import sucessImg from "assets/images/deafults/success.png";
 import defaultVoucher from "assets/images/deafults/default-image-voucher.png";
+import ReCAPTCHA from "react-google-recaptcha";
 
-const steps = ["Datos personales", "Soy un estudiante", "Foto de recibo", "Soy un humano"];
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
+
+const apiURI = "https://testapi.ciistacna.com/api/v1/register?event=12";
+
+import { PacmanLoader } from "react-spinners";
+import MKTypography from "components/MKTypography";
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Fade direction="up" ref={ref ? ref : null} {...props} />;
@@ -52,188 +60,185 @@ class CardPrice extends Component {
     super(props);
 
     this.state = {
-      participant: {
-        name: "",
-        firstLastName: "",
-        secondLastName: "",
-        dni: "",
-        phone: "",
-        email: "",
-        studycenter: "",
-        career: "",
-        imgvoucher: "",
-        fileuniversity: "",
-      },
       formState: {
         open: false,
         activeStep: 0,
       },
     };
 
-    this.formRefs = {
-      name: createRef(),
-      firstLastName: createRef(),
-      secondLastName: createRef(),
-      dni: createRef(),
-      phone: createRef(),
-      email: createRef(),
-      studycenter: createRef(),
-      career: createRef(),
-      imgvoucher: createRef(),
-      fileuniversity: createRef(),
+    this.waiting = {
+      loading: true,
     };
 
+    this.formRefs = {
+      form: createRef(),
+      waiting: createRef(),
+      paso1: createRef(),
+      paso2: createRef(),
+      paso3: createRef(),
+      paso4: createRef(),
+    };
+
+    this.setLoading = this.setLoading.bind(this);
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleNext = this.handleNext.bind(this);
     this.handleBack = this.handleBack.bind(this);
-    this.saveDataParticipant = this.saveDataParticipant.bind(this);
-    this.saveInsitutionDocument = this.saveInsitutionDocument.bind(this);
-    this.saveVoucher = this.saveVoucher.bind(this);
+    this.toggleVisibilityStep1 = this.toggleVisibilityStep1.bind(this);
+    this.toggleVisibilityStep2 = this.toggleVisibilityStep2.bind(this);
+    this.toggleVisibilityStep3 = this.toggleVisibilityStep3.bind(this);
+    this.toggleVisibilityStep4 = this.toggleVisibilityStep4.bind(this);
   }
 
   handleOpen() {
-    this.setState(({ participant, formState }) => ({
-      participant,
+    this.setState(({ formState }) => ({
       formState: { ...formState, open: true },
     }));
   }
 
   handleClose() {
-    this.setState(({ participant, formState }) => ({
-      participant,
-      formState: { ...formState, open: false },
+    this.setState(() => ({
+      formState: { activeStep: 0, open: false },
     }));
   }
 
   handleNext() {
-    this.setState(({ participant, formState }) => ({
-      participant,
+    const { activeStep } = this.state.formState;
+    const { typeattendee } = this.props;
+
+    if (typeattendee == 3) {
+      if (activeStep == 0) {
+        this.toggleVisibilityStep1();
+        this.toggleVisibilityStep3();
+      } else if (activeStep == 1) {
+        this.toggleVisibilityStep3();
+        this.toggleVisibilityStep4();
+      } else if (activeStep == 2) {
+        return this.handleRegister();
+      }
+    } else {
+      if (activeStep == 0) {
+        this.toggleVisibilityStep1();
+        this.toggleVisibilityStep2();
+      } else if (activeStep == 1) {
+        this.toggleVisibilityStep2();
+        this.toggleVisibilityStep3();
+      } else if (activeStep == 2) {
+        this.toggleVisibilityStep3();
+        this.toggleVisibilityStep4();
+      } else if (activeStep == 3) {
+        return this.handleRegister();
+      }
+    }
+
+    this.setState(({ formState }) => ({
       formState: { ...formState, activeStep: formState.activeStep + 1 },
     }));
   }
 
   handleBack() {
-    this.setState(({ participant, formState }) => ({
-      participant,
+    const { activeStep } = this.state.formState;
+    const { typeattendee } = this.props;
+
+    if (typeattendee == 3) {
+      if (activeStep == 0) {
+        return null;
+      } else if (activeStep == 1) {
+        this.toggleVisibilityStep3();
+        this.toggleVisibilityStep1();
+      } else if (activeStep == 2) {
+        this.toggleVisibilityStep4();
+        this.toggleVisibilityStep3();
+      }
+    } else {
+      if (activeStep == 0) {
+        return null;
+      } else if (activeStep == 1) {
+        this.toggleVisibilityStep2();
+        this.toggleVisibilityStep1();
+      } else if (activeStep == 2) {
+        this.toggleVisibilityStep3();
+        this.toggleVisibilityStep2();
+      } else if (activeStep == 3) {
+        this.toggleVisibilityStep4();
+        this.toggleVisibilityStep3();
+      }
+    }
+
+    this.setState(({ formState }) => ({
       formState: { ...formState, activeStep: formState.activeStep - 1 },
     }));
   }
 
+  setLoading(state, sucess) {
+    this.formRefs.waiting.current.classList.toggle("d-none");
+    if (sucess) {
+      console.log("aea");
+    } else this.formRefs.form.current.classList.toggle("d-none");
+    this.waiting = state;
+  }
+
   handleRegister() {
-    let formData = new FormData();
-    const { participant } = this.state;
+    const { form } = this.formRefs;
+    let formData = new FormData(form.current);
+    const { typeattendee } = this.props;
 
-    Object.keys(participant).forEach((key) => {
-      formData.append(key, participant[key]);
-    });
+    formData.append("numvoucher", "");
+    formData.append("typeattendee", String(typeattendee));
 
-    console.log(Object.keys(participant));
-    for (const entry of formData.entries()) {
-      console.log(entry);
+    if (typeattendee == 3) {
+      formData.append("studycenter", "");
+      formData.append("career", "");
+      formData.append("fileuniversity", "");
     }
+
+    this.setLoading(true);
+
+    fetch(apiURI, {
+      method: "POST",
+      body: formData,
+    }).then((res) => {
+      this.setLoading(false);
+      if (res.ok) return;
+
+      res.json().then((aea) => console.log(aea));
+    });
   }
 
-  saveDataParticipant() {
+  toggleVisibilityStep1() {
     const { formRefs } = this;
-    this.setState(({ participant, formState }) => ({
-      ...formState,
-      participant: {
-        ...participant,
-        name: formRefs.name.current.querySelector("input").value,
-        firstLastName: formRefs.firstLastName.current.querySelector("input").value,
-        secondLastName: formRefs.secondLastName.current.querySelector("input").value,
-        dni: formRefs.dni.current.querySelector("input").value,
-        phone: formRefs.phone.current.querySelector("input").value,
-        email: formRefs.email.current.querySelector("input").value,
-        studycenter: formRefs.studycenter.current.querySelector("input").value,
-        career: formRefs.career.current.querySelector("input").value,
-      },
-    }));
+    formRefs.paso1.current.classList.toggle("d-none");
   }
 
-  saveInsitutionDocument() {
+  toggleVisibilityStep2() {
     const { formRefs } = this;
-    this.setState(({ participant, formState }) => ({
-      ...formState,
-      participant: {
-        ...participant,
-        fileuniversity: formRefs.fileuniversity.current.files[0],
-      },
-    }));
+    formRefs.paso2.current.classList.toggle("d-none");
   }
 
-  saveVoucher() {
+  toggleVisibilityStep3() {
     const { formRefs } = this;
-    this.setState(({ participant, formState }) => ({
-      ...formState,
-      participant: {
-        ...participant,
-        imgvoucher: formRefs.imgvoucher.current.files[0],
-      },
-    }));
+    formRefs.paso3.current.classList.toggle("d-none");
   }
 
-  saveCaptcha() {}
-
-  handleInputChange(fieldName, value) {
-    this.setState(({ participant }) => ({
-      participant: {
-        ...participant,
-        [fieldName]: value,
-      },
-    }));
+  toggleVisibilityStep4() {
+    const { formRefs } = this;
+    formRefs.paso4.current.classList.toggle("d-none");
   }
 
   render() {
-    const { precio, consumidor, imagenPrecio, desc, incluye } = this.props;
+    const { precio, consumidor, imagenPrecio, desc, incluye, typeattendee, steps } = this.props;
 
     const { activeStep, open } = this.state.formState;
-    const { participant } = this.state;
-
+    const { loading } = this.waiting;
     const { formRefs } = this;
 
-    const nextActionOnStep = [
-      () => {
-        this.saveDataParticipant();
-        this.handleNext();
-      },
-      () => {
-        this.saveInsitutionDocument();
-        this.handleNext();
-      },
-      () => {
-        this.saveVoucher();
-        this.handleNext();
-      },
-      () => {
-        this.saveCaptcha();
-        this.handleRegister();
-      },
-    ];
-    const backActionOnStep = [
-      () => {},
-      () => {
-        this.saveInsitutionDocument();
-        this.handleBack();
-      },
-      () => {
-        this.saveVoucher();
-        this.handleBack();
-      },
-      () => {
-        this.saveCaptcha();
-        this.handleBack();
-      },
-    ];
-
     let nextButton = (
-      <MKButton onClick={nextActionOnStep[activeStep]} variant="text" color="info">
+      <MKButton onClick={this.handleNext} variant="text" color="info">
         Siguiente
       </MKButton>
     );
     let backButton = (
-      <MKButton onClick={backActionOnStep[activeStep]} variant="text" color="info">
+      <MKButton onClick={this.handleBack} variant="text" color="info">
         Atrás
       </MKButton>
     );
@@ -244,9 +249,9 @@ class CardPrice extends Component {
           Atrás
         </MKButton>
       );
-    else if (activeStep === steps.length)
+    else if (activeStep === steps.length - 1)
       nextButton = (
-        <MKButton onClick={nextActionOnStep[activeStep]} variant="text" color="info">
+        <MKButton onClick={this.handleNext} variant="text" color="info">
           Inscribirse
         </MKButton>
       );
@@ -311,7 +316,16 @@ class CardPrice extends Component {
           </Box>
 
           {/*-------------- ZONA DE FORMULARIO DE INSCRIPCION --------------*/}
-          <Dialog open={open} onClose={this.handleClose} TransitionComponent={Transition}>
+          <Dialog
+            open={open}
+            onClose={this.handleClose}
+            TransitionComponent={Transition}
+            sx={{
+              "& .MuiDialog-paper": {
+                width: "1000px", // Establece un ancho fijo para el diálogo
+              },
+            }}
+          >
             {/*-------------- ZONA DE CAMPOS INSCRIPCION --------------*/}
             <DialogContent align="center">
               <MKBox mx={"auto"} mt={5}>
@@ -327,39 +341,29 @@ class CardPrice extends Component {
                 {desc}
               </Typography>
 
-              <MKBox my={3}>
-                <Stepper steps={steps} activeStep={activeStep} />
-              </MKBox>
+              <MKBox mt={2} mb={4}>
+                <MKBox my={3}>
+                  <Stepper steps={steps} activeStep={activeStep} />
+                </MKBox>
 
-              {activeStep === 0 && (
-                <MKBox mt={2} mb={4}>
+                <form ref={formRefs.form}>
                   <Grid
                     container
                     spacing={3}
                     width="100%"
                     textAlign={"center"}
                     justifyContent={"center"}
+                    ref={formRefs.paso1}
                   >
                     <Grid item xs={12} sm={6} md={5}>
-                      <MKInput
-                        type="text"
-                        variant="standard"
-                        label="Nombre"
-                        name="name"
-                        value={participant.name}
-                        onChange={(e) => this.handleInputChange("name", e.target.value)}
-                        ref={formRefs.name}
-                      />
+                      <MKInput type="text" variant="standard" label="Nombre" name="name" />
                     </Grid>
                     <Grid item xs={12} sm={6} md={5}>
                       <MKInput
                         type="text"
                         variant="standard"
                         label="Primer apellido"
-                        name="firstLastName"
-                        ref={formRefs.firstLastName}
-                        value={participant.firstLastName}
-                        onChange={(e) => this.handleInputChange("firstLastName", e.target.value)}
+                        name="firstLastname"
                       />
                     </Grid>
                     <Grid item xs={12} sm={6} md={5}>
@@ -367,98 +371,86 @@ class CardPrice extends Component {
                         type="text"
                         variant="standard"
                         label="Segundo apellido"
-                        name="secondLastName"
-                        ref={formRefs.secondLastName}
-                        value={participant.secondLastName}
-                        onChange={(e) => this.handleInputChange("secondLastName", e.target.value)}
+                        name="secondLastname"
                       />
                     </Grid>
                     <Grid item xs={12} sm={6} md={5}>
-                      <MKInput
-                        type="text"
-                        variant="standard"
-                        label="DNI"
-                        name="dni"
-                        ref={formRefs.dni}
-                        value={participant.dni}
-                        onChange={(e) => this.handleInputChange("dni", e.target.value)}
-                      />
+                      <MKInput type="text" variant="standard" label="DNI" name="dni" />
                     </Grid>
                     <Grid item xs={12} sm={6} md={5}>
-                      <MKInput
-                        type="text"
-                        variant="standard"
-                        label="Celular"
-                        name="phone"
-                        ref={formRefs.phone}
-                        value={participant.phone}
-                        onChange={(e) => this.handleInputChange("phone", e.target.value)}
-                      />
+                      <MKInput type="text" variant="standard" label="Celular" name="phone" />
                     </Grid>
                     <Grid item xs={12} sm={6} md={5}>
-                      <MKInput
-                        type="email"
-                        variant="standard"
-                        label="Correo"
-                        name="email"
-                        ref={formRefs.email}
-                        value={participant.email}
-                        onChange={(e) => this.handleInputChange("email", e.target.value)}
-                      />
+                      <MKInput type="email" variant="standard" label="Correo" name="email" />
                     </Grid>
-                    <Grid item xs={12} sm={6} md={5}>
-                      <MKInput
-                        type="text"
-                        variant="standard"
-                        label="Centro de estudios"
-                        name="studycenter"
-                        ref={formRefs.studycenter}
-                        value={participant.studycenter}
-                        onChange={(e) => this.handleInputChange("studycenter", e.target.value)}
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6} md={5}>
-                      <MKInput
-                        type="text"
-                        variant="standard"
-                        label="Carrera"
-                        name="career"
-                        ref={formRefs.career}
-                        value={participant.career}
-                        onChange={(e) => this.handleInputChange("career", e.target.value)}
-                      />
-                    </Grid>
+                    {typeattendee != 3 && (
+                      <Grid item xs={12} sm={6} md={5}>
+                        <MKInput
+                          type="text"
+                          variant="standard"
+                          label="Centro de estudios"
+                          name="studycenter"
+                        />
+                      </Grid>
+                    )}
+                    {typeattendee != 3 && (
+                      <Grid item xs={12} sm={6} md={5}>
+                        <MKInput type="text" variant="standard" label="Carrera" name="career" />
+                      </Grid>
+                    )}
                   </Grid>
-                </MKBox>
-              )}
-              {activeStep === 1 && (
-                <MKBox mt={2} mb={4}>
-                  <ImageUpload
-                    ref={formRefs.fileuniversity}
-                    files={participant.fileuniversity ? [participant.fileuniversity] : []}
-                  />
-                </MKBox>
-              )}
-              {activeStep === 2 && (
-                <MKBox mt={2} mb={4}>
+
+                  {typeattendee != 3 && (
+                    <ImageUpload ref={formRefs.paso2} className="d-none" name="fileuniversity" />
+                  )}
+
                   <ImageUpload
                     textButton="Seleccione imagen de pago"
                     defaultImg={defaultVoucher}
-                    files={participant.imgvoucher ? [participant.imgvoucher] : []}
-                    ref={formRefs.imgvoucher}
+                    name="imgvoucher"
+                    ref={formRefs.paso3}
+                    className="d-none"
                   />
-                </MKBox>
-              )}
-              {activeStep === 4 && (
-                <MKBox mt={2} mb={4}>
-                  <ImageUpload
-                    textButton="Seleccione imagen de pago"
-                    defaultImg={defaultVoucher}
-                    files={participant.imgvoucher ? [participant.imgvoucher] : []}
-                    ref={formRefs.imgvoucher}
-                  />
-                </MKBox>
-              )}
+
+                  <MKBox
+                    my={4}
+                    ref={formRefs.paso4}
+                    sx={{ minHeight: "222px", display: "grid", placeItems: "center" }}
+                    className="d-none"
+                  >
+                    <ReCAPTCHA sitekey="6LewoVQgAAAAAOLgERaAT1onYf6kT51gQ70BDjOi" />
+                  </MKBox>
+                </form>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    height: "200px",
+                  }}
+                  className="d-none"
+                  ref={formRefs.waiting}
+                >
+                  <PacmanLoader color="#36d7b7" loading={loading} size={20} />
+                </div>
+              </MKBox>
+
+              <MKBox>
+                <Grid container flexDirection={"column"}>
+                  <MKBox item component="img" src={sucessImg} width={200} mx={"auto"} my={3} />
+                  <MKTypography item variant="h3" mb={2}>
+                    Se ha inscrito con éxito
+                  </MKTypography>
+                  <MKTypography item variant="body" mb={2}>
+                    Uno de los miembros de nuestro equipo verificará que todo lo que ha especificado
+                    sea correcto y tras esto, se le notificará a través del correo electrónico las
+                    novedades. ¡Estamos emocionados de contar con su participación!
+                  </MKTypography>
+                  <MKTypography item variant="title2" mb={2}>
+                    CIIS XXIV - POSTMASTER XX
+                  </MKTypography>
+                </Grid>
+              </MKBox>
             </DialogContent>
 
             {/*-------------- ZONA DE BOTONES DE CONTROL --------------*/}
@@ -484,6 +476,8 @@ CardPrice.propTypes = {
   imagenPrecio: PropTypes.string.isRequired,
   desc: PropTypes.string.isRequired,
   incluye: PropTypes.array.isRequired,
+  typeattendee: PropTypes.number,
+  steps: PropTypes.array,
 };
 
 export default CardPrice;
