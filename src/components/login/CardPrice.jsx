@@ -35,6 +35,7 @@ const apiURI = "https://testapi.ciistacna.com/api/v1/register?event=12";
 
 import { PacmanLoader } from "react-spinners";
 import MKTypography from "components/MKTypography";
+import MKAlert from "components/MKAlert";
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Fade direction="up" ref={ref ? ref : null} {...props} />;
@@ -68,11 +69,15 @@ class CardPrice extends Component {
 
     this.waiting = {
       loading: true,
+      success: false,
+      error: false,
     };
 
     this.formRefs = {
       form: createRef(),
       waiting: createRef(),
+      error: createRef(),
+      captcha: createRef(),
       paso1: createRef(),
       paso2: createRef(),
       paso3: createRef(),
@@ -82,6 +87,7 @@ class CardPrice extends Component {
     this.setLoading = this.setLoading.bind(this);
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handleCloseSuccess = this.handleCloseSuccess.bind(this);
     this.handleNext = this.handleNext.bind(this);
     this.handleBack = this.handleBack.bind(this);
     this.toggleVisibilityStep1 = this.toggleVisibilityStep1.bind(this);
@@ -100,6 +106,16 @@ class CardPrice extends Component {
     this.setState(() => ({
       formState: { activeStep: 0, open: false },
     }));
+  }
+
+  handleCloseSuccess() {
+    this.waiting.success = false;
+    this.setState((prevState) => prevState);
+  }
+
+  handleOpenSuccess() {
+    this.waiting.success = true;
+    this.handleClose();
   }
 
   handleNext() {
@@ -170,12 +186,11 @@ class CardPrice extends Component {
     }));
   }
 
-  setLoading(state, sucess) {
-    this.formRefs.waiting.current.classList.toggle("d-none");
-    if (sucess) {
-      console.log("aea");
-    } else this.formRefs.form.current.classList.toggle("d-none");
-    this.waiting = state;
+  setLoading(loading, sucess = false) {
+    if (this.formRefs.waiting.current) this.formRefs.waiting.current.classList.toggle("d-none");
+    if (sucess) return this.handleOpenSuccess();
+    else this.formRefs.form.current.classList.toggle("d-none");
+    this.waiting.loading = loading;
   }
 
   handleRegister() {
@@ -183,13 +198,11 @@ class CardPrice extends Component {
     let formData = new FormData(form.current);
     const { typeattendee } = this.props;
 
-    formData.append("numvoucher", "");
     formData.append("typeattendee", String(typeattendee));
 
     if (typeattendee == 3) {
       formData.append("studycenter", "");
       formData.append("career", "");
-      formData.append("fileuniversity", "");
     }
 
     this.setLoading(true);
@@ -199,9 +212,16 @@ class CardPrice extends Component {
       body: formData,
     }).then((res) => {
       this.setLoading(false);
-      if (res.ok) return;
+      if (res.ok) return this.setLoading(false, true);
 
-      res.json().then((aea) => console.log(aea));
+      this.formRefs.error.current.classList.remove("d-none");
+      this.formRefs.captcha.current.reset();
+      res.json().then(({ error }) => {
+        if (Array.isArray(error)) this.formRefs.error.current.innerText = error.join(" - ");
+        else this.formRefs.error.current.innerText = error;
+
+        console.log(error);
+      });
     });
   }
 
@@ -401,16 +421,26 @@ class CardPrice extends Component {
                   </Grid>
 
                   {typeattendee != 3 && (
-                    <ImageUpload ref={formRefs.paso2} className="d-none" name="fileuniversity" />
+                    <MKBox ref={formRefs.paso2} className="d-none" pt={7}>
+                      <ImageUpload name="fileuniversity" />
+                    </MKBox>
                   )}
 
-                  <ImageUpload
-                    textButton="Seleccione imagen de pago"
-                    defaultImg={defaultVoucher}
-                    name="imgvoucher"
-                    ref={formRefs.paso3}
-                    className="d-none"
-                  />
+                  <MKBox ref={formRefs.paso3} className="d-none">
+                    <Grid item xs={12} sm={12} md={12} mb={2}>
+                      <MKInput
+                        type="text"
+                        variant="standard"
+                        label="Número de operación"
+                        name="numvoucher"
+                      />
+                    </Grid>
+                    <ImageUpload
+                      textButton="Seleccione imagen de pago"
+                      defaultImg={defaultVoucher}
+                      name="imgvoucher"
+                    />
+                  </MKBox>
 
                   <MKBox
                     my={4}
@@ -418,13 +448,25 @@ class CardPrice extends Component {
                     sx={{ minHeight: "222px", display: "grid", placeItems: "center" }}
                     className="d-none"
                   >
-                    <ReCAPTCHA sitekey="6LewoVQgAAAAAOLgERaAT1onYf6kT51gQ70BDjOi" />
+                    <MKBox ref={formRefs.error} className="d-none" color="error">
+                      <MKAlert color="warning">
+                        <MKTypography variant="body2" color="dark" fontWeight="bold">
+                          Ha ocurrido un error
+                        </MKTypography>
+                      </MKAlert>
+                    </MKBox>
+                    <ReCAPTCHA
+                      ref={formRefs.captcha}
+                      sitekey="6LewoVQgAAAAAOLgERaAT1onYf6kT51gQ70BDjOi"
+                    />
                   </MKBox>
                 </form>
                 <div
                   style={{
                     display: "flex",
                     justifyContent: "center",
+                    flexDirection: "column",
+                    rowGap: 20,
                     alignItems: "center",
                     height: "200px",
                   }}
@@ -432,24 +474,8 @@ class CardPrice extends Component {
                   ref={formRefs.waiting}
                 >
                   <PacmanLoader color="#36d7b7" loading={loading} size={20} />
+                  <MKTypography variant="body2">Ya casi está, solo unos segundos más</MKTypography>
                 </div>
-              </MKBox>
-
-              <MKBox>
-                <Grid container flexDirection={"column"}>
-                  <MKBox item component="img" src={sucessImg} width={200} mx={"auto"} my={3} />
-                  <MKTypography item variant="h3" mb={2}>
-                    Se ha inscrito con éxito
-                  </MKTypography>
-                  <MKTypography item variant="body" mb={2}>
-                    Uno de los miembros de nuestro equipo verificará que todo lo que ha especificado
-                    sea correcto y tras esto, se le notificará a través del correo electrónico las
-                    novedades. ¡Estamos emocionados de contar con su participación!
-                  </MKTypography>
-                  <MKTypography item variant="title2" mb={2}>
-                    CIIS XXIV - POSTMASTER XX
-                  </MKTypography>
-                </Grid>
               </MKBox>
             </DialogContent>
 
@@ -461,6 +487,43 @@ class CardPrice extends Component {
                 </MKButton>
                 {backButton}
                 {nextButton}
+              </MKBox>
+            </DialogActions>
+          </Dialog>
+          <Dialog
+            open={this.waiting.success}
+            onClose={this.handleCloseSuccess}
+            TransitionComponent={Transition}
+            sx={{
+              "& .MuiDialog-paper": {
+                width: "1000px", // Establece un ancho fijo para el diálogo
+              },
+            }}
+          >
+            <DialogContent align="center">
+              <MKBox>
+                <Grid container flexDirection={"column"}>
+                  <MKBox component="img" src={sucessImg} width={200} mx={"auto"} my={3} />
+                  <MKTypography variant="h3" mb={2}>
+                    Se ha inscrito con éxito
+                  </MKTypography>
+                  <MKTypography variant="body" mb={2}>
+                    Uno de los miembros de nuestro equipo verificará que todo lo que ha especificado
+                    sea correcto y tras esto, se le notificará a través del correo electrónico las
+                    novedades. ¡Estamos emocionados de contar con su participación!
+                  </MKTypography>
+                  <MKTypography variant="title2" mb={2}>
+                    CIIS XXIV - POSTMASTER XX
+                  </MKTypography>
+                </Grid>
+              </MKBox>
+            </DialogContent>
+
+            <DialogActions>
+              <MKBox mb={1} width="100%" sx={{ display: "flex", justifyContent: "center" }}>
+                <MKButton onClick={this.handleCloseSuccess} variant="text" color="secondary">
+                  Aceptar
+                </MKButton>
               </MKBox>
             </DialogActions>
           </Dialog>

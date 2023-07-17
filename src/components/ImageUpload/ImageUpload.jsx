@@ -23,7 +23,7 @@ const ImageUpload = forwardRef(({ textButton, defaultImg, className, name }, ref
   return (
     <Container maxWidth="sm" className={className} ref={ref}>
       <MKBox>
-        <MKBox mt={5} mb={3}>
+        <MKBox mb={1}>
           {selectedImage ? (
             <CardMedia
               component="img"
