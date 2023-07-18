@@ -1,7 +1,7 @@
 export default [
   {
     title: "CIIS XXIII",
-    description: "Vigésimo tercera edición del congreso de informática y sistemas",
+    description: "Vigésimo tercera edición del Congreso Internacional de Informática y Sistemas",
     items: [
       {
         image: "ciis-history/ciis-xxiii-FlyerPrincipal.jpg",
@@ -31,7 +31,7 @@ export default [
   },
   {
     title: "CIIS XXII",
-    description: "Vigésimo segunda edición del congreso de informática y sistemas",
+    description: "Vigésimo segunda edición del Congreso Internacional de Informática y Sistemas",
     items: [
       {
         image: "ciis-history/ciis-xxii-CronogramaPonencias.jpg",
@@ -61,7 +61,7 @@ export default [
   },
   {
     title: "CIIS XXI",
-    description: "Vigésimo primera edición del congreso de informática y sistemas",
+    description: "Vigésimo primera edición del Congreso Internacional de Informática y Sistemas",
     items: [
       {
         image: "ciis-history/ciis-xxi-flyers-ponentes1.jpg",
@@ -91,7 +91,7 @@ export default [
   },
   {
     title: "CIIS XX",
-    description: "Vigésima edición del congreso de informática y sistemas",
+    description: "Vigésima edición del Congreso Internacional de Informática y Sistemas",
     items: [
       {
         image: "ciis-history/ciis-xx-FlyerDeConcursosCall4Posters.jpg",
@@ -121,7 +121,7 @@ export default [
   },
   {
     title: "CIIS XIX",
-    description: "Décimo novena edición del congreso de informática y sistemas",
+    description: "Décimo novena edición del Congreso Internacional de Informática y Sistemas",
     items: [
       {
         image: "ciis-history/ciis-xix-FlyerPrincipal.jpg",
@@ -151,7 +151,7 @@ export default [
   },
   {
     title: "CIIS XVIII",
-    description: "Décimo octava edición del congreso de informática y sistemas",
+    description: "Décimo octava edición del Congreso Internacional de Informática y Sistemas",
     items: [
       {
         image: "ciis-history/ciis-xviii-FlyerPrincipal.jpg",
@@ -169,7 +169,7 @@ export default [
   },
   {
     title: "CIIS XVII",
-    description: "Décimo séptima edición del congreso de informática y sistemas",
+    description: "Décimo séptima edición del Congreso Internacional de Informática y Sistemas",
     items: [
       {
         image: "ciis-history/ciis-xvii-FlyerPrincipal.jpg",
@@ -199,7 +199,7 @@ export default [
   },
   {
     title: "CIIS XVI",
-    description: "Décimo sexta edición del congreso de informática y sistemas",
+    description: "Décimo sexta edición del Congreso Internacional de Informática y Sistemas",
     items: [
       {
         image: "ciis-history/ciis-xvi-FlyerPrincipal.jpg",
@@ -225,7 +225,7 @@ export default [
   },
   {
     title: "CIIS XV",
-    description: "Décimo quinta edición del congreso de informática y sistemas",
+    description: "Décimo quinta edición del Congreso Internacional de Informática y Sistemas",
     items: [
       {
         image: "ciis-history/ciis-xv-BannerPromocional.png",
@@ -243,7 +243,7 @@ export default [
   },
   {
     title: "CIIS XIV",
-    description: "Décimo cuarta edición del congreso de informática y sistemas",
+    description: "Décimo cuarta edición del Congreso Internacional de Informática y Sistemas",
     items: [
       {
         image: "ciis-history/ciis-xiv-FlyerPrincipal.jpg",
@@ -261,7 +261,7 @@ export default [
   },
   {
     title: "CIIS XIII",
-    description: "Décimo tercera edición del congreso de informática y sistemas",
+    description: "Décimo tercera edición del Congreso Internacional de Informática y Sistemas",
     items: [
       {
         image: "ciis-history/ciis-xiii-FlyerPrincipal.jpg",

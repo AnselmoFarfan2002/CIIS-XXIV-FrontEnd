@@ -71,8 +71,8 @@ function DesignBlocks() {
             Ediciones anteriores
           </MKTypography>
           <MKTypography variant="body1" color="text">
-            Le presentamos una recopilación de las ediciones anteriores del prestigioso congreso
-            internacional de informática y sistemas
+            Le presentamos una recopilación de las ediciones anteriores del prestigioso Congreso
+            Internacional de Informática y Sistemas
           </MKTypography>
         </Grid>
       </Container>

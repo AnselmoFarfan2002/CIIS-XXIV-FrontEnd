@@ -16,7 +16,7 @@ import DefaultFooter from "examples/Footers/CenteredFooter/index.js";
 import CartasInformacion from "pages/Postmaster/sections/CartasInformacion";
 import Ponentes from "pages/Postmaster/sections/Ponentes";
 import Auspiciadores from "pages/Postmaster/sections/Auspiciadores";
-import Pricing from "./sections/Pricing/Princing";
+// import Pricing from "./sections/Pricing/Princing";
 // import Newsletter from "pages/LandingPages/AboutUs/sections/Newsletter";
 
 // Routes
@@ -79,7 +79,7 @@ function PostMaster() {
               Pre inscripción
             </MKButton>
             <MKTypography variant="h6" color="white" mt={1}>
-              Encuentranos
+              Encuéntranos
             </MKTypography>
             <MKBox display="flex" justifyContent="center" alignItems="center">
               <MKTypography
@@ -125,7 +125,6 @@ function PostMaster() {
         <CartasInformacion />
         <Ponentes />
         <Auspiciadores />
-        <Pricing />
       </Card>
       <MKBox pt={6} px={1} mt={6}>
         <DefaultFooter />

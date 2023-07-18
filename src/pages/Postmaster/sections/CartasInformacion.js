@@ -35,7 +35,7 @@ function Information() {
                   <DefaultInfoCard
                     icon={<PersonSearchIcon color="info" fontSize="large" />}
                     title="Conecta"
-                    description="Ten la oportunidad de conocer y establer comunicación con los ponentes del evento."
+                    description="Ten la oportunidad de conocer y establecer comunicación con los ponentes del evento."
                   />
                 </MKBox>
               </Grid>

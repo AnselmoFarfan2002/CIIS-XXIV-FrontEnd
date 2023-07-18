@@ -77,7 +77,7 @@ function PortadaPresentacion() {
               Días : Horas : Minutos : Segundos
             </MKTypography>
             <MKTypography id="desc" variant="body1" color="white" opacity={0.8} pr={6} mr={6}>
-              Una año más del evento donde converge el conocimiento, un año más del{" "}
+              Un año más del evento donde converge el conocimiento, un año más del{" "}
               <b>Congreso Internacional de Informática y Sistemas</b>.
             </MKTypography>
             <Stack id="botonesCover" direction="row" spacing={1} mt={3}>

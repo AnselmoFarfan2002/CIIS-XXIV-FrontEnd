@@ -26,7 +26,7 @@ import DefaultCounterCard from "examples/Cards/CounterCards/DefaultCounterCard";
 
 let ponencias = 18;
 let edicion = 24;
-let tematicas = 5;
+let tematicas = 7;
 
 function Counters() {
   return (
@@ -47,18 +47,18 @@ function Counters() {
               count={edicion}
               suffix="va"
               title="Edición"
-              description={`Tras ${
+              description={`Con ${
                 edicion - 1
-              } años, el CIIS vuelve a reunir ponentes de todas partes del mundo.`}
+              } años de trayectoria, el CIIS continua reuniendo ponentes de todas partes del mundo.`}
             />
             <Divider orientation="vertical" sx={{ display: { xs: "none", md: "block" }, ml: 0 }} />
           </Grid>
           <Grid item xs={12} md={4}>
             <DefaultCounterCard
               count={tematicas}
-              suffix="+"
+              suffix="•"
               title="Temáticas"
-              description={`¡Variedad en las temáticas! Al menos ${tematicas} temáticas esperadas para esta 24va edición.`}
+              description={`¡Variedad en las temáticas! En esta ${edicion}va han sido confirmadas ${tematicas} temáticas de actualidad.`}
             />
           </Grid>
         </Grid>
