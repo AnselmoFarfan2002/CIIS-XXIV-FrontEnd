@@ -12,10 +12,10 @@ import HorizontalTeamCard from "examples/Cards/TeamCards/HorizontalTeamCard";
 // Images
 import unknown from "assets/images/mistery-ponent.jpg";
 
-import ponente1 from "assets/images/PONENTES/PM-XX/BRENDA_BRIGITTE_LÓPEZ_VALERA.jpeg";
-import ponente2 from "assets/images/PONENTES/PM-XX/Cynthia_Valeriano_Argandoña.jpeg";
+import ponente1 from "assets/images/PONENTES/PM-XX/BRENDA_BRIGITTE_LOPEZ_VALERA.jpeg";
+import ponente2 from "assets/images/PONENTES/PM-XX/Cynthia_Valeriano_Argandonia.jpeg";
 import ponente3 from "assets/images/PONENTES/PM-XX/Herson_Urbina.jpeg";
-import ponente4 from "assets/images/PONENTES/PM-XX/JESÚS_JOSEPH_FLORES_YANCE.jpeg";
+import ponente4 from "assets/images/PONENTES/PM-XX/JESUS_JOSEPH_FLORES_YANCE.jpeg";
 import ponente5 from "assets/images/PONENTES/PM-XX/Jhair_Rodrigo_Viveros.jpeg";
 
 function Team() {

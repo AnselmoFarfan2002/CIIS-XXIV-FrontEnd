@@ -31,7 +31,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
-const apiURI = "https://testapi.ciistacna.com/api/v1/register?event=12";
+const apiURI = "https://ciistacna.com/api/v1/register?event=12";
 
 import { PacmanLoader } from "react-spinners";
 import MKTypography from "components/MKTypography";
@@ -422,7 +422,7 @@ class CardPrice extends Component {
 
                   {typeattendee != 3 && (
                     <MKBox ref={formRefs.paso2} className="d-none" pt={7}>
-                      <ImageUpload name="fileuniversity" />
+                      <ImageUpload textButton="Foto de ficha de matrícula" name="fileuniversity" />
                     </MKBox>
                   )}
 
