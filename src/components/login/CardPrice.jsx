@@ -203,6 +203,9 @@ class CardPrice extends Component {
     if (typeattendee == 3) {
       formData.append("studycenter", "");
       formData.append("career", "");
+    } else if (typeattendee == 1) {
+      formData.append("studycenter", "UNJBG");
+      formData.append("career", "ESIS");
     }
 
     this.setLoading(true);
@@ -352,7 +355,7 @@ class CardPrice extends Component {
                 <MKAvatar src={imagenPrecio} alt="POSTMASTER XX" size="xxl" />
               </MKBox>
               <Typography variant="subtitle2" align="center" mb={-0.5}>
-                Inscribiendote como
+                Inscribiéndote como
               </Typography>
               <Typography variant="h4" align="center" my={1}>
                 {consumidor}
@@ -403,7 +406,7 @@ class CardPrice extends Component {
                     <Grid item xs={12} sm={6} md={5}>
                       <MKInput type="email" variant="standard" label="Correo" name="email" />
                     </Grid>
-                    {typeattendee != 3 && (
+                    {typeattendee == 2 && (
                       <Grid item xs={12} sm={6} md={5}>
                         <MKInput
                           type="text"
@@ -413,7 +416,7 @@ class CardPrice extends Component {
                         />
                       </Grid>
                     )}
-                    {typeattendee != 3 && (
+                    {typeattendee == 2 && (
                       <Grid item xs={12} sm={6} md={5}>
                         <MKInput type="text" variant="standard" label="Carrera" name="career" />
                       </Grid>

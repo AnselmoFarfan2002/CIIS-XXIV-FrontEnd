@@ -78,8 +78,8 @@ function Team() {
               <HorizontalTeamCard
                 image={ponente4}
                 name="Jesús Joseph Flores Yance"
-                position={{ color: "info", label: "Administradore de base de datos" }}
-                description="Conocimientos en Spring Boot Java - Microservicios, Reporting Services (SSRS), Integration Services (SSIS), Power BI Report Server, Mchine Learning y administración de base de datos."
+                position={{ color: "info", label: "Administrador de base de datos" }}
+                description="Conocimientos en Spring Boot Java - Microservicios, Reporting Services (SSRS), Integration Services (SSIS), Power BI Report Server, Machine Learning y administración de base de datos."
               />
             </MKBox>
           </Grid>
@@ -103,7 +103,7 @@ function Team() {
                   color: "info",
                   label: "Senior Software Engineer",
                 }}
-                description="+7 años de experiencia desarrollando software para industrias como Fin-tech, Comercio, Educación, Salud, Minería, Extracción de Petróleo y Gas y Startups. Experiencia con Javascript y C#."
+                description="+7 años de experiencia desarrollando software para industrias como Fin-tech, Comercio, Educación, Salud, Minería, Extracción de Petróleo, Gas y Startups. Experiencia con Javascript y C#."
               />
             </MKBox>
           </Grid>
