@@ -249,7 +249,8 @@ class CardPrice extends Component {
   }
 
   render() {
-    const { precio, consumidor, imagenPrecio, desc, incluye, typeattendee, steps } = this.props;
+    const { prefprecio, precio, consumidor, imagenPrecio, desc, incluye, typeattendee, steps } =
+      this.props;
 
     const { activeStep, open } = this.state.formState;
     const { loading } = this.waiting;
@@ -303,28 +304,42 @@ class CardPrice extends Component {
           </Box>
           <Box>
             <MKBox>
-              <Typography variant="h2" align="center" mb={0}>
-                {precio}
-              </Typography>
-              <Typography variant="h4" align="center" mb={1}>
+              <MKBox
+                sx={{
+                  display: "flex",
+                  width: "100%",
+                  justifyContent: "center",
+                  alignItems: "end",
+                }}
+              >
+                <Typography variant="h2" mb={0}>
+                  {prefprecio} {precio}
+                </Typography>
+                <Typography
+                  variant="h6"
+                  mb={0}
+                  mx={1}
+                  color={"secondary"}
+                  sx={{ textDecoration: "line-through" }}
+                >
+                  {prefprecio} {precio + 5}
+                </Typography>
+              </MKBox>
+              <Typography variant="body2">Descuento de pre-inscripción</Typography>
+              <Typography variant="h4" align="center" my={1}>
                 {consumidor}
               </Typography>
-              <Typography variant="body2" align="center">
+              <Typography variant="body2" align="center" mt={-0.5}>
                 {desc}
               </Typography>
             </MKBox>
-            <MKBox my={2} opacity={0.9}>
-              <Typography variant="h5" textTransform="uppercase">
-                Incluye
-              </Typography>
-            </MKBox>
-            <MKBox maxWidth={200} mx={"auto"} mb={3}>
+            <MKBox maxWidth={200} mx={"auto"} my={2.5}>
               <List>
                 {incluye.map((element, idx) => {
                   return (
                     <ListItem key={new Date().getTime() / (idx + 1)}>
                       <ListItemIcon>
-                        <CheckCircleIcon />
+                        <CheckCircleIcon color="success" />
                       </ListItemIcon>
                       <ListItemText primary={element} />
                     </ListItem>
@@ -537,7 +552,8 @@ class CardPrice extends Component {
 }
 
 CardPrice.propTypes = {
-  precio: PropTypes.string.isRequired,
+  prefprecio: PropTypes.string.isRequired,
+  precio: PropTypes.number.isRequired,
   consumidor: PropTypes.string.isRequired,
   imagenPrecio: PropTypes.string.isRequired,
   desc: PropTypes.string.isRequired,

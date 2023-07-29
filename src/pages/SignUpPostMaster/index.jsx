@@ -13,7 +13,7 @@ import estudiante from "assets/images/estudiante.jpg";
 import MetodosPago from "./MetodosPago";
 import CenteredFooter from "examples/Footers/CenteredFooter";
 
-const incluido = ["Certficación", "Kit Postmaster"];
+const incluido = ["Certficación", "Kit Postmaster", "Refrigerio", "Sorteos"];
 
 export default function SignUpPostMaster() {
   return (
@@ -100,7 +100,8 @@ export default function SignUpPostMaster() {
             >
               <Grid item xs={11} sm={8} md={5} lg={5} xl={3}>
                 <CardPrice
-                  precio="S/. 15"
+                  prefprecio="S/."
+                  precio={15}
                   consumidor="Legado de la ESIS"
                   desc="Estudiante o egresado"
                   imagenPrecio={esisLogo}
@@ -116,7 +117,8 @@ export default function SignUpPostMaster() {
               </Grid>
               <Grid item xs={11} sm={8} md={5} lg={5} xl={3}>
                 <CardPrice
-                  precio="S/. 20"
+                  prefprecio="S/."
+                  precio={20}
                   consumidor="Estudiante"
                   desc="Visitante externo de ESIS"
                   imagenPrecio={estudiante}
@@ -132,7 +134,8 @@ export default function SignUpPostMaster() {
               </Grid>
               <Grid item xs={11} sm={8} md={5} lg={5} xl={3}>
                 <CardPrice
-                  precio="S/. 25"
+                  prefprecio="S/."
+                  precio={25}
                   consumidor="Público general"
                   desc="Profesionales y otros"
                   imagenPrecio={profesionales}
@@ -142,6 +145,10 @@ export default function SignUpPostMaster() {
                 />
               </Grid>
             </Grid>
+
+            <MKTypography variant="h6" color="light" textAlign="center" pt={4}>
+              Descuentos serán validos hasta las 11:59pm del 06 de agosto del 2023 (UTC -5)
+            </MKTypography>
           </MKBox>
         </Grid>
       </MKBox>

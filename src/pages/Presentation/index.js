@@ -32,7 +32,28 @@ import YouTubeIcon from "@mui/icons-material/YouTube";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import CenteredFooter from "examples/Footers/CenteredFooter";
 
+import {
+  Dialog,
+  DialogContent,
+  DialogActions,
+  DialogTitle,
+  Fade,
+  ButtonGroup,
+  Button,
+} from "@mui/material";
+import { forwardRef } from "react";
+import { useState } from "react";
+
+const Transition = forwardRef(function Transition(props, ref) {
+  return <Fade direction="up" ref={ref ? ref : null} {...props} />;
+});
+
 function Presentation() {
+  const [windowSpam, setWindowSpam] = useState(true);
+  const handleCloseWindowSpam = () => {
+    setWindowSpam(false);
+  };
+
   return (
     <>
       <DefaultNavbar
@@ -167,6 +188,29 @@ function Presentation() {
       <MKBox px={1}>
         <CenteredFooter />
       </MKBox>
+
+      <Dialog open={windowSpam} TransitionComponent={Transition} onClose={handleCloseWindowSpam}>
+        <DialogTitle sx={{ padding: 1, textAlign: "center" }}>Proximamente</DialogTitle>
+        <DialogContent sx={{ padding: 0 }}>
+          <img src="/ciis-history/ciis-xxiv/PM-FLYER.jpeg" style={{ height: "70vh" }} />
+        </DialogContent>
+        <DialogActions sx={{ padding: 0 }}>
+          <ButtonGroup sx={{ width: "100%" }}>
+            <Button onClick={handleCloseWindowSpam} variant="filled" sx={{ width: "50%", py: 1.5 }}>
+              Cerrar
+            </Button>
+            <Button
+              onClick={() => {
+                window.location.href = "/postmaster";
+              }}
+              variant="filled"
+              sx={{ width: "50%", py: 1.5 }}
+            >
+              Ver más
+            </Button>
+          </ButtonGroup>
+        </DialogActions>
+      </Dialog>
     </>
   );
 }
