@@ -13,7 +13,7 @@ import estudiante from "assets/images/estudiante.jpg";
 import MetodosPago from "./MetodosPago";
 import CenteredFooter from "examples/Footers/CenteredFooter";
 
-const incluido = ["Certficación", "Kit Postmaster", "Refrigerio", "Sorteos"];
+const incluido = ["Certificación", "Kit Postmaster", "Refrigerio", "Sorteos"];
 
 export default function SignUpPostMaster() {
   return (
@@ -147,7 +147,7 @@ export default function SignUpPostMaster() {
             </Grid>
 
             <MKTypography variant="h6" color="light" textAlign="center" pt={4}>
-              Descuentos serán validos hasta las 11:59pm del 06 de agosto del 2023 (UTC -5)
+              Descuento extendido hasta las 11:59pm del 09 de agosto del 2023 (UTC -5)
             </MKTypography>
           </MKBox>
         </Grid>

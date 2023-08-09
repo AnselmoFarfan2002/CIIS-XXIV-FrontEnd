@@ -191,8 +191,11 @@ function Presentation() {
 
       <Dialog open={windowSpam} TransitionComponent={Transition} onClose={handleCloseWindowSpam}>
         <DialogTitle sx={{ padding: 1, textAlign: "center" }}>Proximamente</DialogTitle>
-        <DialogContent sx={{ padding: 0 }}>
-          <img src="/ciis-history/ciis-xxiv/PM-FLYER.jpeg" style={{ height: "70vh" }} />
+        <DialogContent sx={{ padding: 0, backgroundColor: "#112A51" }}>
+          <img
+            src="/ciis-history/ciis-xxiv/PM-FLYER.jpeg"
+            style={{ height: "70vh", minWidth: "250px" }}
+          />
         </DialogContent>
         <DialogActions sx={{ padding: 0 }}>
           <ButtonGroup sx={{ width: "100%" }}>

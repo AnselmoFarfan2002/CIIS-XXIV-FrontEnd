@@ -36,7 +36,7 @@ function Team() {
               Ponentes Invitados
             </MKTypography>
             <MKTypography variant="body2" color="white" opacity={0.8}>
-              Ex egresad@s de la escuela profesional de ingeniería en informática y sistemas de la
+              Egresad@s de la Escuela Profesional de Ingeniería en Informática y Sistemas de la
               Universidad Nacional Jorge Basadre Grohmann
             </MKTypography>
           </Grid>
@@ -47,7 +47,7 @@ function Team() {
               <HorizontalTeamCard
                 image={ponente1}
                 name="Brenda Brigitte López Valera"
-                position={{ color: "info", label: "Aún un misterio" }}
+                position={{ color: "info", label: "Analista BI" }}
                 description="Bachiller de la Carrera de Ingeniería en Informática y Sistemas, con experiencia práctica en en el modelamiento de datos, presentación de datos y simplificación de vistas de datos."
               />
             </MKBox>
