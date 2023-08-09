@@ -10,13 +10,16 @@ import MKTypography from "components/MKTypography";
 import HorizontalTeamCard from "examples/Cards/TeamCards/HorizontalTeamCard";
 
 // Images
-import unknown from "assets/images/mistery-ponent.jpg";
+// import unknown from "assets/images/mistery-ponent.jpg";
 
 import ponente1 from "assets/images/PONENTES/PM-XX/BRENDA_BRIGITTE_LOPEZ_VALERA.jpeg";
 import ponente2 from "assets/images/PONENTES/PM-XX/Cynthia_Valeriano_Argandonia.jpeg";
 import ponente3 from "assets/images/PONENTES/PM-XX/Herson_Urbina.jpeg";
 import ponente4 from "assets/images/PONENTES/PM-XX/JESUS_JOSEPH_FLORES_YANCE.jpeg";
 import ponente5 from "assets/images/PONENTES/PM-XX/Jhair_Rodrigo_Viveros.jpeg";
+import ponente6 from "assets/images/PONENTES/PM-XX/KEVIN_MIKE_HERRERA.jpg";
+import ponente7 from "assets/images/PONENTES/PM-XX/EVER_JORGE_COA.jpg";
+import ponente8 from "assets/images/PONENTES/PM-XX/DANIEL_URDANIVIA.jpg";
 
 function Team() {
   return (
@@ -97,7 +100,7 @@ function Team() {
           <Grid item xs={12} lg={6}>
             <MKBox mb={{ xs: 1, lg: 0 }}>
               <HorizontalTeamCard
-                image={unknown}
+                image={ponente6}
                 name="Kevin Mike Herrera Vega"
                 position={{
                   color: "info",
@@ -110,20 +113,26 @@ function Team() {
           <Grid item xs={12} lg={6}>
             <MKBox mb={{ xs: 1, lg: 0 }}>
               <HorizontalTeamCard
-                image={unknown}
-                name="Ponente secreto"
-                position={{ color: "info", label: "Aún un misterio" }}
-                description="Ex egresad@ de la ESIS/UNJBG ¿lograrás descubrir de quién se trata?"
+                image={ponente7}
+                name="Ever Jorge Coa Sandoval"
+                position={{
+                  color: "info",
+                  label: "Desarrollador Full Stack",
+                }}
+                description="Conocimiento y experiencia en la implementación de Aplicaciones Web, Móviles y Sistemas de Información Geográfica SIG (intranet, extranet) a medida utilizando la tecnología ESRI."
               />
             </MKBox>
           </Grid>
           <Grid item xs={12} lg={6}>
             <MKBox mb={{ xs: 1, lg: 0 }}>
               <HorizontalTeamCard
-                image={unknown}
-                name="Ponente secreto"
-                position={{ color: "info", label: "Aún un misterio" }}
-                description="Ex egresad@ de la ESIS/UNJBG ¿lograrás descubrir de quién se trata?"
+                image={ponente8}
+                name="Francisco Daniel Urdanivia Herrera"
+                position={{
+                  color: "info",
+                  label: "Proyectos TIC-ERP-SCM",
+                }}
+                description="Dieciséis años de experiencia en proyectos de mejora continua y de implementación de soluciones SAP para la gestión de la cadena de suministro en compañías del sector retail, distribución e industrial."
               />
             </MKBox>
           </Grid>
