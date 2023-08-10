@@ -146,9 +146,9 @@ export default function SignUpPostMaster() {
               </Grid>
             </Grid>
 
-            <MKTypography variant="h6" color="light" textAlign="center" pt={4}>
+            {/* <MKTypography variant="h6" color="light" textAlign="center" pt={4}>
               Descuento extendido hasta las 11:59pm del 09 de agosto del 2023 (UTC -5)
-            </MKTypography>
+            </MKTypography> */}
           </MKBox>
         </Grid>
       </MKBox>

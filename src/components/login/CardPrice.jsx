@@ -315,7 +315,7 @@ class CardPrice extends Component {
                 <Typography variant="h2" mb={0}>
                   {prefprecio} {precio}
                 </Typography>
-                <Typography
+                {/* <Typography
                   variant="h6"
                   mb={0}
                   mx={1}
@@ -323,9 +323,9 @@ class CardPrice extends Component {
                   sx={{ textDecoration: "line-through" }}
                 >
                   {prefprecio} {precio + 5}
-                </Typography>
+                </Typography> */}
               </MKBox>
-              <Typography variant="body2">Descuento de pre-inscripción</Typography>
+              {/* <Typography variant="body2">Descuento de pre-inscripción</Typography> */}
               <Typography variant="h4" align="center" my={1}>
                 {consumidor}
               </Typography>
