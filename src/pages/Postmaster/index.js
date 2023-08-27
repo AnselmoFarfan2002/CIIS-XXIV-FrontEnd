@@ -1,136 +1,56 @@
-// @mui material components
-import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid";
-import Card from "@mui/material/Card";
+import Head from "next/head";
+import { Box, Card } from "@mui/material";
+import PMCover from "@/sections/postmaster/cover";
 
-// Material Kit 2 React components
-import MKBox from "components/MKBox";
-import MKTypography from "components/MKTypography";
-import MKButton from "components/MKButton";
+import PostmasterCard from "@/sections/home/Postmaster";
+import Particles from "@/components/Particles/Particles";
+import Share from "@/sections/home/Share.js";
+import { useState } from "react";
+import CIISLayout from "@/layouts/CIIS/CIISLayout";
+import UltimaEdicion from "@/sections/home/UltimaEdicion";
+import Information from "@/sections/postmaster/information";
+import Ponentes from "@/sections/postmaster/ponentes";
+import Auspiciadores from "@/sections/postmaster/auspiciadores";
 
-// Material Kit 2 React examples
-import DefaultNavbar from "examples/Navbars/DefaultNavbar";
-import DefaultFooter from "examples/Footers/CenteredFooter/index.js";
+const Page = (props) => {
+  const [edicion, setEdicion] = useState(24);
+  const [ejes, setEjes] = useState([]);
+  const [ponencias, setPonencias] = useState(18);
+  const [tematicas, setTematicas] = useState(0);
 
-// About Us page sections
-import CartasInformacion from "pages/Postmaster/sections/CartasInformacion";
-import Ponentes from "pages/Postmaster/sections/Ponentes";
-import Auspiciadores from "pages/Postmaster/sections/Auspiciadores";
-// import Pricing from "./sections/Pricing/Princing";
-// import Newsletter from "pages/LandingPages/AboutUs/sections/Newsletter";
-
-// Routes
-import { routesOutMain } from "routes";
-// Images
-import bgImage from "assets/images/bg-posmaster.jpg";
-
-function PostMaster() {
   return (
     <>
-      <DefaultNavbar routes={routesOutMain} transparent light />
-      <MKBox
-        minHeight="100vh"
-        width="100%"
-        sx={{
-          backgroundImage: ({ functions: { linearGradient, rgba }, palette: { gradients } }) =>
-            `${linearGradient(
-              rgba(gradients.dark.main, 0.6),
-              rgba(gradients.dark.state, 0.6)
-            )}, url(${bgImage})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          display: "grid",
-          placeItems: "center",
-        }}
-      >
-        <Container>
-          <Grid
-            container
-            item
-            xs={12}
-            lg={8}
-            justifyContent="center"
-            alignItems="center"
-            flexDirection="column"
-            sx={{ mx: "auto", textAlign: "center" }}
-          >
-            <MKTypography
-              variant="h1"
-              color="white"
-              sx={({ breakpoints, typography: { size } }) => ({
-                [breakpoints.down("md")]: {
-                  fontSize: size["3xl"],
-                },
-              })}
-            >
-              POSTMASTER XX
-            </MKTypography>
-            <MKTypography variant="body1" color="white" opacity={0.8} mt={1} mb={0}>
-              Encuentro de egresados
-            </MKTypography>
-            <MKTypography variant="h5" color="white" opacity={0.8} mt={1} mb={1}>
-              11/08/2023
-            </MKTypography>
-            <MKButton
-              href="/postmaster/inscripcion"
-              color="default"
-              sx={{ color: ({ palette: { dark } }) => dark.main }}
-            >
-              Pre inscripción
-            </MKButton>
-            <MKTypography variant="h6" color="white" mt={1}>
-              Encuéntranos
-            </MKTypography>
-            <MKBox display="flex" justifyContent="center" alignItems="center">
-              <MKTypography
-                component="a"
-                variant="body1"
-                color="white"
-                href="https://www.facebook.com/ciistacna"
-                mx={3}
-              >
-                <i className="fab fa-facebook" />
-              </MKTypography>
-              <MKTypography
-                component="a"
-                variant="body1"
-                color="white"
-                href="https://pe.linkedin.com/in/congreso-internacional-de-inform%C3%A1tica-y-sistemas-a33bb5226"
-                mr={3}
-              >
-                <i className="fab fa-linkedin" />
-              </MKTypography>
-              <MKTypography
-                component="a"
-                variant="body1"
-                color="white"
-                href="https://www.youtube.com/@ciistacna"
-                mr={3}
-              >
-                <i className="fab fa-youtube" />
-              </MKTypography>
-            </MKBox>
-          </Grid>
-        </Container>
-      </MKBox>
-      <Card
-        sx={{
-          p: 2,
-          mx: { xs: 2, lg: 3 },
-          mt: -4,
-          mb: 4,
-          boxShadow: ({ boxShadows: { xxl } }) => xxl,
-        }}
-      >
-        <CartasInformacion />
-        <Ponentes />
-        <Auspiciadores />
-      </Card>
-      <MKBox pt={6} px={1} mt={6}>
-        <DefaultFooter />
-      </MKBox>
+      <Head>
+        <title>Congreso internacional de informática y sistemas | CIIS</title>
+        <meta
+          name="description"
+          content={`Sitio web oficial del evento con más historia en Perú relacionado a la informática y sistemas. En la ${edicion} edición el CIIS vuelve a juntar a pontenes de alto nivel en un congreso de 4 días de duración. ¡Bievenido!`}
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <Box component="main">
+        <PMCover />
+        <Card
+          sx={{
+            p: 2,
+            mx: { xs: 2, lg: 3 },
+            mt: -4,
+            mb: 4,
+            borderRadius: 4,
+            padding: 4,
+          }}
+        >
+          <Information />
+          <Ponentes />
+          <Auspiciadores />
+        </Card>
+      </Box>
     </>
   );
-}
+};
 
-export default PostMaster;
+Page.getLayout = (page) => <CIISLayout>{page}</CIISLayout>;
+
+export default Page;
