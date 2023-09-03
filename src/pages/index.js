@@ -2,7 +2,7 @@ import Head from "next/head";
 import { Box } from "@mui/material";
 import Cover from "@/sections/home/Cover";
 
-import Header from "@/components/Header/Header";
+import Header from "@/components/Header";
 import Topics from "@/sections/home/Topics";
 import PostmasterCard from "@/sections/home/Postmaster";
 import Particles from "@/components/Particles/Particles";
@@ -26,7 +26,7 @@ const Page = (props) => {
           content={`Sitio web oficial del evento con más historia en Perú relacionado a la informática y sistemas. En la ${edicion} edición el CIIS vuelve a juntar a pontenes de alto nivel en un congreso de 4 días de duración. ¡Bievenido!`}
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
 
       <Box component="main">

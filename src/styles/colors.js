@@ -3,6 +3,7 @@ import { alpha } from "@mui/material/styles";
 let colors = {
   bg: {
     main: "rgb(16, 20, 24)",
+    secondary: "rgb(20, 50, 60)",
     light: "#515764",
   },
   primary: {

@@ -130,7 +130,7 @@ const Cover = () => {
                   variant="h5"
                   style={{ ...title, color: colors.primary.dark }}
                 >
-                  Viernes 17
+                  viernes 17
                 </Typography>
               </Box>
 

@@ -16,7 +16,8 @@ import { useState, useEffect } from "react";
 
 import { LinkedIn, YouTube } from "@mui/icons-material";
 
-const Header = () => {
+const Header = (props) => {
+  const { onLogin = () => {} } = props;
   const [isAtTop, setIsAtTop] = useState(true);
 
   const handleScroll = () => {
@@ -68,11 +69,11 @@ const Header = () => {
                     color: colors.fonts.main,
                     bgcolor: colors.primary.light,
                   }}
-                  href="https://ciistacna.com"
                   startIcon={<GroupAddIcon />}
                   variant="contained"
                   color="info"
-                  disabled={true}
+                  disabled
+                  onClick={onLogin}
                 >
                   <Typography fontSize={12} fontWeight={"bold"}>
                     Inscribirse
