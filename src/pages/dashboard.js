@@ -1,11 +1,9 @@
 import CIISLayout from "@/layouts/CIIS/CIISLayout";
 import DashboardLayout from "@/layouts/dashboard/layout.js";
-import {
-  BreakfastDining,
-  LockClock,
-  PunchClock,
-  Speaker,
-} from "@mui/icons-material";
+import InfoCardAsistencias from "@/sections/dashboard/inicio/asistencias";
+import InfoCardInscription from "@/sections/dashboard/inicio/inscripcion";
+import InfoCardPonencia from "@/sections/dashboard/inicio/ponencia";
+import { BreakfastDining, PunchClock } from "@mui/icons-material";
 import {
   Box,
   Button,
@@ -69,18 +67,6 @@ const ponencias = [
   },
 ];
 
-const estados = [
-  { label: "No inscrito" },
-  { label: "Inscrito", color: "success" },
-  { label: "En espera", color: "info" },
-];
-
-const certificacion = [
-  { label: "No disponible" },
-  { label: "Califica", color: "success" },
-  { label: "No califica", color: "error" },
-];
-
 const user = {
   status: 0,
   attendances: 5,
@@ -100,76 +86,49 @@ export default function Page() {
       </Head>
       <Box sx={{ p: 4 }}>
         <Grid container spacing={3}>
-          <Grid item md={6}>
+          <Grid item md={6} lg={4}>
             <Grid container spacing={3}>
               <Grid item xs={12}>
-                <Card>
-                  <CardHeader
-                    title="Inscripciones"
-                    subheader="Inscríbete y verifica el estado de tu inscripción"
-                  />
-                  <CardContent>
-                    <Typography variant="body2" mt={-2}>
-                      Estado de inscripción: <Chip {...estados[user.status]} />
-                    </Typography>
-                    <Typography variant="body2">
-                      Cierre de inscripciones: 13 de noviembre del 2023
-                    </Typography>
-                  </CardContent>
-                </Card>
+                <InfoCardPonencia
+                  title="En curso"
+                  subheader="Transcurriendo ahora mismo"
+                />
               </Grid>
               <Grid item xs={12}>
-                <Card>
-                  <CardHeader
-                    title="Asistencias"
-                    subheader="Contadores de asistencias para certificación"
-                  />
-                  <CardContent>
-                    <Typography variant="body2" mt={-2}>
-                      Estado de final certificación:{" "}
-                      <Chip {...certificacion[0]} />
-                    </Typography>
-                    <Typography variant="body2">
-                      Asistencias necesarias: {attTotal}
-                    </Typography>
-                    <Typography variant="body2">
-                      Asistencias registradas: {attAct}
-                    </Typography>
-                    <Typography variant="body2" mt={1}>
-                      Estado de actual certificación:{" "}
-                      <Chip {...certificacion[2]} />
-                    </Typography>
-                    <Typography variant="body2">
-                      Asistencias hasta el momento: {6}
-                    </Typography>
-                    <Typography variant="body2">
-                      Asistencias registradas: {attAct}
-                    </Typography>
-                  </CardContent>
-                </Card>
+                <InfoCardPonencia image="/img/CIIS/XXIV/lectures/example2.png" />
               </Grid>
             </Grid>
           </Grid>
-          <Grid item md={6}>
-            <Card>
-              <CardHeader title="Programa" subheader="Ponencias del día" />
-              <CardContent
-                sx={{ display: "flex", gap: 2, flexDirection: "column" }}
-              >
-                {ponencias.map((ponencia) => (
-                  <ItemPrograma
-                    {...{
-                      hora: ponencia.hora,
-                      nombre: ponencia.nombre,
-                      icon: ponencia.icon,
-                    }}
-                  />
-                ))}
-              </CardContent>
-              <CardActions>
-                <Button fullWidth>Ver programa completo</Button>
-              </CardActions>
-            </Card>
+          <Grid item md={6} lg={7}>
+            <Grid container spacing={3}>
+              <Grid item xs={12}>
+                <Card>
+                  <CardHeader title="Programa" subheader="Ponencias del día" />
+                  <CardContent
+                    sx={{ display: "flex", gap: 2, flexDirection: "column" }}
+                  >
+                    {ponencias.map((ponencia) => (
+                      <ItemPrograma
+                        {...{
+                          hora: ponencia.hora,
+                          nombre: ponencia.nombre,
+                          icon: ponencia.icon,
+                        }}
+                      />
+                    ))}
+                  </CardContent>
+                  <CardActions>
+                    <Button fullWidth>Ver programa completo</Button>
+                  </CardActions>
+                </Card>
+              </Grid>
+              <Grid item xs={12}>
+                <InfoCardInscription {...{ user }} />
+              </Grid>
+              <Grid item xs={12}>
+                <InfoCardAsistencias {...{ user, attTotal, attAct }} />
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
       </Box>

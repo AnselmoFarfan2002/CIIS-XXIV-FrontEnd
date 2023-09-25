@@ -38,6 +38,10 @@ const DashboardLayout = withAuthGuard((props) => {
     }
   }, [openNav]);
 
+  useEffect(() => {
+    document.querySelector("body").style.background = "#242433";
+  }, []);
+
   useEffect(
     () => {
       handlePathnameChange();
@@ -58,9 +62,7 @@ const DashboardLayout = withAuthGuard((props) => {
         <TopNav onNavOpen={() => setOpenNav(true)} />
         <SideNav onClose={() => setOpenNav(false)} open={openNav} />
         <LayoutRoot>
-          <LayoutContainer>
-            <ThemeProvider theme={theme2}>{children}</ThemeProvider>
-          </LayoutContainer>
+          <LayoutContainer>{children}</LayoutContainer>
         </LayoutRoot>
       </ThemeProvider>
     </AuthGuard>

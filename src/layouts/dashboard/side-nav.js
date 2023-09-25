@@ -24,10 +24,12 @@ export const SideNav = (props) => {
   const { user } = useAuth() ?? {};
   const [values, setValues] = useState(user);
 
+  const BG_SIDE_NAV_COLOR = "#1a1a29";
+
   const content = (
     <Box
       sx={{
-        background: "#101418",
+        background: BG_SIDE_NAV_COLOR,
         display: "flex",
         flexDirection: "column",
         height: "100%",
@@ -133,10 +135,9 @@ export const SideNav = (props) => {
         open
         PaperProps={{
           sx: {
-            backgroundColor: "#101418",
             color: "common.white",
             width: 280,
-            borderColor: "#233b54",
+            border: 0,
           },
         }}
         variant="permanent"
@@ -153,7 +154,7 @@ export const SideNav = (props) => {
       open={open}
       PaperProps={{
         sx: {
-          backgroundColor: "#101418",
+          backgroundColor: BG_SIDE_NAV_COLOR,
           color: "common.white",
           width: 280,
         },
