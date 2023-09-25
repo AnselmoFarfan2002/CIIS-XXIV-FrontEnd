@@ -81,15 +81,12 @@ const Ponentes = (props) => {
       sx={{
         backgroundColor: colors.bg.light,
         background: `linear-gradient(-45deg, ${colors.bg.main} 0%, ${colors.bg.light} 50%, ${colors.bg.main} 100%)`,
+        display: "flex",
+        justifyContent: "center",
       }}
       mx={-2}
     >
-      <Grid
-        container
-        spacing={3}
-        sx={{ px: { sm: 4 }, maxWidth: 1500 }}
-        margin={"auto"}
-      >
+      <Grid container spacing={3} sx={{ px: { sm: 4 }, maxWidth: 1500 }}>
         <Grid item xs={12}>
           <Typography variant="h3">Ponentes Invitados</Typography>
           <Typography variant="body2">

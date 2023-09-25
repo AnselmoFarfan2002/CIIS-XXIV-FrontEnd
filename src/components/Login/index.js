@@ -32,7 +32,17 @@ const Login = (props) => {
         <DialogContent sx={{ padding: 0 }}>
           <Grid container spacing={3}>
             <Grid item xs={12} md={6}>
-              <Grid container spacing={3} sx={{ padding: 7 }}>
+              <Grid
+                container
+                spacing={3}
+                sx={{
+                  py: 7,
+                  px: {
+                    xs: 2,
+                    sm: 5,
+                  },
+                }}
+              >
                 <Grid item xs={12}>
                   <Typography variant="h4">Iniciar sesión</Typography>
                 </Grid>
@@ -41,7 +51,7 @@ const Login = (props) => {
                     type="text"
                     name="email"
                     label={"Correo"}
-                    variant="standard"
+                    variant="filled"
                     inputProps={{ style: { fontSize: 17 } }}
                     fullWidth
                   />
@@ -49,7 +59,7 @@ const Login = (props) => {
                 <Grid item xs={12}>
                   <TextField
                     label={"Contraseña"}
-                    variant="standard"
+                    variant="filled"
                     inputProps={{ style: { fontSize: 17 } }}
                     fullWidth
                   />

@@ -9,14 +9,15 @@ const Auspiciadores = () => {
   ];
 
   return (
-    <Box
-      component="section"
-      mt={8}
-      pt={3}
-      pb={3}
-      style={{ background: "white" }}
-    >
-      <Grid container spacing={3} justifyContent="center" padding={5}>
+    <Box component="section" mt={8} pt={3} pb={3}>
+      <Grid
+        container
+        spacing={3}
+        justifyContent="center"
+        padding={5}
+        style={{ background: "white", width: "100%" }}
+        sx={{ marginLeft: 0 }}
+      >
         {auspiciadores.map((a, idx) => {
           return (
             <Grid

@@ -20,11 +20,16 @@ let colors = {
     main: "#fff",
   },
 
+  white: {
+    main: "#fff",
+    light: "rgb(225,225,225)",
+    dark: "rgb(200,200,200)",
+  },
+
   dark: {
     main: "#fff",
     focus: "#2c3c58",
   },
-
   gradients: {
     primary: {
       main: "#EC407A",

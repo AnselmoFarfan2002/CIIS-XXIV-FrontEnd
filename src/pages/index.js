@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { Box } from "@mui/material";
-import Cover from "@/sections/home/Cover";
+import Cover from "@/sections/home/Cover.js";
 
 import Header from "@/components/Header";
 import Topics from "@/sections/home/Topics";
