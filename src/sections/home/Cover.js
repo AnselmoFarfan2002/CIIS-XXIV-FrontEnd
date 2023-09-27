@@ -40,16 +40,16 @@ const Cover = () => {
       alt: "India",
     },
     {
-      src: "/img/flags/espania.png",
-      alt: "España",
+      src: "/img/flags/uruguay.png",
+      alt: "Uruguay",
     },
     {
-      src: "/img/flags/argentina.png",
-      alt: "Argentina",
+      src: "/img/flags/brasil.png",
+      alt: "Brasil",
     },
     {
-      src: "/img/flags/mexico.png",
-      alt: "México",
+      src: "/img/flags/eeuu.png",
+      alt: "Estados unidos",
     },
     {
       src: "/img/flags/peru.png",

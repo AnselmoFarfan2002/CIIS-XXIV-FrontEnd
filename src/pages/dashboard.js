@@ -1,37 +1,12 @@
-import CIISLayout from "@/layouts/CIIS/CIISLayout";
 import DashboardLayout from "@/layouts/dashboard/layout.js";
 import InfoCardAsistencias from "@/sections/dashboard/inicio/asistencias";
 import InfoCardInscription from "@/sections/dashboard/inicio/inscripcion";
 import InfoCardPonencia from "@/sections/dashboard/inicio/ponencia";
-import { BreakfastDining, PunchClock } from "@mui/icons-material";
-import {
-  Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  CardHeader,
-  Chip,
-  Grid,
-  Typography,
-} from "@mui/material";
+import SummaryProgram from "@/sections/dashboard/inicio/programa";
+import { BreakfastDining } from "@mui/icons-material";
+import { Box, Grid } from "@mui/material";
 import Head from "next/head";
 import { useState } from "react";
-
-function ItemPrograma({
-  hora,
-  nombre,
-  icon = <PunchClock sx={{ mt: -0.3 }} />,
-}) {
-  return (
-    <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
-      {icon}
-      <Typography variant="body2" sx={{ color: "rgba(255,255,255,.8)" }}>
-        {hora} - {nombre}
-      </Typography>
-    </Box>
-  );
-}
 
 const ponencias = [
   {
@@ -74,8 +49,8 @@ const user = {
 
 export default function Page() {
   const tasaAceptacion = 0.8;
-  const [attAct, setAttAct] = useState(user.attendances);
-  const [attTotal, setAttTotal] = useState(30);
+  const [attAct, setAttAct] = useState(6); //asistencias que debe tener hasta el momento
+  const [attTotal, setAttTotal] = useState(30); //asistencias que debe tener al final del evento
 
   return (
     <>
@@ -102,31 +77,15 @@ export default function Page() {
           <Grid item md={6} lg={7}>
             <Grid container spacing={3}>
               <Grid item xs={12}>
-                <Card>
-                  <CardHeader title="Programa" subheader="Ponencias del día" />
-                  <CardContent
-                    sx={{ display: "flex", gap: 2, flexDirection: "column" }}
-                  >
-                    {ponencias.map((ponencia) => (
-                      <ItemPrograma
-                        {...{
-                          hora: ponencia.hora,
-                          nombre: ponencia.nombre,
-                          icon: ponencia.icon,
-                        }}
-                      />
-                    ))}
-                  </CardContent>
-                  <CardActions>
-                    <Button fullWidth>Ver programa completo</Button>
-                  </CardActions>
-                </Card>
-              </Grid>
-              <Grid item xs={12}>
                 <InfoCardInscription {...{ user }} />
               </Grid>
               <Grid item xs={12}>
-                <InfoCardAsistencias {...{ user, attTotal, attAct }} />
+                <SummaryProgram {...{ ponencias }} />
+              </Grid>
+              <Grid item xs={12}>
+                <InfoCardAsistencias
+                  {...{ user, attTotal, attAct, tasaAceptacion }}
+                />
               </Grid>
             </Grid>
           </Grid>

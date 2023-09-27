@@ -1,12 +1,26 @@
 import { Card, CardContent, CardHeader, Chip, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
 
 const certificacion = [
-  { label: "No disponible", color: "primary" },
   { label: "Califica", color: "success" },
   { label: "No califica", color: "error" },
+  { label: "No disponible", color: "primary" },
 ];
 
-export default function InfoCardAsistencias({ user = {}, attTotal, attAct }) {
+export default function InfoCardAsistencias({
+  user = {},
+  attTotal,
+  attAct,
+  tasaAceptacion,
+}) {
+  const [stateTemp, setStateTemp] = useState(2);
+  const [stateTota, setStateTota] = useState(2);
+
+  useEffect(() => {
+    setStateTemp(attTotal * tasaAceptacion <= user.attendances ? 0 : 1);
+    setStateTota(attAct * tasaAceptacion <= user.attendances ? 0 : 1);
+  }, []);
+
   return (
     <Card>
       <CardHeader
@@ -15,22 +29,22 @@ export default function InfoCardAsistencias({ user = {}, attTotal, attAct }) {
       />
       <CardContent>
         <Typography variant="body2" mt={-2}>
-          Estado de final certificación: <Chip {...certificacion[0]} />
+          Estado de final certificación: <Chip {...certificacion[stateTemp]} />
         </Typography>
         <Typography variant="body2">
           Asistencias necesarias: {attTotal}
         </Typography>
         <Typography variant="body2">
-          Asistencias registradas: {attAct}
+          Asistencias registradas: {user.attendances}
         </Typography>
         <Typography variant="body2" mt={1}>
-          Estado de actual certificación: <Chip {...certificacion[2]} />
+          Estado de actual certificación: <Chip {...certificacion[stateTota]} />
         </Typography>
         <Typography variant="body2">
-          Asistencias hasta el momento: {6}
+          Asistencias hasta el momento: {attAct}
         </Typography>
         <Typography variant="body2">
-          Asistencias registradas: {attAct}
+          Asistencias registradas: {user.attendances}
         </Typography>
       </CardContent>
     </Card>
