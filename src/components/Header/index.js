@@ -66,7 +66,7 @@ const Header = (props) => {
                   sx={{ px: 5, py: 1, color: colors.fonts.main }}
                   href="/"
                 >
-                  CIIS ft. ESIS
+                  CIIS
                 </Button>
               </Grid>
               <Grid item>
