@@ -14,6 +14,7 @@ import Counter from "yet-another-react-lightbox/plugins/counter";
 import "yet-another-react-lightbox/plugins/counter.css";
 
 import colors from "@/styles/colors";
+import { imagenesGaleria } from "./data.gallery";
 
 const Gallery = (props) => {
   const [data, setData] = useState([]);
@@ -21,15 +22,18 @@ const Gallery = (props) => {
   const [openGallery, setOpenGallery] = useState(false);
 
   useEffect(() => {
-    if (!data.length) {
-      fetch(directory.events.gallery.get(1))
-        .then((res) => {
-          if (res.ok) return res.json();
-          throw new Error();
-        })
-        .then((data) => setData(data.reverse()));
-    }
-  }, [data]);
+    setData(imagenesGaleria);
+  }, []);
+  // useEffect(() => {
+  //   if (!data.length) {
+  //     fetch(directory.events.gallery.get(1))
+  //       .then((res) => {
+  //         if (res.ok) return res.json();
+  //         throw new Error();
+  //       })
+  //       .then((data) => setData(data.reverse()));
+  //   }
+  // }, [data]);
 
   const [ref, inView] = useInView({
     triggerOnce: false,

@@ -50,21 +50,31 @@ const Topics = ({
   };
 
   useEffect(() => {
-    if (!ejes.length) {
-      fetch(directory.events.topics.get(24))
-        .then((res) => res.json())
-        .then((topics) => {
-          setEjes(
-            topics.map((t) => ({
-              ...t,
-              emoji: emojis[t.name] ? emojis[t.name] : <Topic />,
-            }))
-          );
+    setEjes(
+      getLocalTopics().map((t) => ({
+        ...t,
+        emoji: emojis[t.name] ? emojis[t.name] : <Topic />,
+      }))
+    );
+    setTematicas(getLocalTopics().length);
+  }, []);
 
-          setTematicas(topics.length);
-        });
-    }
-  }, [ejes, tematicas]);
+  // useEffect(() => {
+  //   if (!ejes.length) {
+  //     fetch(directory.events.topics.get(24))
+  //       .then((res) => res.json())
+  //       .then((topics) => {
+  //         setEjes(
+  //           topics.map((t) => ({
+  //             ...t,
+  //             emoji: emojis[t.name] ? emojis[t.name] : <Topic />,
+  //           }))
+  //         );
+
+  //         setTematicas(topics.length);
+  //       });
+  //   }
+  // }, [ejes, tematicas]);
 
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [scrollingDown, setScrollingDown] = useState(false);
@@ -320,3 +330,43 @@ const Topics = ({
 };
 
 export default Topics;
+
+function getLocalTopics() {
+  return [
+    {
+      name: "Inteligencia artificial",
+      description:
+        "Descubre cómo la inteligencia artificial está transformando la industria e impactando en la vida de las personas. ¿Quieres conocer las últimas tendencias respecto a la inteligencia artificial y cómo aplicarlas en tu trabajo diario?",
+    },
+    {
+      name: "Ciberseguridad",
+      description:
+        "Protege tus datos y activos digitales de los ciberataques con las últimas tendencias en ciberseguridad. ¿Estás interesado en conocer cómo podemos asegurar la privacidad y seguridad de nuestros datos en un mundo cada vez más digital?",
+    },
+    {
+      name: "Desarrollo de software",
+      description:
+        "Descubre las mejores prácticas en el desarrollo de software y cómo aplicarlas en tu trabajo. ¿Te gustaría conocer cómo la metodología ágil está transformando el desarrollo de software y mejorando la eficiencia de los equipos?",
+    },
+    {
+      name: "Ciencia de datos",
+      description:
+        "Sumérgete en el mundo de la ciencia de datos y descubre cómo utilizar los datos para obtener información valiosa. Aprende sobre técnicas de análisis de datos y la aplicación de algoritmos de aprendizaje automático para tomar decisiones basadas en datos.",
+    },
+    {
+      name: "Computación en la nube",
+      description:
+        "Explora los beneficios y desafíos de la computación en la nube y cómo puede transformar la forma en que las empresas y organizaciones gestionan sus recursos tecnológicos. Aprende sobre los diferentes servicios de la nube y cómo aprovecharlos eficazmente.",
+    },
+    {
+      name: "Ingeniería de Software",
+      description:
+        "Descubre las últimas tendencias en ingeniería de software y cómo aplicarlas en tu trabajo diario. ¿Quieres conocer cómo la ingeniería de software está transformando la industria y mejorando la calidad de vida de las personas?",
+    },
+    {
+      name: "Remote Sensing & IoT",
+      description:
+        "Explora el campo de la teledetección (remote sensing) y el Internet de las cosas (IoT) y cómo se utilizan para recopilar datos en tiempo real y obtener información sobre nuestro entorno. Aprende sobre las aplicaciones en diferentes industrias y sectores.",
+    },
+  ];
+}

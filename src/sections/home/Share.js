@@ -1,6 +1,6 @@
 import { Box, Button, Divider, Grid, Typography } from "@mui/material";
 import colors from "@/styles/colors";
-import { Facebook, LinkedIn, Twitter } from "@mui/icons-material";
+import { Close, Facebook, LinkedIn, Twitter } from "@mui/icons-material";
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 
@@ -50,9 +50,10 @@ const Share = ({ edicion }) => {
               sx={{
                 ...buttonStyle,
                 bgcolor: colors.socialMediaColors.facebook.main,
+                "&:hover": { bgcolor: colors.socialMediaColors.facebook.dark },
+                color: "#fff",
               }}
               startIcon={<Facebook />}
-              color="info"
               variant="contained"
             >
               comparte
@@ -63,10 +64,11 @@ const Share = ({ edicion }) => {
               href={`https://twitter.com/intent/tweet?text=¡Únete al congreso internacional de ingeniería en informática y sistemas en su ${edicion}va edición! Descubre más del evento en: https://www.ciistacna.com`}
               sx={{
                 ...buttonStyle,
-                bgcolor: colors.socialMediaColors.twitter.main,
+                bgcolor: colors.socialMediaColors.github.main,
+                "&:hover": { bgcolor: colors.socialMediaColors.github.dark },
+                color: "#fff",
               }}
-              startIcon={<Twitter />}
-              color="info"
+              startIcon={<Close />}
               variant="contained"
             >
               tweetea
@@ -78,9 +80,10 @@ const Share = ({ edicion }) => {
               sx={{
                 ...buttonStyle,
                 bgcolor: colors.socialMediaColors.linkedin.main,
+                "&:hover": { bgcolor: colors.socialMediaColors.linkedin.dark },
+                color: "#fff",
               }}
               startIcon={<LinkedIn />}
-              color="info"
               variant="contained"
             >
               divulga

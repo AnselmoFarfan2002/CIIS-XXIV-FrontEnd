@@ -80,6 +80,7 @@ const Header = (props) => {
                   startIcon={<GroupAddIcon />}
                   variant="contained"
                   color="info"
+                  disabled
                   onClick={onLogin}
                 >
                   <Typography fontSize={12} fontWeight={"bold"}>
@@ -168,6 +169,7 @@ const Header = (props) => {
                       startIcon={<GroupAddIcon />}
                       variant="contained"
                       color="info"
+                      disabled
                       onClick={onLogin}
                     >
                       <Typography fontSize={12} fontWeight={"bold"}>
