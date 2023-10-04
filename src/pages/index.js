@@ -10,11 +10,16 @@ import Share from "@/sections/home/Share.js";
 import { useState } from "react";
 import CIISLayout from "@/layouts/CIIS/CIISLayout";
 import UltimaEdicion from "@/sections/home/UltimaEdicion";
+import HomeCounters from "@/sections/home/Counters";
+import HomeCronograma from "@/sections/home/Cronograma";
+import HomeAuspiciadores from "@/sections/home/Auspiciadores";
 
 const Page = (props) => {
   const [edicion, setEdicion] = useState(24);
   const [ejes, setEjes] = useState([]);
   const [ponencias, setPonencias] = useState(18);
+  const [concursos, setConcursos] = useState(3);
+  const [talleres, setTalleres] = useState(4);
   const [tematicas, setTematicas] = useState(0);
 
   return (
@@ -32,16 +37,12 @@ const Page = (props) => {
       <Box component="main">
         <Particles />
         <Cover />
-        <Topics
-          edicion={edicion}
-          setEdicion={setEdicion}
-          ejes={ejes}
-          setEjes={setEjes}
-          ponencias={ponencias}
-          setPonencias={setPonencias}
-          tematicas={tematicas}
-          setTematicas={setTematicas}
+        <HomeCounters
+          {...{ ponencias, talleres, tematicas, edicion, concursos }}
         />
+        <Topics {...{ ejes, setEjes, setTematicas }} />
+        <HomeCronograma />
+        <HomeAuspiciadores />
         <PostmasterCard />
         <Share edicion={edicion} setEdicion={setEdicion} />
         <UltimaEdicion />

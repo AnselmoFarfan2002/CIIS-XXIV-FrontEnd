@@ -99,7 +99,7 @@ const Share = ({ edicion }) => {
       id="share"
       component={"section"}
       sx={{
-        background: colors.bg.gradientSolid(0),
+        background: colors.bg.main,
         zIndex: 1,
         position: "relative",
         padding: {

@@ -4,7 +4,7 @@ import colors from "@/styles/colors";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Paper, Typography } from "@mui/material";
 import { fonts } from "@/styles/fonts";
 import {
@@ -17,37 +17,22 @@ import {
   Terminal,
   Topic,
 } from "@mui/icons-material";
-import uuidv4 from "uuid";
-import { directory } from "@/context/url-context";
-import CounterCard from "@/components/Card/CounterCard";
+import BarLeftTitle from "@/components/Sections/BarLeftTitle";
 
-const Topics = ({
-  edicion,
-  setEdicion,
-  ejes,
-  setEjes,
-  ponencias,
-  setPonencias,
-  tematicas,
-  setTematicas,
-}) => {
+const emojis = {
+  "Inteligencia artificial": <SmartToy />,
+  Ciberseguridad: <Security />,
+  "Desarrollo de software": <Terminal />,
+  "Ciencia de datos": <BarChart />,
+  "Computación en la nube": <Cloud />,
+  "Ingeniería de Software": <Engineering />,
+  "Remote Sensing & IoT": <SettingsRemote />,
+};
+
+const Topics = ({ setEjes, setTematicas, ejes }) => {
   const [ref, inView] = useInView({
     triggerOnce: true,
   });
-
-  const [refAbout, inViewAbout] = useInView({
-    triggerOnce: false,
-  });
-
-  const emojis = {
-    "Inteligencia artificial": <SmartToy />,
-    Ciberseguridad: <Security />,
-    "Desarrollo de software": <Terminal />,
-    "Ciencia de datos": <BarChart />,
-    "Computación en la nube": <Cloud />,
-    "Ingeniería de Software": <Engineering />,
-    "Remote Sensing & IoT": <SettingsRemote />,
-  };
 
   useEffect(() => {
     setEjes(
@@ -59,46 +44,12 @@ const Topics = ({
     setTematicas(getLocalTopics().length);
   }, []);
 
-  // useEffect(() => {
-  //   if (!ejes.length) {
-  //     fetch(directory.events.topics.get(24))
-  //       .then((res) => res.json())
-  //       .then((topics) => {
-  //         setEjes(
-  //           topics.map((t) => ({
-  //             ...t,
-  //             emoji: emojis[t.name] ? emojis[t.name] : <Topic />,
-  //           }))
-  //         );
-
-  //         setTematicas(topics.length);
-  //       });
-  //   }
-  // }, [ejes, tematicas]);
-
-  const [prevScrollPos, setPrevScrollPos] = useState(0);
-  const [scrollingDown, setScrollingDown] = useState(false);
-
-  const handleScroll = () => {
-    const currentScrollPos =
-      window.pageYOffset || document.documentElement.scrollTop;
-    setScrollingDown(prevScrollPos < currentScrollPos);
-    setPrevScrollPos(currentScrollPos);
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [prevScrollPos]);
-
   return (
     <Box
       id="topics"
       component={"section"}
       sx={{
-        backgroundImage: colors.bg.gradient(0),
+        backgroundImage: colors.bg.transparent(0),
         zIndex: 1,
         position: "relative",
         padding: {
@@ -111,105 +62,6 @@ const Topics = ({
         alignItems: "center",
       }}
     >
-      <Grid
-        container
-        flexDirection={"row"}
-        sx={{ maxWidth: "1800px", marginBottom: 10 }}
-        justifyContent="center"
-        ref={refAbout}
-      >
-        <Grid item xs={12} md={4} lg={3}>
-          <Box maxWidth={350} mx={"auto"} sx={{ transition: "1s" }}>
-            {inViewAbout ? (
-              <motion.div
-                style={{ width: "100%", margin: "auto" }}
-                initial={{ opacity: 0, y: scrollingDown ? 50 : -50, x: 0 }}
-                animate={{ opacity: 1, y: 0, x: 0 }}
-                transition={{ duration: 0.6 }}
-              >
-                <CounterCard
-                  count={ponencias}
-                  suffix="+"
-                  title="Ponencias"
-                  description={`¡Con importantes ponentes internacionales se esperan al menos ${ponencias} ponencias!`}
-                />
-              </motion.div>
-            ) : (
-              <Box sx={{ opacity: 0 }}>
-                <CounterCard
-                  count={ponencias}
-                  suffix="+"
-                  title="Ponencias"
-                  description={`¡Con importantes ponentes internacionales se esperan al menos ${ponencias} ponencias!`}
-                />
-              </Box>
-            )}
-          </Box>
-        </Grid>
-        <Grid item xs={12} md={4} lg={3}>
-          <Box maxWidth={350} mx={"auto"}>
-            {inViewAbout ? (
-              <motion.div
-                style={{ width: "100%", margin: "auto" }}
-                initial={{ opacity: 0, y: scrollingDown ? 50 : -50, x: 0 }}
-                animate={{ opacity: 1, y: 0, x: 0 }}
-                transition={{ duration: 0.6 }}
-              >
-                <CounterCard
-                  count={edicion}
-                  suffix="va"
-                  title="Edición"
-                  description={`Con ${
-                    edicion - 1
-                  } años de trayectoria, el CIIS continua reuniendo ponentes de todas partes del mundo.`}
-                />
-              </motion.div>
-            ) : (
-              <Box sx={{ opacity: 0 }}>
-                <CounterCard
-                  count={edicion}
-                  suffix="va"
-                  title="Edición"
-                  description={`Con ${
-                    edicion - 1
-                  } años de trayectoria, el CIIS continua reuniendo ponentes de todas partes del mundo.`}
-                />
-              </Box>
-            )}
-          </Box>
-        </Grid>
-        <Grid item xs={12} md={4} lg={3}>
-          <Box maxWidth={350} mx={"auto"}>
-            {inViewAbout ? (
-              <motion.div
-                style={{ width: "100%", margin: "auto" }}
-                initial={{ opacity: 0, y: scrollingDown ? 50 : -50, x: 0 }}
-                animate={{ opacity: 1, y: 0, x: 0 }}
-                transition={{ duration: 0.6 }}
-              >
-                <CounterCard
-                  count={tematicas}
-                  duration={2}
-                  suffix="*"
-                  title="Temáticas"
-                  description={`¡Variedad en las temáticas! En esta ${edicion}va han sido confirmadas ${tematicas} temáticas de actualidad.`}
-                />
-              </motion.div>
-            ) : (
-              <Box sx={{ opacity: 0 }}>
-                <CounterCard
-                  count={edicion}
-                  suffix="va"
-                  title="Edición"
-                  description={`Con ${
-                    edicion - 1
-                  } años de trayectoria, el CIIS continua reuniendo ponentes de todas partes del mundo.`}
-                />
-              </Box>
-            )}
-          </Box>
-        </Grid>
-      </Grid>
       <Grid
         container
         justifyContent="center"
@@ -228,21 +80,7 @@ const Topics = ({
                       animate={{ opacity: 1, y: 0, x: 0 }}
                       transition={{ duration: 0.6 }}
                     >
-                      <Box
-                        sx={{
-                          borderLeft: 10,
-                          paddingLeft: 1,
-                          marginBottom: 4,
-                        }}
-                      >
-                        <Typography
-                          variant="h4"
-                          fontWeight={"bold"}
-                          fontFamily={fonts.title}
-                        >
-                          Ejes temáticos
-                        </Typography>
-                      </Box>
+                      <BarLeftTitle title={"Ejes temáticos"} />
                     </motion.div>
                   </Grid>
                 </Grid>
@@ -262,7 +100,11 @@ const Topics = ({
                     >
                       <Paper
                         elevation={3}
-                        style={{ padding: "16px", textAlign: "center" }}
+                        style={{
+                          padding: "16px",
+                          textAlign: "center",
+                        }}
+                        sx={{ bgcolor: "#020c1c" }}
                       >
                         <video
                           controls
@@ -293,7 +135,7 @@ const Topics = ({
                         animate={{ opacity: 1, y: 0, x: 0 }}
                         transition={{ duration: 0.8 }}
                       >
-                        <Card>
+                        <Card sx={{ bgcolor: colors.bg.card }}>
                           <CardContent>
                             <Typography
                               gutterBottom

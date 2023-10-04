@@ -3,6 +3,7 @@ import { alpha } from "@mui/material/styles";
 let colors = {
   bg: {
     main: "rgb(16, 20, 24)",
+    card: "#020c1c",
     secondary: "rgb(20, 50, 60)",
     light: "#515764",
   },
@@ -136,6 +137,12 @@ let colors = {
 
 colors.bg.gradient = (angle) =>
   `linear-gradient(${angle}deg, ${colors.bg.main} 0%, ${alpha(
+    colors.primary.main,
+    0.2
+  )} 100%)`;
+
+colors.bg.transparent = (angle) =>
+  `linear-gradient(${angle}deg, ${alpha(colors.primary.main, 0.2)} 0%, ${alpha(
     colors.primary.main,
     0.2
   )} 100%)`;

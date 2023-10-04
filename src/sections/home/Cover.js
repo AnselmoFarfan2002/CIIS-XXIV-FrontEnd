@@ -40,24 +40,24 @@ const Cover = () => {
       alt: "India",
     },
     {
-      src: "/img/flags/uruguay.png",
-      alt: "Uruguay",
-    },
-    {
       src: "/img/flags/brasil.png",
       alt: "Brasil",
     },
     {
-      src: "/img/flags/eeuu.png",
-      alt: "Estados unidos",
-    },
-    {
-      src: "/img/flags/peru.png",
+      src: "/img/flags/perú.png",
       alt: "Perú",
     },
     {
       src: "/img/flags/chile.png",
       alt: "Chile",
+    },
+    {
+      src: "/img/flags/ecuador.png",
+      alt: "Ecuador",
+    },
+    {
+      src: "/img/flags/corea del sur.png",
+      alt: "Corea del sur",
     },
   ];
 
@@ -167,7 +167,7 @@ const Cover = () => {
                   <Box key={"flag" + idx} style={{ color: colors.fonts.main }}>
                     <Avatar
                       src={c.src}
-                      imgProps={{ alt: c.alt }}
+                      alt={c.alt}
                       sx={{
                         width: {
                           xs: 30,

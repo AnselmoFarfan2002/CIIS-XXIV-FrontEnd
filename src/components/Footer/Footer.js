@@ -11,7 +11,8 @@ const Footer = (props) => {
         background: colors.bg.main,
         zIndex: 1,
         position: "relative",
-        paddingBottom: 8
+        paddingBottom: 8,
+        px: 2
       }}
     >
       <Grid container justifyContent={"center"} spacing={3}>

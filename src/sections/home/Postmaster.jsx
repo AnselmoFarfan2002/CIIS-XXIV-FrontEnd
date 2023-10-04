@@ -154,7 +154,7 @@ const PostmasterCard = (props) => {
       id="about"
       component={"section"}
       sx={{
-        background: colors.bg.gradientSolid(180),
+        background: colors.bg.gradientSolid(0),
         zIndex: 1,
         position: "relative",
         padding: {

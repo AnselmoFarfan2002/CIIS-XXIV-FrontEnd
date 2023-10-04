@@ -15,11 +15,13 @@ import HistoryEduIcon from "@mui/icons-material/HistoryEdu";
 import { useState, useEffect } from "react";
 
 import { Home, LinkedIn, Menu, YouTube } from "@mui/icons-material";
+import { useRouter } from "next/router";
 
 const Header = (props) => {
   const { onLogin = () => {} } = props;
   const [isAtTop, setIsAtTop] = useState(true);
   const [openMiniBar, useOpenMiniBar] = useState(false);
+  const router = useRouter();
 
   const handleScroll = () => {
     setIsAtTop(window.scrollY === 0);
@@ -64,7 +66,7 @@ const Header = (props) => {
               <Grid item>
                 <Button
                   sx={{ px: 5, py: 1, color: colors.fonts.main }}
-                  href="/"
+                  onClick={() => router.push("/")}
                 >
                   CIIS
                 </Button>
@@ -89,14 +91,14 @@ const Header = (props) => {
                 </Button>
                 <Button
                   sx={{ px: 2, py: 2, color: colors.fonts.main }}
-                  href="/postmaster"
+                  onClick={() => router.push("/postmaster")}
                   startIcon={<AccountBalanceIcon />}
                 >
                   <Typography fontSize={12}>Postmaster</Typography>
                 </Button>
                 <Button
                   sx={{ px: 2, py: 2, color: colors.fonts.main }}
-                  href="/historia"
+                  onClick={() => router.push("/historia")}
                   startIcon={<HistoryEduIcon />}
                 >
                   <Typography fontSize={12}>Ediciones anteriores</Typography>
