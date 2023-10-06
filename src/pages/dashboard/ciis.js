@@ -27,7 +27,7 @@ export default function Page() {
       </Head>
       {formsViews[view] ?? (
         <ActividadMain
-          title="Inscripciones"
+          title="Pre inscripciones"
           subHeader="Selecccione la alternativa que se ajuste a su condición"
           fromDash={true}
           {...{ setView, view }}

@@ -64,13 +64,13 @@ export default function Page() {
             <Grid container spacing={3}>
               <Grid item xs={12}>
                 <InfoCardPonencia
-                  title="En curso"
-                  subheader="Transcurriendo ahora mismo"
+                  title="Próximamente"
+                  subheader="13 de noviembre del 2023"
                 />
               </Grid>
-              <Grid item xs={12}>
+              {/* <Grid item xs={12}>
                 <InfoCardPonencia image="/img/CIIS/XXIV/lectures/example2.png" />
-              </Grid>
+              </Grid> */}
             </Grid>
           </Grid>
           <Grid item md={6} lg={7}>
@@ -78,14 +78,14 @@ export default function Page() {
               <Grid item xs={12}>
                 <InfoCardInscription {...{ user }} />
               </Grid>
-              <Grid item xs={12}>
+              {/* <Grid item xs={12}>
                 <SummaryProgram {...{ ponencias }} />
-              </Grid>
-              <Grid item xs={12}>
+              </Grid> */}
+              {/* <Grid item xs={12}>
                 <InfoCardAsistencias
                   {...{ user, attTotal, attAct, tasaAceptacion }}
                 />
-              </Grid>
+              </Grid> */}
             </Grid>
           </Grid>
         </Grid>

@@ -15,9 +15,11 @@ import {
   InputLabel,
   Typography,
 } from "@mui/material";
+import { useRef } from "react";
 
 export default function CIISregistroFormGeneral({ view, setView = () => {} }) {
   const [costo] = costosCIIS.filter((a) => a.id == view);
+  const formRef = useRef(null);
 
   return (
     <LocalFade>
@@ -35,7 +37,7 @@ export default function CIISregistroFormGeneral({ view, setView = () => {} }) {
           <Card>
             <CardHeader
               sx={{ textAlign: "center" }}
-              title="Inscribiéndote"
+              title="Pre inscribiéndote"
               subheader="Es sencillo, solo debe subir su comprobante 😄"
             />
             <CardContent sx={{ mt: -4 }}>
@@ -94,12 +96,29 @@ export default function CIISregistroFormGeneral({ view, setView = () => {} }) {
                     S/. {costo.value}
                   </Typography>
                 </Grid>
-                <Grid item xs={12} sm={10} md={8}>
+                <Grid
+                  item
+                  xs={12}
+                  sm={10}
+                  md={8}
+                  component={"form"}
+                  ref={formRef}
+                >
                   <FormControl style={{ width: "100%" }}>
-                    <FormHelperText sx={{ mb: .5, color: "white", fontFamily: typography.body2.fontFamily }}>
+                    <FormHelperText
+                      sx={{
+                        mb: 0.5,
+                        color: "white",
+                        fontFamily: typography.body2.fontFamily,
+                      }}
+                    >
                       Comprobante de pago
                     </FormHelperText>
-                    <input className="form-control" type="file" />
+                    <input
+                      className="form-control"
+                      type="file"
+                      name="payment_doc"
+                    />
                     <FormHelperText>
                       Una imagen de su comprobante
                     </FormHelperText>

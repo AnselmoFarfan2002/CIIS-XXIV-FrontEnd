@@ -3,7 +3,7 @@ import { Card, CardHeader, CardMedia } from "@mui/material";
 export default function InfoCardPonencia({
   title = "A continuación",
   subheader = "Proxima ponencia en nuestro programa",
-  image = "/img/CIIS/XXIV/lectures/example.png",
+  image = "/img/CIIS/XXIV/flyer-main-long.png",
 }) {
   return (
     <Card>

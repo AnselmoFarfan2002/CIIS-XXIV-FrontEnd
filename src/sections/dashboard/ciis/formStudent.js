@@ -15,9 +15,11 @@ import {
   InputLabel,
   Typography,
 } from "@mui/material";
+import { useRef } from "react";
 
 export default function CIISregistroFormStudent({ view, setView = () => {} }) {
   const [costo] = costosCIIS.filter((a) => a.id == view);
+  const formRef = useRef(null);
 
   return (
     <LocalFade>
@@ -35,7 +37,7 @@ export default function CIISregistroFormStudent({ view, setView = () => {} }) {
           <Card>
             <CardHeader
               sx={{ textAlign: "center" }}
-              title="Inscribiéndote"
+              title="Pre inscribiéndote"
               subheader="Adjunte su comprobante y su carnet o ficha de matrícula"
             />
             <CardContent sx={{ mt: -4 }}>
@@ -94,7 +96,7 @@ export default function CIISregistroFormStudent({ view, setView = () => {} }) {
                     S/. {costo.value}
                   </Typography>
                 </Grid>
-                <Grid item xs={12} sm={10} md={8}>
+                <Grid item xs={12} sm={10} md={8} ref={formRef}>
                   <FormControl style={{ width: "100%" }}>
                     <FormHelperText
                       sx={{
@@ -105,7 +107,11 @@ export default function CIISregistroFormStudent({ view, setView = () => {} }) {
                     >
                       Comprobante de pago
                     </FormHelperText>
-                    <input className="form-control" type="file" />
+                    <input
+                      className="form-control"
+                      type="file"
+                      name="payment_doc"
+                    />
                     <FormHelperText>
                       Una imagen de su comprobante
                     </FormHelperText>
@@ -120,7 +126,11 @@ export default function CIISregistroFormStudent({ view, setView = () => {} }) {
                     >
                       Carnet o ficha de matrícula
                     </FormHelperText>
-                    <input className="form-control" type="file" />
+                    <input
+                      className="form-control"
+                      type="file"
+                      name="scholar_doc"
+                    />
                     <FormHelperText>
                       Para acreditar que es estudiante
                     </FormHelperText>
