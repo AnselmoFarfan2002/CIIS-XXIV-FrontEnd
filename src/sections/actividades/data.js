@@ -18,13 +18,13 @@ export const costosCIIS = [
     name: "Delegaciones",
     descuento: true,
     value: "65",
-    desc: "Estudiantes representantes de universidades invitadas.",
+    desc: "Estudiantes de universidades invitadas.",
   },
   {
     id: "op4",
     name: "Estudiante UNJBG",
     descuento: true,
     value: "50",
-    desc: "Para miembros de nuestra casa superior de estudios.",
+    desc: "Para miembros de nuestra casa de estudios.",
   },
 ];

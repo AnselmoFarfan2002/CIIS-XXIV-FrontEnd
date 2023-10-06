@@ -1,6 +1,7 @@
 import { common } from "@mui/material/colors";
 import { alpha } from "@mui/material/styles";
 import { error, indigo, info, neutral, success, warning } from "./colors";
+import colors from "@/styles/colors";
 
 export function createPalette() {
   return {
@@ -14,7 +15,7 @@ export function createPalette() {
     },
     background: {
       default: common.white,
-      paper: "#2F2F3D",
+      paper: colors.bg.light,
     },
     divider: "#1A1A29",
     error,

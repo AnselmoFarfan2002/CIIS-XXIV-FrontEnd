@@ -19,6 +19,7 @@ export const items = [
         <Home />
       </SvgIcon>
     ),
+    disabled: false,
   },
   {
     title: "Congreso",
@@ -28,6 +29,7 @@ export const items = [
         <AccountBalance />
       </SvgIcon>
     ),
+    disabled: false,
   },
   {
     title: "Talleres",
@@ -37,6 +39,7 @@ export const items = [
         <Class />
       </SvgIcon>
     ),
+    disabled: true,
   },
   {
     title: "Concursos",
@@ -46,5 +49,6 @@ export const items = [
         <EmojiEvents />
       </SvgIcon>
     ),
+    disabled: true,
   },
 ];

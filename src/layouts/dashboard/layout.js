@@ -6,6 +6,7 @@ import { SideNav } from "./side-nav";
 import { createTheme as localTheme } from "@/theme";
 import { TopNav } from "./top-nav";
 import { Box } from "@mui/material";
+import colors from "@/styles/colors";
 
 const SIDE_NAV_WIDTH = 280;
 
@@ -23,6 +24,8 @@ const LayoutContainer = styled("div")({
   display: "flex",
   flex: "1 1 auto",
   flexDirection: "column",
+  minHeight: "100vh",
+  background: colors.bg.gradientSolid(0),
   width: "100%",
 });
 
@@ -62,9 +65,7 @@ const DashboardLayout = withAuthGuard((props) => {
       <SideNav onClose={() => setOpenNav(false)} open={openNav} />
       <LayoutRoot>
         <LayoutContainer>
-          <Box p={8} pr={0}>
-            {children}
-          </Box>
+          <Box sx={{ p: { xs: 2, sm: 8 } }}>{children}</Box>
         </LayoutContainer>
       </LayoutRoot>
     </ThemeProvider>

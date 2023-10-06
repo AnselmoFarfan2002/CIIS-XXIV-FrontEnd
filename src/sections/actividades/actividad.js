@@ -26,12 +26,13 @@ export default function ActividadMain({
   title = "Actividades",
   subHeader = "Detalles de todas las actividades disponibles durante este evento",
   fromDash = false,
+  setView = () => {},
 }) {
   const router = useRouter();
   const { user } = useAuth();
 
   return (
-    <Grid container spacing={3} alignItems={"center"}>
+    <Grid container spacing={3} alignItems={"center"} maxWidth={"lg"}>
       <Grid item xs={12}>
         <LocalFade>
           <Typography variant="h3" fontFamily={typography.h3} mb={1}>
@@ -49,15 +50,30 @@ export default function ActividadMain({
               <Typography fontFamily={typography.h6}>
                 Evento principal
               </Typography>
-              <Typography fontFamily={typography.h3}>CIIS XXIV</Typography>
-              <Typography fontFamily={typography.body2}>
-                Congreso Internacional de Informática y Sistemas
+              <Typography
+                fontFamily={typography.h3}
+                sx={{
+                  mt: -1,
+                  fontFamily: "Arial Black, Gadget, sans-serif",
+                  fontSize: 37,
+                  letterSpacing: -3,
+                  wordSpacing: 3,
+                  fontWeight: 400,
+                  fontVariant: "small-caps",
+                }}
+              >
+                CIIS - XXIV
               </Typography>
+              {!fromDash && (
+                <Typography fontFamily={typography.body2}>
+                  Congreso Internacional de Informática y Sistemas
+                </Typography>
+              )}
 
               <List>
                 <ListItem>
                   <ListItemIcon>
-                    <CheckCircle />
+                    <CheckCircle color="success" />
                   </ListItemIcon>
                   <ListItemText
                     primary="Certificación"
@@ -66,7 +82,7 @@ export default function ActividadMain({
                 </ListItem>
                 <ListItem>
                   <ListItemIcon>
-                    <CheckCircle />
+                    <CheckCircle color="success" />
                   </ListItemIcon>
                   <ListItemText
                     primary="Kit CIIS XXIV"
@@ -78,7 +94,7 @@ export default function ActividadMain({
           </Card>
         </LocalFade>
       </Grid>
-      <Grid item xs={12} md={6}>
+      <Grid item xs={12} md={6} lg={7}>
         <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
           {costosCIIS.map((costo, idx) => (
             <LocalZoom timeout={400 * (idx + 1)} key={v4()}>
@@ -87,7 +103,8 @@ export default function ActividadMain({
                   onClick={() => {
                     if (!user) router.push("/registro");
                     else if (!fromDash)
-                      router.push("/dashboard/ciis?type=" + (idx + 1));
+                      router.push("/dashboard/ciis?type=" + costo.id);
+                    else setView(costo.id);
                   }}
                   sx={{
                     p: 2,
@@ -108,7 +125,7 @@ export default function ActividadMain({
                       {costo.desc}
                     </Typography>
                   </Box>
-                  <Box>
+                  <Box minWidth={80}>
                     <Typography fontFamily={typography.h3}>
                       S/. {costo.value}
                     </Typography>
