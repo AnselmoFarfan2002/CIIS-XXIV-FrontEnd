@@ -29,7 +29,8 @@ export default function InfoCardAsistencias({
       />
       <CardContent>
         <Typography variant="body2" mt={-2}>
-          Estado de final certificación: <Chip {...certificacion[stateTemp]} />
+          Estado de final certificación:{" "}
+          <Chip component={"span"} {...certificacion[stateTemp]} />
         </Typography>
         <Typography variant="body2">
           Asistencias necesarias: {attTotal}
@@ -38,7 +39,8 @@ export default function InfoCardAsistencias({
           Asistencias registradas: {user.attendances}
         </Typography>
         <Typography variant="body2" mt={1}>
-          Estado de actual certificación: <Chip {...certificacion[stateTota]} />
+          Estado de actual certificación:{" "}
+          <Chip component={"span"} {...certificacion[stateTota]} />
         </Typography>
         <Typography variant="body2">
           Asistencias hasta el momento: {attAct}

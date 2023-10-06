@@ -51,7 +51,6 @@ export default function Page() {
   const tasaAceptacion = 0.8;
   const [attAct, setAttAct] = useState(6); //asistencias que debe tener hasta el momento
   const [attTotal, setAttTotal] = useState(30); //asistencias que debe tener al final del evento
-
   return (
     <>
       <Head>

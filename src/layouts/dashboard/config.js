@@ -1,7 +1,9 @@
 import {
   AccountBalance,
   AccountBox,
+  Class,
   CollectionsBookmark,
+  EmojiEvents,
   Event,
   Home,
   People,
@@ -19,20 +21,29 @@ export const items = [
     ),
   },
   {
-    title: "Programa",
-    path: "/programa",
+    title: "Congreso",
+    path: "/dashboard/ciis",
     icon: (
       <SvgIcon fontSize="small">
-        <CollectionsBookmark />
+        <AccountBalance />
       </SvgIcon>
     ),
   },
   {
-    title: "Ponencias",
-    path: "/ponencias",
+    title: "Talleres",
+    path: "/dashboard/talleres",
     icon: (
       <SvgIcon fontSize="small">
-        <AccountBalance />
+        <Class />
+      </SvgIcon>
+    ),
+  },
+  {
+    title: "Concursos",
+    path: "/dashboard/concursos",
+    icon: (
+      <SvgIcon fontSize="small">
+        <EmojiEvents />
       </SvgIcon>
     ),
   },

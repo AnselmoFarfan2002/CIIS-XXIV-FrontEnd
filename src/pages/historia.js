@@ -16,13 +16,21 @@ const Page = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <Box component={"main"} minHeight={"100vh"} bgcolor={colors.bg.main}>
-        <Box maxWidth={"1800px"} margin={"auto"} sx={{
+      <Box
+        component={"main"}
+        minHeight={"100vh"}
+        sx={{ background: colors.bg.gradientSolid(0) }}
+      >
+        <Box
+          maxWidth={"1800px"}
+          margin={"auto"}
+          sx={{
             padding: {
-                xs: 3,
-                sm: 10
-            }
-        }}>
+              xs: 3,
+              sm: 10,
+            },
+          }}
+        >
           <Gallery />
         </Box>
       </Box>

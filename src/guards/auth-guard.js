@@ -23,7 +23,7 @@ export const AuthGuard = (props) => {
     if (!JSON.parse(window.localStorage.getItem("userSession"))) {
       router
         .replace({
-          pathname: "/inicio",
+          pathname: "/",
           query:
             router.asPath !== "/" ? { continueUrl: router.asPath } : undefined,
         })

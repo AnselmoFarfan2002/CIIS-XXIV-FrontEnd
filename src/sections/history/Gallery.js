@@ -57,55 +57,57 @@ const Gallery = (props) => {
     </Grid>
   );
 
-  const renderData = data.map(({ title, description, anio, items }) =>
-    anio != new Date().getFullYear() ? (
-      <Grid container spacing={3} sx={{ mb: 10 }} key={v4()}>
-        <Grid item xs={12} lg={3}>
-          <Box position="sticky" top="100px" pb={{ xs: 2, lg: 6 }}>
-            <Typography variant="h3" fontWeight="bold" mb={1}>
-              {title}
-            </Typography>
-            <Typography variant="body2" fontWeight="regular" mb={1} pr={2}>
-              {description}
-            </Typography>
-          </Box>
-        </Grid>
-        <Grid item xs={12} lg={9}>
-          <Grid container spacing={3}>
-            {items.map(({ image, name }, idx) => (
-              <Grid item xs={12} md={4} sx={{ mb: 2 }} key={v4()}>
-                <Card sx={{ height: { md: "300px" }, borderRadius: 3 }}>
-                  <CardContent>
-                    <Typography variant="h6" sx={{ mb: 2 }}>
-                      {name}
-                    </Typography>
-                    <Box
-                      onClick={() => {
-                        setOpenGallery(true);
-                        setCurrentImages({
-                          index: idx,
-                          slides: items.map((i) => ({ src: i.image })),
-                        });
-                      }}
-                      sx={{ "&:hover": { cursor: "pointer" } }}
-                    >
-                      <img
-                        src={"/" + image}
-                        alt={name}
-                        style={{ width: "100%", maxHeight: "100%" }}
-                      />
-                    </Box>
-                  </CardContent>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
+  const renderData = data.map(({ title, description, anio, items }) => (
+    <Grid container spacing={3} sx={{ mb: 10 }} key={v4()}>
+      <Grid item xs={12} lg={3}>
+        <Box position="sticky" top="100px" pb={{ xs: 2, lg: 6 }}>
+          <Typography variant="h3" fontWeight="bold" mb={1}>
+            {title}
+          </Typography>
+          <Typography variant="body2" fontWeight="regular" mb={1} pr={2}>
+            {description}
+          </Typography>
+        </Box>
+      </Grid>
+      <Grid item xs={12} lg={9}>
+        <Grid container spacing={3}>
+          {items.map(({ image, name }, idx) => (
+            <Grid item xs={12} md={4} sx={{ mb: 2 }} key={v4()}>
+              <Card
+                sx={{
+                  height: { md: "300px" },
+                  borderRadius: 3,
+                  backgroundColor: colors.bg.light,
+                }}
+              >
+                <CardContent>
+                  <Typography variant="h6" sx={{ mb: 2 }}>
+                    {name}
+                  </Typography>
+                  <Box
+                    onClick={() => {
+                      setOpenGallery(true);
+                      setCurrentImages({
+                        index: idx,
+                        slides: items.map((i) => ({ src: i.image })),
+                      });
+                    }}
+                    sx={{ "&:hover": { cursor: "pointer" } }}
+                  >
+                    <img
+                      src={"/" + image}
+                      alt={name}
+                      style={{ width: "100%", maxHeight: "100%" }}
+                    />
+                  </Box>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
         </Grid>
       </Grid>
-    ) : (
-      <></>
-    )
-  );
+    </Grid>
+  ));
 
   return (
     <Box>

@@ -15,14 +15,15 @@ import { items } from "./config";
 import { SideNavItem } from "./side-nav-item";
 import { ChevronLeft } from "@mui/icons-material";
 import capitalizeWords from "@/utils/capitalize";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 export const SideNav = (props) => {
   const { open, onClose } = props;
+  const router = useRouter();
   const pathname = usePathname();
   const lgUp = useMediaQuery((theme) => theme.breakpoints.up("lg"));
-  const auth = useAuth();
   const { user } = useAuth() ?? {};
-  const [values, setValues] = useState(user);
 
   const BG_SIDE_NAV_COLOR = "#1a1a29";
 
@@ -37,12 +38,12 @@ export const SideNav = (props) => {
     >
       <Box sx={{ p: 3 }}>
         <Box
-          component={NextLink}
-          href="/"
+          onClick={() => router.push("/")}
           sx={{
             display: "inline-flex",
             flexDirection: "column",
             width: "100%",
+            cursor: "pointer",
             px: 10,
           }}
         >
@@ -73,13 +74,7 @@ export const SideNav = (props) => {
         >
           <div>
             <Typography color="inherit" variant="subtitle1">
-              {capitalizeWords(
-                (
-                  values?.acerca.apellidos.paterno +
-                  " " +
-                  values?.acerca.apellidos.materno
-                ).toLocaleLowerCase()
-              )}
+              {capitalizeWords(user?.lastname.toLocaleLowerCase())}
             </Typography>
             <Typography color="neutral.400" variant="body2">
               Usuario

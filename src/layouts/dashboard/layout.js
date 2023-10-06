@@ -3,7 +3,6 @@ import { usePathname } from "next/navigation";
 import { ThemeProvider, createTheme, styled } from "@mui/material/styles";
 import { withAuthGuard } from "src/hocs/with-auth-guard";
 import { SideNav } from "./side-nav";
-import { AuthGuard } from "@/guards/auth-guard";
 import { createTheme as localTheme } from "@/theme";
 import { TopNav } from "./top-nav";
 
@@ -57,15 +56,13 @@ const DashboardLayout = withAuthGuard((props) => {
   });
 
   return (
-    <AuthGuard>
-      <ThemeProvider theme={theme}>
-        <TopNav onNavOpen={() => setOpenNav(true)} />
-        <SideNav onClose={() => setOpenNav(false)} open={openNav} />
-        <LayoutRoot>
-          <LayoutContainer>{children}</LayoutContainer>
-        </LayoutRoot>
-      </ThemeProvider>
-    </AuthGuard>
+    <ThemeProvider theme={theme}>
+      <TopNav onNavOpen={() => setOpenNav(true)} />
+      <SideNav onClose={() => setOpenNav(false)} open={openNav} />
+      <LayoutRoot>
+        <LayoutContainer>{children}</LayoutContainer>
+      </LayoutRoot>
+    </ThemeProvider>
   );
 });
 

@@ -10,14 +10,19 @@ import {
   TextField,
   ThemeProvider,
   Typography,
-  alpha,
   createTheme,
   useMediaQuery,
 } from "@mui/material";
 import { Login as LoginIcon } from "@mui/icons-material";
+import { useRouter } from "next/router";
+import * as Yup from "yup";
+import { useFormik } from "formik";
+import getFieldStyle from "@/utils/getFieldStyle";
+import { useAuth } from "@/context/auth";
 
 const Login = (props) => {
   const { open = false, onClose = () => {} } = props;
+  const { login, logged } = useAuth();
 
   const theme = createTheme({
     palette: { mode: "dark" },
@@ -25,13 +30,28 @@ const Login = (props) => {
   });
 
   const movil = useMediaQuery(theme.breakpoints.between("xs", "md"));
+  const router = useRouter();
+
+  const form = useFormik(getSchemaForm(login));
+  const handleClose = () => {
+    form.resetForm();
+    onClose();
+  };
 
   return (
     <ThemeProvider theme={theme}>
-      <Dialog open={open} onClose={onClose}>
+      <Dialog
+        open={open && !logged}
+        onClose={handleClose}
+        PaperProps={{
+          sx: {
+            bgcolor: colors.bg.card,
+          },
+        }}
+      >
         <DialogContent sx={{ padding: 0 }}>
           <Grid container spacing={3}>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={8}>
               <Grid
                 container
                 spacing={3}
@@ -44,24 +64,32 @@ const Login = (props) => {
                 }}
               >
                 <Grid item xs={12}>
-                  <Typography variant="h4">Iniciar sesión</Typography>
+                  <Typography variant="h4" mb={2}>
+                    Iniciar sesión
+                  </Typography>
                 </Grid>
                 <Grid item xs={12} sx={{ pt: "12px !important" }}>
                   <TextField
                     type="text"
-                    name="email"
                     label={"Correo"}
                     variant="filled"
-                    inputProps={{ style: { fontSize: 17 } }}
                     fullWidth
+                    InputLabelProps={{ sx: { fontSize: 17 } }}
+                    inputProps={{ style: { fontSize: 17 } }}
+                    {...form.getFieldProps("email")}
+                    {...getFieldStyle(form, "email", "")}
                   />
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
                     label={"Contraseña"}
                     variant="filled"
-                    inputProps={{ style: { fontSize: 17 } }}
+                    type="password"
                     fullWidth
+                    InputLabelProps={{ sx: { fontSize: 17 } }}
+                    inputProps={{ style: { fontSize: 17 } }}
+                    {...form.getFieldProps("password")}
+                    {...getFieldStyle(form, "password", "")}
                   />
                 </Grid>
                 <Grid item xs={12} sx={{ pt: "35px !important" }}>
@@ -77,6 +105,7 @@ const Login = (props) => {
                     variant="contained"
                     endIcon={<LoginIcon />}
                     fullWidth
+                    onClick={form.handleSubmit}
                   >
                     Continuar
                   </Button>
@@ -84,7 +113,15 @@ const Login = (props) => {
                 <Grid item xs={12}>
                   <FormHelperText>
                     ¿No registrado aún?{" "}
-                    <Link sx={{ cursor: "pointer" }}>Registrate</Link>
+                    <Link
+                      sx={{ cursor: "pointer" }}
+                      onClick={() => {
+                        handleClose();
+                        router.push("/registro");
+                      }}
+                    >
+                      Regístrate
+                    </Link>
                   </FormHelperText>
                 </Grid>
               </Grid>
@@ -92,7 +129,7 @@ const Login = (props) => {
             <Grid
               item
               xs={12}
-              md={6}
+              md={4}
               sx={{
                 bgcolor: colors.bg.main,
                 display: "grid",
@@ -102,7 +139,11 @@ const Login = (props) => {
                 py: "24px",
               }}
             >
-              <img src="/img/CIIS/XXIV/logo.png" width={movil ? 100 : 200} />
+              <img
+                src="/img/CIIS/XXIV/logo.png"
+                width={movil ? 100 : 200}
+                style={{ padding: 30 }}
+              />
             </Grid>
           </Grid>
         </DialogContent>
@@ -112,3 +153,20 @@ const Login = (props) => {
 };
 
 export default Login;
+
+function getSchemaForm(login) {
+  return {
+    initialValues: { email: "", password: "" },
+    validationSchema: Yup.object().shape({
+      email: Yup.string()
+        .email("Debe ser un email válido")
+        .required("Este campo es obligatorio"),
+      password: Yup.string()
+        .min(6, "Al menos 6 caracteres")
+        .required("Este campo es obligatorio"),
+    }),
+    onSubmit: (values) => {
+      login(values.email, values.password);
+    },
+  };
+}

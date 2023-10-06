@@ -1,7 +1,6 @@
 import { useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { useAuth } from "@/context/auth";
 import {
   Box,
   Divider,
@@ -11,16 +10,16 @@ import {
   Typography,
 } from "@mui/material";
 import capitalizeWords from "@/utils/capitalize";
+import { useAuth } from "@/context/auth";
 
 export const AccountPopover = (props) => {
   const { anchorEl, onClose, open } = props;
   const router = useRouter();
-  const { user } = useAuth() ?? {};
-  const [values, setValues] = useState(user);
-
+  const auth = useAuth();
+  const { user, logout } = useAuth();
   const handleSignOut = useCallback(() => {
     onClose?.();
-    auth.logout();
+    logout();
     router.push("/");
   }, [onClose, router]);
 
@@ -43,7 +42,7 @@ export const AccountPopover = (props) => {
       >
         <Typography variant="overline">Cuenta Administrativa</Typography>
         <Typography color="text.secondary" variant="body2">
-          {capitalizeWords(values?.acerca.nombre.toLocaleLowerCase())}
+          {capitalizeWords(user?.name.toLocaleLowerCase())}
         </Typography>
       </Box>
       <Divider />

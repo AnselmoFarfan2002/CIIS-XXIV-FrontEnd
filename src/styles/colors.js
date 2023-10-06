@@ -5,7 +5,7 @@ let colors = {
     main: "rgb(16, 20, 24)",
     card: "#020c1c",
     secondary: "rgb(20, 50, 60)",
-    light: "#515764",
+    light: "#242E37",
   },
   primary: {
     main: "rgb(0, 58, 117)",

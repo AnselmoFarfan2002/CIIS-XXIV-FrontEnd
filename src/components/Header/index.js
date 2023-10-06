@@ -14,11 +14,21 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import HistoryEduIcon from "@mui/icons-material/HistoryEdu";
 import { useState, useEffect } from "react";
 
-import { Home, LinkedIn, Menu, YouTube } from "@mui/icons-material";
+import {
+  Dashboard,
+  Event,
+  Home,
+  LinkedIn,
+  Login,
+  Menu,
+  YouTube,
+} from "@mui/icons-material";
 import { useRouter } from "next/router";
+import { useAuth } from "@/context/auth";
 
 const Header = (props) => {
   const { onLogin = () => {} } = props;
+  const { logged } = useAuth();
   const [isAtTop, setIsAtTop] = useState(true);
   const [openMiniBar, useOpenMiniBar] = useState(false);
   const router = useRouter();
@@ -79,14 +89,13 @@ const Header = (props) => {
                     color: colors.fonts.main,
                     bgcolor: colors.primary.light,
                   }}
-                  startIcon={<GroupAddIcon />}
+                  startIcon={<Event />}
                   variant="contained"
                   color="info"
-                  disabled
-                  onClick={onLogin}
+                  onClick={() => router.push("/actividades")}
                 >
                   <Typography fontSize={12} fontWeight={"bold"}>
-                    Inscribirse
+                    Actividades
                   </Typography>
                 </Button>
                 <Button
@@ -103,24 +112,24 @@ const Header = (props) => {
                 >
                   <Typography fontSize={12}>Ediciones anteriores</Typography>
                 </Button>
-                <IconButton
-                  aria-label="facebook"
-                  href="https://www.facebook.com/ciistacna"
-                >
-                  <FacebookIcon />
-                </IconButton>
-                <IconButton
-                  aria-label="youtube"
-                  href="https://www.youtube.com/@ciistacna"
-                >
-                  <YouTube />
-                </IconButton>
-                <IconButton
-                  aria-label="linkedin"
-                  href="https://www.linkedin.com/in/congreso-internacional-de-inform%C3%A1tica-y-sistemas-a33bb5226/?originalSubdomain=pe"
-                >
-                  <LinkedIn />
-                </IconButton>
+
+                {logged ? (
+                  <Button
+                    sx={{ px: 2, py: 2, color: colors.fonts.main }}
+                    onClick={() => router.push("/dashboard")}
+                    startIcon={<Dashboard />}
+                  >
+                    <Typography fontSize={12}>Panel</Typography>
+                  </Button>
+                ) : (
+                  <Button
+                    sx={{ px: 2, py: 2, color: colors.fonts.main }}
+                    onClick={onLogin}
+                    startIcon={<Login />}
+                  >
+                    <Typography fontSize={12}>Ingresar</Typography>
+                  </Button>
+                )}
               </Grid>
             </Grid>
           </Grid>
@@ -153,7 +162,7 @@ const Header = (props) => {
                     <Button
                       fullWidth
                       sx={{ px: 5, py: 1, color: colors.fonts.main, mt: 3 }}
-                      href="/"
+                      onClick={() => router.push("/")}
                       startIcon={<Home />}
                     >
                       <Typography fontSize={12}>Inicio</Typography>
@@ -171,11 +180,13 @@ const Header = (props) => {
                       startIcon={<GroupAddIcon />}
                       variant="contained"
                       color="info"
-                      disabled
-                      onClick={onLogin}
+                      onClick={() => {
+                        router.push("/actividades");
+                        setTimeout(() => useOpenMiniBar(false), 500);
+                      }}
                     >
                       <Typography fontSize={12} fontWeight={"bold"}>
-                        Inscribirse
+                        Actividades
                       </Typography>
                     </Button>
                   </Grid>
@@ -183,7 +194,10 @@ const Header = (props) => {
                     <Button
                       fullWidth
                       sx={{ px: 2, py: 2, color: colors.fonts.main }}
-                      href="/postmaster"
+                      onClick={() => {
+                        router.push("/postmaster");
+                        setTimeout(() => useOpenMiniBar(false), 500);
+                      }}
                       startIcon={<AccountBalanceIcon />}
                     >
                       <Typography fontSize={12}>Postmaster</Typography>
@@ -193,7 +207,10 @@ const Header = (props) => {
                     <Button
                       fullWidth
                       sx={{ px: 2, py: 2, color: colors.fonts.main }}
-                      href="/historia"
+                      onClick={() => {
+                        router.push("/historia");
+                        setTimeout(() => useOpenMiniBar(false), 500);
+                      }}
                       startIcon={<HistoryEduIcon />}
                     >
                       <Typography fontSize={12}>
@@ -202,24 +219,28 @@ const Header = (props) => {
                     </Button>
                   </Grid>
                   <Grid item xs={12} textAlign={"center"}>
-                    <IconButton
-                      aria-label="facebook"
-                      href="https://www.facebook.com/ciistacna"
-                    >
-                      <FacebookIcon />
-                    </IconButton>
-                    <IconButton
-                      aria-label="youtube"
-                      href="https://www.youtube.com/@ciistacna"
-                    >
-                      <YouTube />
-                    </IconButton>
-                    <IconButton
-                      aria-label="linkedin"
-                      href="https://www.linkedin.com/in/congreso-internacional-de-inform%C3%A1tica-y-sistemas-a33bb5226/?originalSubdomain=pe"
-                    >
-                      <LinkedIn />
-                    </IconButton>
+                    {logged ? (
+                      <Button
+                        fullWidth
+                        sx={{ px: 2, py: 2, color: colors.fonts.main }}
+                        onClick={() => {
+                          router.push("/dashboard");
+                          setTimeout(() => useOpenMiniBar(false), 500);
+                        }}
+                        startIcon={<Dashboard />}
+                      >
+                        <Typography fontSize={12}>Panel</Typography>
+                      </Button>
+                    ) : (
+                      <Button
+                        fullWidth
+                        sx={{ px: 2, py: 2, color: colors.fonts.main }}
+                        onClick={onLogin}
+                        startIcon={<Login />}
+                      >
+                        <Typography fontSize={12}>Ingresar</Typography>
+                      </Button>
+                    )}
                   </Grid>
                 </>
               )}

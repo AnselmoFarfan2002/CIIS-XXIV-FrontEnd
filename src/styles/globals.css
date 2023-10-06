@@ -78,9 +78,9 @@ body {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom,
+  /* background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb)); */
 }
 
 a {
@@ -94,6 +94,87 @@ a {
   }
 }
 
-.Mui-selected{
+.Mui-selected {
   font-weight: 600;
+}
+
+.barCIISlogo {
+  height: 100%;
+}
+
+.barCIISlogo1 {
+  width: 20%;
+  background-color: #023372;
+}
+
+.barCIISlogo2 {
+  width: 19%;
+  background-color: #00508A;
+}
+
+.barCIISlogo3 {
+  width: 22%;
+  background-color: #018798;
+}
+
+.barCIISlogo4 {
+  width: 19%;
+  background-color: #2B777C;
+}
+
+.barCIISlogo5 {
+  width: 20%;
+  background-color: #00508B;
+}
+
+@keyframes moveUp1 {
+  0% {
+    transform: translateY(-3%);
+  }
+
+  100% {
+    transform: translateY(3%);
+  }
+}
+
+@keyframes moveUp2 {
+  0% {
+    transform: translateY(3%);
+  }
+
+  100% {
+    transform: translateY(-3%);
+  }
+}
+
+@keyframes moveUpLogo {
+  0% {
+    transform: translate(-18%, 2%);
+  }
+
+  100% {
+    transform: translate(-18%, -2%);
+  }
+}
+
+
+@keyframes radialShine {
+  0% {
+    background-size: 100% 100%;
+  }
+
+  50% {
+    background-size: 105% 105%;
+  }
+
+  100% {
+    background-size: 100% 100%;
+  }
+}
+
+.element-with-shine {
+  background: radial-gradient(circle, rgb(2, 135, 152) 0%, rgba(255, 255, 255, 0) 50%);
+  background-size: 100% 100%;
+  background-position: center;
+  animation: radialShine 3s linear infinite;
 }

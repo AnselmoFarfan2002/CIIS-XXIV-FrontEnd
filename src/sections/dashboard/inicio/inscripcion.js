@@ -26,7 +26,7 @@ export default function InfoCardInscription({ user = {} }) {
       <CardContent>
         <Box display={"flex"} alignItems={"center"} mt={-3} columnGap={1}>
           <Typography variant="body2">Estado de inscripción:</Typography>
-          <Chip {...estados[user.status]} />
+          <Chip component={"span"} {...estados[user.status]} />
         </Box>
         <Typography variant="body2">
           Cierre de inscripciones: 13 de noviembre del 2023

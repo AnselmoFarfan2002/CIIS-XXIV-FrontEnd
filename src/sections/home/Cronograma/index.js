@@ -3,18 +3,15 @@ import {
   Button,
   Card,
   CardContent,
-  Fade,
   Grid,
   Tab,
   Tabs,
   Typography,
 } from "@mui/material";
 import colors from "@/styles/colors";
-import { fonts } from "@/styles/fonts";
 import { useState } from "react";
 import cronogramaData from "./data";
 import { v4 } from "uuid";
-import FromSideFade from "@/components/Animation/FromSideFade";
 import { useInView } from "react-intersection-observer";
 import BarLeftTitle from "@/components/Sections/BarLeftTitle";
 import LocalFade from "@/components/Animation/LocalFade";
@@ -51,14 +48,14 @@ export default function HomeCronograma() {
           </Grid>
 
           <Grid item xs={12}>
-            <Card sx={{ bgcolor: colors.bg.card }}>
+            <Card sx={{ bgcolor: colors.bg.light }}>
               <CardContent>
                 <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
                   <Tabs
                     value={value}
                     onChange={handleChange}
                     aria-label="basic tabs example"
-                    textColor="secondary"
+                    textColor="inherit"
                     indicatorColor="secondary"
                   >
                     {cronogramaData.map((plan, idx) => {

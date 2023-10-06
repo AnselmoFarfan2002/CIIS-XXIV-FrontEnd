@@ -346,11 +346,11 @@ export const imagenesGaleria = [
       },
     ],
   },
-  {
-    title: "CIIS XXIV",
-    description:
-      "Vigésimo cuarta edición del congreso de informática y sistemas",
-    anio: 2023,
-    items: [],
-  },
+  // {
+  //   title: "CIIS XXIV",
+  //   description:
+  //     "Vigésimo cuarta edición del congreso de informática y sistemas",
+  //   anio: 2023,
+  //   items: [],
+  // },
 ].reverse();

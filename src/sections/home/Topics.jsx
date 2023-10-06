@@ -135,7 +135,7 @@ const Topics = ({ setEjes, setTematicas, ejes }) => {
                         animate={{ opacity: 1, y: 0, x: 0 }}
                         transition={{ duration: 0.8 }}
                       >
-                        <Card sx={{ bgcolor: colors.bg.card }}>
+                        <Card sx={{ bgcolor: colors.bg.light }}>
                           <CardContent>
                             <Typography
                               gutterBottom
