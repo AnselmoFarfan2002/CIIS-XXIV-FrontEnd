@@ -1,4 +1,3 @@
-import LogoCIISAnimated from "@/components/Animation/Logo";
 import CIISLayout from "@/layouts/CIIS/CIISLayout";
 import ActividadMain from "@/sections/actividades/actividad";
 import colors from "@/styles/colors";
@@ -34,7 +33,7 @@ function Page() {
                 <ActividadMain />
               </Grid>
               <Grid item xs={8} sm={6} sx={{ paddingTop: { xs: 8, md: 0 } }}>
-              
+                
               </Grid>
             </Grid>
           </Container>

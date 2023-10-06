@@ -22,7 +22,11 @@ import LocalZoom from "@/components/Animation/LocalZoom";
 import { useRouter } from "next/router";
 import { useAuth } from "@/context/auth";
 
-export default function ActividadMain() {
+export default function ActividadMain({
+  title = "Actividades",
+  subHeader = "Detalles de todas las actividades disponibles durante este evento",
+  fromDash = false,
+}) {
   const router = useRouter();
   const { user } = useAuth();
 
@@ -31,11 +35,9 @@ export default function ActividadMain() {
       <Grid item xs={12}>
         <LocalFade>
           <Typography variant="h3" fontFamily={typography.h3} mb={1}>
-            Actividades
+            {title}
           </Typography>
-          <Typography variant="body2">
-            Detalles de todas las actividades disponibles durante este evento
-          </Typography>
+          <Typography variant="body2">{subHeader}</Typography>
         </LocalFade>
       </Grid>
 
@@ -49,7 +51,7 @@ export default function ActividadMain() {
               </Typography>
               <Typography fontFamily={typography.h3}>CIIS XXIV</Typography>
               <Typography fontFamily={typography.body2}>
-                Congreso internacional de informática y sistemas
+                Congreso Internacional de Informática y Sistemas
               </Typography>
 
               <List>
@@ -59,7 +61,7 @@ export default function ActividadMain() {
                   </ListItemIcon>
                   <ListItemText
                     primary="Certificación"
-                    secondary={"Se otorgará un certificado de x horas."}
+                    secondary={"Se otorgará un certificado de 120 horas."}
                   />
                 </ListItem>
                 <ListItem>
@@ -84,7 +86,8 @@ export default function ActividadMain() {
                 <CardActionArea
                   onClick={() => {
                     if (!user) router.push("/registro");
-                    else router.push("/dashboard/ciis");
+                    else if (!fromDash)
+                      router.push("/dashboard/ciis?type=" + (idx + 1));
                   }}
                   sx={{
                     p: 2,

@@ -5,6 +5,7 @@ import { withAuthGuard } from "src/hocs/with-auth-guard";
 import { SideNav } from "./side-nav";
 import { createTheme as localTheme } from "@/theme";
 import { TopNav } from "./top-nav";
+import { Box } from "@mui/material";
 
 const SIDE_NAV_WIDTH = 280;
 
@@ -60,7 +61,11 @@ const DashboardLayout = withAuthGuard((props) => {
       <TopNav onNavOpen={() => setOpenNav(true)} />
       <SideNav onClose={() => setOpenNav(false)} open={openNav} />
       <LayoutRoot>
-        <LayoutContainer>{children}</LayoutContainer>
+        <LayoutContainer>
+          <Box p={8} pr={0}>
+            {children}
+          </Box>
+        </LayoutContainer>
       </LayoutRoot>
     </ThemeProvider>
   );
