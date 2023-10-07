@@ -12,16 +12,25 @@
 //   },
 // };
 
+const domain = "http://localhost";
 export const directory = {
   events: {
     topics: {
-      get: (id) => `/api/v1/events/${id}/topics`,
+      get: (id) => `${domain}/api/v1/events/${id}/topics`,
     },
     gallery: {
       get: (type = null) =>
-        `/api/v1/events/gallery${
-          type != null ? "?type=" + type : ""
-        }`,
+        `${domain}/api/v1/events/gallery${type != null ? "?type=" + type : ""}`,
     },
+  },
+  user: {
+    src: `${domain}/api/v2/user`,
+  },
+  session: {
+    src: `${domain}/api/v2/session`,
+  },
+  inscription: {
+    src: `${domain}/api/v2/inscription`,
+    ciis: (type) => `${domain}/api/v2/inscription/ciis?type=${type}`,
   },
 };

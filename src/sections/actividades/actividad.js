@@ -21,6 +21,7 @@ import LocalFade from "@/components/Animation/LocalFade";
 import LocalZoom from "@/components/Animation/LocalZoom";
 import { useRouter } from "next/router";
 import { useAuth } from "@/context/auth";
+import Swal from "sweetalert2";
 
 export default function ActividadMain({
   title = "Actividades",
@@ -104,7 +105,16 @@ export default function ActividadMain({
                     if (!user) router.push("/registro");
                     else if (!fromDash)
                       router.push("/dashboard/ciis?type=" + costo.id);
-                    else setView(costo.id);
+                    else {
+                      if (!user?.inscription?.ciis) setView(costo.id);
+                      else {
+                        Swal.fire(
+                          "Ya estás inscrito",
+                          "No hace falta entrar aquí otra vez",
+                          "info"
+                        );
+                      }
+                    }
                   }}
                   sx={{
                     p: 2,

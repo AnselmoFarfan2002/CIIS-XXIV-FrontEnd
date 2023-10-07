@@ -178,3 +178,20 @@ a {
   background-position: center;
   animation: radialShine 3s linear infinite;
 }
+
+.swal2-popup {
+  background: #242E37 !important;
+}
+
+.swal2-confirm {
+  background: rgb(0, 58, 117) !important;
+}
+
+.swal2-title,
+.swal2-html-container {
+  color: #fff !important;
+}
+
+.swal2-container {
+  z-index: 2000;
+}

@@ -16,11 +16,18 @@ import {
   Typography,
 } from "@mui/material";
 import { useRef } from "react";
+import { register } from "./sendData";
+import { useAuth } from "@/context/auth";
 
 export default function CIISregistroFormGeneral({ view, setView = () => {} }) {
   const [costo] = costosCIIS.filter((a) => a.id == view);
   const formRef = useRef(null);
+  const { setInscriptionCiis } = useAuth();
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    register(formRef, view, setInscriptionCiis);
+  };
   return (
     <LocalFade>
       <Grid container maxWidth={"lg"}>
@@ -102,6 +109,7 @@ export default function CIISregistroFormGeneral({ view, setView = () => {} }) {
                   sm={10}
                   md={8}
                   component={"form"}
+                  onSubmit={handleSubmit}
                   ref={formRef}
                 >
                   <FormControl style={{ width: "100%" }}>
@@ -117,7 +125,9 @@ export default function CIISregistroFormGeneral({ view, setView = () => {} }) {
                     <input
                       className="form-control"
                       type="file"
+                      accept="image/*"
                       name="payment_doc"
+                      required
                     />
                     <FormHelperText>
                       Una imagen de su comprobante
@@ -134,6 +144,7 @@ export default function CIISregistroFormGeneral({ view, setView = () => {} }) {
                     }}
                     startIcon={<UploadFile />}
                     color="info"
+                    type="submit"
                   >
                     Registrar
                   </Button>

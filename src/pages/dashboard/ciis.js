@@ -1,9 +1,11 @@
 import DashboardLayout from "@/layouts/dashboard/layout";
 import ActividadMain from "@/sections/actividades/actividad";
+import ActividadLocation from "@/sections/actividades/location";
+import ActividadPayment from "@/sections/actividades/payment";
 import CIISregistroFormDelegacion from "@/sections/dashboard/ciis/formDelegacion";
 import CIISregistroFormGeneral from "@/sections/dashboard/ciis/formGeneral";
 import CIISregistroFormStudent from "@/sections/dashboard/ciis/formStudent";
-import { Card, CardContent, CardHeader, Grid, Typography } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -26,12 +28,29 @@ export default function Page() {
         <title>CIIS Inscripciones | CIIS</title>
       </Head>
       {formsViews[view] ?? (
-        <ActividadMain
-          title="Pre inscripciones"
-          subHeader="Selecccione la alternativa que se ajuste a su condición"
-          fromDash={true}
-          {...{ setView, view }}
-        />
+        <Container maxWidth={"lg"}>
+          <Grid
+            container
+            alignItems={"center"}
+            justifyContent={"center"}
+            columnSpacing={10}
+          >
+            <Grid item xs={12}>
+              <ActividadMain
+                title="Pre inscripciones"
+                subHeader="Selecccione la alternativa que se ajuste a su condición"
+                fromDash={true}
+                {...{ setView, view }}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <ActividadPayment />
+            </Grid>
+            <Grid item xs={12}>
+              <ActividadLocation />
+            </Grid>
+          </Grid>
+        </Container>
       )}
     </>
   );

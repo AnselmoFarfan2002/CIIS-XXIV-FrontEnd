@@ -6,6 +6,7 @@ import colors from "../../styles/colors";
 import { fonts } from "@/styles/fonts";
 
 import { Button } from "@mui/material";
+import { AccountBalance, Map, MapSharp, Place } from "@mui/icons-material";
 
 const Cover = () => {
   const title = {
@@ -125,7 +126,11 @@ const Cover = () => {
                   </Box>
 
                   <Box sx={{ maxWidth: { xs: 500, md: 800 } }}>
-                    <Typography variant="body2">
+                    <Typography
+                      variant="body2"
+                      fontWeight={"bold"}
+                      sx={{ fontVariant: "small-caps" }}
+                    >
                       Un año más del evento donde converge el conocimiento, un
                       año más del Congreso Internacional de Informática y
                       Sistemas.
@@ -186,6 +191,18 @@ const Cover = () => {
                   </Box>
                 ))}
               </Box>
+            </Grid>
+            <Grid item xs={12}>
+              <Box display={"flex"} justifyContent={"center"} mt={-2}>
+                <AccountBalance sx={{marginRight: .8}}/>
+                <Typography variant="body2" textAlign={"center"}>
+                  Universidad Nacional Jorge Basadre Grohmann
+                </Typography>
+                <Place />
+              </Box>
+              <Typography variant="body2" textAlign={"center"}>
+                Auditorio Juan Figueroa Salgado • Tacna Perú
+              </Typography>
             </Grid>
           </Grid>
         </Grid>

@@ -1,5 +1,7 @@
 import CIISLayout from "@/layouts/CIIS/CIISLayout";
 import ActividadMain from "@/sections/actividades/actividad";
+import ActividadLocation from "@/sections/actividades/location";
+import ActividadPayment from "@/sections/actividades/payment";
 import colors from "@/styles/colors";
 import {
   Box,
@@ -32,8 +34,11 @@ function Page() {
               <Grid item xs={12}>
                 <ActividadMain />
               </Grid>
-              <Grid item xs={8} sm={6} sx={{ paddingTop: { xs: 8, md: 0 } }}>
-                
+              <Grid item xs={12}>
+                <ActividadPayment />
+              </Grid>
+              <Grid item xs={12}>
+                <ActividadLocation />
               </Grid>
             </Grid>
           </Container>

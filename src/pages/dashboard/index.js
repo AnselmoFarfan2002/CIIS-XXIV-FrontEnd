@@ -1,3 +1,4 @@
+import { useAuth } from "@/context/auth";
 import DashboardLayout from "@/layouts/dashboard/layout.js";
 import InfoCardAsistencias from "@/sections/dashboard/inicio/asistencias";
 import InfoCardInscription from "@/sections/dashboard/inicio/inscripcion";
@@ -42,15 +43,13 @@ const ponencias = [
   },
 ];
 
-const user = {
-  status: 0,
-  attendances: 5,
-};
-
 export default function Page() {
   const tasaAceptacion = 0.8;
   const [attAct, setAttAct] = useState(6); //asistencias que debe tener hasta el momento
   const [attTotal, setAttTotal] = useState(30); //asistencias que debe tener al final del evento
+
+  const { user } = useAuth();
+
   return (
     <>
       <Head>

@@ -21,7 +21,7 @@ const PostmasterCard = (props) => {
           variant="gradient"
           bgColor="linear-gradient(195deg, rgb(73, 163, 241), rgb(26, 115, 232))"
           icon={<Facebook />}
-          title="Estamos en facebook"
+          title="Estamos en Facebook"
           description="Facebook oficial del CIIS donde podrás estar al día con las últimas actualizaciones de las actividades para el evento."
           action={{
             type: "external",
@@ -36,7 +36,7 @@ const PostmasterCard = (props) => {
           variant="gradient"
           bgColor="linear-gradient(195deg, rgb(116, 123, 138), rgb(73, 83, 97))"
           icon={<YouTube />}
-          title="Estamos en youtube"
+          title="Estamos en Youtube"
           description="Canal oficial de CIIS donde podrás encontrar transmisiones pasadas del evento y sus relacionados."
           action={{
             type: "external",

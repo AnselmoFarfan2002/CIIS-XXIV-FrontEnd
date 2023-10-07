@@ -3,10 +3,13 @@ import typography from "@/styles/typography";
 import { Search } from "@mui/icons-material";
 import { Button, Fade, Grid, TextField, Typography } from "@mui/material";
 import { useState, useRef } from "react";
-import { fetchByDNI } from "@/utils/data.fetch";
+import { abortFetch, fetchByDNI, fetchPost } from "@/utils/data.fetch";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import getFieldStyle from "@/utils/getFieldStyle";
+import { directory } from "@/context/url-context";
+
+import Swal from "sweetalert2";
 
 export default function RegistroForm() {
   const [dniError, setDniError] = useState("");
@@ -16,7 +19,17 @@ export default function RegistroForm() {
   const refNameInput = useRef(null);
   const refLastnameInput = useRef(null);
 
-  const form = useFormik(getSchemaForm());
+  const abort = abortFetch;
+
+  const success = (data) => {
+    Swal.fire(
+      "Registro exitoso",
+      "Ya puedes iniciar sesión en el sistema 😃",
+      "success"
+    );
+  };
+
+  const form = useFormik(getSchemaForm({ success, abort }));
 
   const handleFillData = (data) => {
     setUser(data);
@@ -37,7 +50,7 @@ export default function RegistroForm() {
   };
 
   return (
-    <Fade in={true} timeout={{enter: 1000}}>
+    <Fade in={true} timeout={{ enter: 1000 }}>
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Typography variant="h3" fontFamily={typography.h3} mb={1}>
@@ -152,7 +165,7 @@ export default function RegistroForm() {
   );
 }
 
-function getSchemaForm() {
+function getSchemaForm({ success = () => {}, abort = () => {} }) {
   return {
     initialValues: {
       dni: "",
@@ -180,7 +193,7 @@ function getSchemaForm() {
         .required("Este campo es obligatorio"),
     }),
     onSubmit: (values) => {
-      console.log(values);
+      fetchPost(directory.user.src, values, success, abort);
     },
   };
 }

@@ -1,6 +1,9 @@
 import { createContext, useContext, useState } from "react";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import { abortFetch, fetchPost } from "@/utils/data.fetch";
+import { directory } from "../url-context";
+import Swal from "sweetalert2";
 
 const AuthContext = createContext();
 
@@ -11,7 +14,6 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     let sesion = JSON.parse(window.localStorage.getItem("userSession"));
-
     if (sesion && new Date(sesion.tiempoExpiracion) > new Date()) {
       setUser(sesion);
       setLogged(true);
@@ -20,32 +22,45 @@ export function AuthProvider({ children }) {
     }
   }, []);
 
-  const login = (email, contrasenia) => {
+  function createSession(user) {
+    Swal.fire("Bienvenido", "Sesión iniciada con éxito", "success");
+
     let now = new Date();
     now.setHours(now.getHours() + 2);
-    let user = {
-      name: "Anselmo César",
-      lastname: "Farfan Pajuelo",
-      role: "user",
-      tiempoExpiracion: now,
-    };
-
     window.localStorage.setItem("userSession", JSON.stringify(user));
 
     setUser(user);
     setLogged(true);
     router.push("/dashboard");
+  }
+
+  const login = (email, password) => {
+    fetchPost(
+      directory.session.src,
+      { email, password },
+      createSession,
+      abortFetch
+    );
   };
 
+  function setInscriptionCiis(inscription) {
+    let user2 = { ...user };
+    user2.inscriptions = inscription;
+    window.localStorage.setItem("userSession", JSON.stringify(user));
+    setUser(user2);
+  }
+
   const logout = () => {
+    router.push("/");
     setUser(null);
     setLogged(false);
-    router.push("/");
     window.localStorage.removeItem("userSession");
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, logged }}>
+    <AuthContext.Provider
+      value={{ user, login, logout, logged, setInscriptionCiis }}
+    >
       {children}
     </AuthContext.Provider>
   );

@@ -16,10 +16,18 @@ import {
   Typography,
 } from "@mui/material";
 import { useRef } from "react";
+import { register } from "./sendData";
+import { useAuth } from "@/context/auth";
 
 export default function CIISregistroFormStudent({ view, setView = () => {} }) {
   const [costo] = costosCIIS.filter((a) => a.id == view);
   const formRef = useRef(null);
+  const { setInscriptionCiis } = useAuth();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    register(formRef, view, setInscriptionCiis);
+  };
 
   return (
     <LocalFade>
@@ -96,7 +104,15 @@ export default function CIISregistroFormStudent({ view, setView = () => {} }) {
                     S/. {costo.value}
                   </Typography>
                 </Grid>
-                <Grid item xs={12} sm={10} md={8} ref={formRef}>
+                <Grid
+                  item
+                  xs={12}
+                  sm={10}
+                  md={8}
+                  ref={formRef}
+                  component={"form"}
+                  onSubmit={handleSubmit}
+                >
                   <FormControl style={{ width: "100%" }}>
                     <FormHelperText
                       sx={{
@@ -111,6 +127,7 @@ export default function CIISregistroFormStudent({ view, setView = () => {} }) {
                       className="form-control"
                       type="file"
                       name="payment_doc"
+                      required
                     />
                     <FormHelperText>
                       Una imagen de su comprobante
@@ -130,6 +147,7 @@ export default function CIISregistroFormStudent({ view, setView = () => {} }) {
                       className="form-control"
                       type="file"
                       name="scholar_doc"
+                      required
                     />
                     <FormHelperText>
                       Para acreditar que es estudiante
@@ -146,6 +164,7 @@ export default function CIISregistroFormStudent({ view, setView = () => {} }) {
                     }}
                     startIcon={<UploadFile />}
                     color="info"
+                    type="submit"
                   >
                     Registrar
                   </Button>

@@ -1,4 +1,5 @@
 import LocalFade from "@/components/Animation/LocalFade";
+import { directory } from "@/context/url-context";
 import { costosCIIS } from "@/sections/actividades/data";
 import colors from "@/styles/colors";
 import typography from "@/styles/typography";
@@ -12,13 +13,14 @@ import {
   FormControl,
   FormHelperText,
   Grid,
-  InputLabel,
   TextField,
   ThemeProvider,
   Typography,
   createTheme,
 } from "@mui/material";
+import { register } from "./sendData";
 import { useRef } from "react";
+import { useAuth } from "@/context/auth";
 
 export default function CIISregistroFormDelegacion({
   view,
@@ -26,11 +28,12 @@ export default function CIISregistroFormDelegacion({
 }) {
   const [costo] = costosCIIS.filter((a) => a.id == view);
   const formRef = useRef(null);
+  const { setInscriptionCiis } = useAuth();
 
-  function register() {
-    const formData = new FormData(formRef.current);
-  }
-
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    register(formRef, view, setInscriptionCiis);
+  };
   return (
     <LocalFade>
       <Grid container maxWidth={"lg"}>
@@ -112,6 +115,7 @@ export default function CIISregistroFormDelegacion({
                   sm={10}
                   md={8}
                   component={"form"}
+                  onSubmit={handleSubmit}
                   ref={formRef}
                 >
                   <ThemeProvider
@@ -124,6 +128,7 @@ export default function CIISregistroFormDelegacion({
                       sx={{ mb: 2 }}
                       InputLabelProps={{ sx: { fontSize: 15 } }}
                       label="Código de delegación"
+                      required
                     />
                   </ThemeProvider>
                   <FormControl style={{ width: "100%" }}>
@@ -140,6 +145,7 @@ export default function CIISregistroFormDelegacion({
                       className="form-control"
                       type="file"
                       name="payment_doc"
+                      required
                     />
                     <FormHelperText>
                       Una imagen de su comprobante
@@ -159,6 +165,7 @@ export default function CIISregistroFormDelegacion({
                       className="form-control"
                       type="file"
                       name="scholar_doc"
+                      required
                     />
                     <FormHelperText>
                       Para acreditar que es estudiante
@@ -179,6 +186,7 @@ export default function CIISregistroFormDelegacion({
                     }}
                     startIcon={<UploadFile />}
                     color="info"
+                    type="submit"
                   >
                     Registrar
                   </Button>
