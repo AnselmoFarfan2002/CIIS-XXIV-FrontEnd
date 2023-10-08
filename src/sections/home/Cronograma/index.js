@@ -15,6 +15,7 @@ import { v4 } from "uuid";
 import { useInView } from "react-intersection-observer";
 import BarLeftTitle from "@/components/Sections/BarLeftTitle";
 import LocalFade from "@/components/Animation/LocalFade";
+import removeTilde from "@/utils/removeTilde";
 
 export default function HomeCronograma() {
   const [value, setValue] = useState(0);
@@ -97,7 +98,9 @@ export default function HomeCronograma() {
                                   sx={{ gap: 1, alignItems: "center" }}
                                 >
                                   <img
-                                    src={`/img/flags/${activity.country.toLocaleLowerCase()}.png`}
+                                    src={`/img/flags/${removeTilde(
+                                      activity.country
+                                    ).toLocaleLowerCase()}.png`}
                                     width={15}
                                     height={15}
                                   />

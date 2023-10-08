@@ -1,10 +1,10 @@
 import LocalFade from "@/components/Animation/LocalFade";
 import typography from "@/styles/typography";
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 export default function ActividadLocation() {
   return (
-    <>
+    <Box component={"section"} id="location" pt={5}>
       <LocalFade sx={{ mt: 5 }}>
         <Typography variant="h3" fontFamily={typography.h3} mb={1}>
           Lugar del evento
@@ -24,6 +24,6 @@ export default function ActividadLocation() {
           tabIndex="0"
         />
       </LocalFade>
-    </>
+    </Box>
   );
 }

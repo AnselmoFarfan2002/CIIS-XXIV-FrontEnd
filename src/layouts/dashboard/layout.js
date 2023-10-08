@@ -65,7 +65,7 @@ const DashboardLayout = withAuthGuard((props) => {
       <SideNav onClose={() => setOpenNav(false)} open={openNav} />
       <LayoutRoot>
         <LayoutContainer>
-          <Box sx={{ p: { xs: 2, sm: 8 } }}>{children}</Box>
+          <Box sx={{ px: { xs: 2 }, py: { xs: 8 } }}>{children}</Box>
         </LayoutContainer>
       </LayoutRoot>
     </ThemeProvider>

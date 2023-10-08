@@ -27,31 +27,33 @@ export default function Page() {
       <Head>
         <title>CIIS Inscripciones | CIIS</title>
       </Head>
-      {formsViews[view] ?? (
-        <Container maxWidth={"lg"}>
-          <Grid
-            container
-            alignItems={"center"}
-            justifyContent={"center"}
-            columnSpacing={10}
-          >
-            <Grid item xs={12}>
+      <Container maxWidth={"lg"}>
+        <Grid
+          container
+          alignItems={"center"}
+          justifyContent={"center"}
+          columnSpacing={10}
+        >
+          <Grid item xs={12}>
+            {formsViews[view] ?? (
               <ActividadMain
                 title="Pre inscripciones"
                 subHeader="Selecccione la alternativa que se ajuste a su condición"
                 fromDash={true}
                 {...{ setView, view }}
               />
-            </Grid>
-            <Grid item xs={12}>
-              <ActividadPayment />
-            </Grid>
+            )}
+          </Grid>
+          <Grid item xs={12}>
+            <ActividadPayment fromDash={true} />
+          </Grid>
+          {!formsViews[view] && (
             <Grid item xs={12}>
               <ActividadLocation />
             </Grid>
-          </Grid>
-        </Container>
-      )}
+          )}
+        </Grid>
+      </Container>
     </>
   );
 }

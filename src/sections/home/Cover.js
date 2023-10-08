@@ -7,8 +7,12 @@ import { fonts } from "@/styles/fonts";
 
 import { Button } from "@mui/material";
 import { AccountBalance, Map, MapSharp, Place } from "@mui/icons-material";
+import removeTilde from "@/utils/removeTilde";
+import typography from "@/styles/typography";
+import { useRouter } from "next/router";
 
 const Cover = () => {
+  const router = useRouter();
   const title = {
     fontWeight: "bold",
     textAlign: "center",
@@ -45,7 +49,7 @@ const Cover = () => {
       alt: "Brasil",
     },
     {
-      src: "/img/flags/perú.png",
+      src: "/img/flags/peru.png",
       alt: "Perú",
     },
     {
@@ -67,20 +71,25 @@ const Cover = () => {
       id="cover"
       component="section"
       sx={{
-        paddingY: { xs: 6, md: 0 },
-        paddingTop: { sm: 14, md: 10, lg: 0 },
+        py: { xs: 6, sm: 14, md: 0 },
+        pt: { md: 14 },
         background: alpha(colors.primary.main, 0.2),
         display: "flex",
         justifyContent: "center",
         zIndex: 1,
         position: "relative",
+        minHeight: {
+          xs: "100vh",
+          xl: "auto",
+        },
+        alignItems: "center",
       }}
     >
       <Grid
         container
         justifyContent="center"
         alignItems="center"
-        sx={{ minHeight: "100vh", maxWidth: "1800px" }}
+        sx={{ maxWidth: "1800px" }}
         rowGap={5}
       >
         <Grid item md={5}>
@@ -171,7 +180,7 @@ const Cover = () => {
                 {countrys.map((c, idx) => (
                   <Box key={"flag" + idx} style={{ color: colors.fonts.main }}>
                     <Avatar
-                      src={c.src}
+                      src={removeTilde(c.src)}
                       alt={c.alt}
                       sx={{
                         width: {
@@ -191,18 +200,6 @@ const Cover = () => {
                   </Box>
                 ))}
               </Box>
-            </Grid>
-            <Grid item xs={12}>
-              <Box display={"flex"} justifyContent={"center"} mt={-2}>
-                <AccountBalance sx={{marginRight: .8}}/>
-                <Typography variant="body2" textAlign={"center"}>
-                  Universidad Nacional Jorge Basadre Grohmann
-                </Typography>
-                <Place />
-              </Box>
-              <Typography variant="body2" textAlign={"center"}>
-                Auditorio Juan Figueroa Salgado • Tacna Perú
-              </Typography>
             </Grid>
           </Grid>
         </Grid>
@@ -277,6 +274,23 @@ const Cover = () => {
               </Atropos>
             </Grid>
           </Grid>
+        </Grid>
+
+        <Grid item xs={10}>
+          <Button
+            fullWidth
+            color="white"
+            fontFamily={typography.body2}
+            startIcon={<AccountBalance sx={{ marginRight: 0.8 }} />}
+            endIcon={<Place />}
+            sx={{ textTransform: "capitalize", px: 4 }}
+            onClick={() => router.push("/actividades#location")}
+          >
+            <Typography variant="body2" textAlign={"center"}>
+            Tacna Perú • Universidad Nacional Jorge Basadre Grohmann • Auditorio Juan
+              Figueroa Salgado
+            </Typography>
+          </Button>
         </Grid>
       </Grid>
     </Box>

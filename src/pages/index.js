@@ -13,6 +13,7 @@ import UltimaEdicion from "@/sections/home/UltimaEdicion";
 import HomeCounters from "@/sections/home/Counters";
 import HomeCronograma from "@/sections/home/Cronograma";
 import HomeAuspiciadores from "@/sections/home/Auspiciadores";
+import HomeCronogramav2 from "@/sections/home/Cronograma/indexv2";
 
 const Page = (props) => {
   const [edicion, setEdicion] = useState(24);
@@ -39,7 +40,8 @@ const Page = (props) => {
           {...{ ponencias, talleres, tematicas, edicion, concursos }}
         />
         <Topics {...{ ejes, setEjes, setTematicas }} />
-        <HomeCronograma />
+        {/* <HomeCronograma /> */}
+        <HomeCronogramav2 />
         <HomeAuspiciadores />
         <PostmasterCard />
         <Share edicion={edicion} setEdicion={setEdicion} />

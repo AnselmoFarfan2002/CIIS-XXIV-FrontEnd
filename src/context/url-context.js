@@ -13,6 +13,7 @@
 // };
 
 const domain = "http://localhost";
+// const domain = "";
 export const directory = {
   events: {
     topics: {
