@@ -1,14 +1,19 @@
+import LocalFade from "@/components/Animation/LocalFade";
+import { directory } from "@/context/url-context";
+import { fetchGET } from "@/utils/data.fetch";
+import { CheckCircle } from "@mui/icons-material";
 import {
   Box,
-  Button,
   Card,
-  CardActions,
   CardContent,
   CardHeader,
   Chip,
   Grid,
+  Skeleton,
   Typography,
 } from "@mui/material";
+import { useEffect, useState } from "react";
+import { v4 } from "uuid";
 
 const estados = [
   { label: "En espera", color: "info" },
@@ -18,6 +23,21 @@ const estados = [
 ];
 
 export default function InfoCardInscription({ user = {} }) {
+  const states = ["grey", "lightgreen", "red"];
+  const [ins, setIns] = useState(null);
+  const [loading, setLoading] = useState(true);
+  function handleSucess(ins) {
+    setLoading(false);
+    if (!ins.talleres.length) setIns(null);
+    else setIns(ins);
+  }
+  function handleFail() {
+    setLoading(false);
+  }
+  function handleGetInscription() {
+    fetchGET(directory.user.inscription, handleSucess, handleFail);
+  }
+  useEffect(handleGetInscription, []);
   return (
     <Card>
       <CardHeader
@@ -26,21 +46,70 @@ export default function InfoCardInscription({ user = {} }) {
       />
       <CardContent>
         <Box display={"flex"} alignItems={"center"} mt={-3} columnGap={1}>
-          <Typography variant="body2">Estado de inscripción:</Typography>
-          <Chip
-            component={"span"}
-            {...estados[
-              user
-                ? user.inscriptions.ciis
-                  ? user.inscriptions.ciis.status
-                  : 3
-                : 3
-            ]}
-          />
+          <Typography variant="body2">Estado de inscripción CIIS:</Typography>
+          <Chip component={"span"} {...estados[ins ? ins.ciis : 3]} />
         </Box>
         <Typography variant="body2">
           Cierre de inscripciones: 13 de noviembre del 2023
         </Typography>
+
+        <Typography variant="body2" sx={{ mt: 2, fontWeight: 500 }}>
+          Otras inscripciones
+        </Typography>
+        {loading && (
+          <>
+            <Skeleton sx={{ mt: 2 }} />
+            <Skeleton />
+            <Skeleton />
+          </>
+        )}
+        {ins && (
+          <LocalFade>
+            <Box sx={{ my: 1 }}>
+              {ins.talleres.map((tll) => (
+                <Typography key={v4()}>
+                  <CheckCircle sx={{ color: states[tll.state], mt: -0.5 }} />{" "}
+                  {tll.name}
+                </Typography>
+              ))}
+            </Box>
+            <Grid container sx={{ mt: 3 }}>
+              <Grid item md={4}>
+                <Typography>
+                  <CheckCircle
+                    sx={{ color: states[0], mt: -0.5 }}
+                    fontSize="small"
+                  />{" "}
+                  Por validar
+                </Typography>
+              </Grid>
+              <Grid item md={4}>
+                <Typography>
+                  <CheckCircle
+                    sx={{ color: states[1], mt: -0.5 }}
+                    fontSize="small"
+                  />{" "}
+                  Confimado
+                </Typography>
+              </Grid>
+              <Grid item md={4}>
+                <Typography>
+                  <CheckCircle
+                    sx={{ color: states[2], mt: -0.5 }}
+                    fontSize="small"
+                  />{" "}
+                  Observado
+                </Typography>
+              </Grid>
+            </Grid>
+          </LocalFade>
+        )}
+
+        {!ins && !loading && (
+          <Typography variant="body2" sx={{ my: 0.5 }}>
+            Sin inscripciones registradas
+          </Typography>
+        )}
       </CardContent>
     </Card>
   );

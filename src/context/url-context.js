@@ -12,8 +12,8 @@
 //   },
 // };
 
-const domain = "http://localhost";
-// const domain = "";
+// const domain = "http://localhost";
+const domain = "";
 export const directory = {
   events: {
     topics: {
@@ -26,6 +26,14 @@ export const directory = {
   },
   user: {
     src: `${domain}/api/v2/user`,
+    inscription: `${domain}/api/v2/user/inscription`,
+  },
+  taller: {
+    src: `${domain}/api/v2/taller`,
+    one: (id) => ({
+      src: `${domain}/api/v2/taller/${id}`,
+      participant: `${domain}/api/v2/taller/${id}/participant`,
+    }),
   },
   session: {
     src: `${domain}/api/v2/session`,

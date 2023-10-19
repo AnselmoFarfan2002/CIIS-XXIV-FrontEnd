@@ -11,10 +11,8 @@ const Page = () => {
         <title>Historia | CIIS</title>
         <meta
           name="description"
-          content={`Recopilacion de imágenes de la historia del Congreso internacional en informática y sistemas CIIS. En cada edición el CIIS vuelve a juntar a pontenes de alto nivel en un congreso de 4 días de duración. ¡Bievenido!`}
+          content={`Ediciones anteriores. Recopilación de imágenes de la historia del Congreso internacional en informática y sistemas CIIS. En cada edición el CIIS vuelve a juntar a pontenes de alto nivel en un congreso de 4 días de duración. ¡Bievenido!`}
         />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.png" />
       </Head>
       <Box
         component={"main"}

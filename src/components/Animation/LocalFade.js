@@ -7,10 +7,11 @@ export default function LocalFade({ children, sx = {} }) {
   });
 
   return (
-    <Box ref={ref} {...sx}>
+    <Box ref={ref} sx={sx}>
       <Fade in={inView} timeout={{ enter: 500 }}>
         <Box
           sx={{
+            height: "100%",
             opacity: 0,
           }}
         >

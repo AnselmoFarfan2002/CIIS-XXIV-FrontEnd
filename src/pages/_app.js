@@ -5,7 +5,6 @@ import colors from "@/styles/colors";
 import typography from "@/styles/typography";
 
 import { AuthProvider } from "@/context/auth";
-import { AuthGuard } from "@/guards/auth-guard";
 import LoadingBar from "@/components/LoadingBar";
 
 const darkTheme = createTheme({
@@ -19,14 +18,12 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <LoadingBar />
-      <AuthGuard>
-        <AuthProvider>
-          <ThemeProvider theme={darkTheme}>
-            <CssBaseline />
-            {getLayout(<Component {...pageProps} />)}
-          </ThemeProvider>
-        </AuthProvider>
-      </AuthGuard>
+      <AuthProvider>
+        <ThemeProvider theme={darkTheme}>
+          <CssBaseline />
+          {getLayout(<Component {...pageProps} />)}
+        </ThemeProvider>
+      </AuthProvider>
     </>
   );
 }

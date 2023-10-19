@@ -3,7 +3,7 @@ export const costosCIIS = [
     id: "op1",
     name: "Público general",
     descuento: false,
-    value: "120",
+    value: "100",
     desc: "Todo el mundo es bienvenido.",
   },
   {

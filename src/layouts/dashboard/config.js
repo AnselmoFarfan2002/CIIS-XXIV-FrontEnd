@@ -39,7 +39,6 @@ export const items = [
         <Class />
       </SvgIcon>
     ),
-    disabled: true,
   },
   {
     title: "Concursos",

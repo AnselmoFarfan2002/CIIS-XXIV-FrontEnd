@@ -19,6 +19,10 @@ function Page() {
     <>
       <Head>
         <title>Registro | CIIS</title>
+        <meta
+          name="description"
+          content={`Registro. Únete a cualquier actividad del CIIS mediante el registro en nuestro sistema, desde dentro podrás pre-inscribirte.`}
+        />
       </Head>
       <Box
         width={"100vw"}

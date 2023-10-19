@@ -28,7 +28,7 @@ const auspiciadoresData = [
   {
     name: "El Padrino",
     logo: "/img/auspiciadores/el-padrino-pizza.png",
-    web: null,
+    web: "https://ecartac.com/r/el-padrino-la-vera-pizza?fbclid=IwAR0PMQ9v8cvUTUhTwN8lAIMAIrOb0BV4jqMaEeBCT9FRR0nPP2xgs9S2B2U",
     social_networks: [
       {
         name: "Facebook",
@@ -61,6 +61,58 @@ const auspiciadoresData = [
         href: "https://www.linkedin.com/company/dcptacna/?originalSubdomain=pe",
       },
     ],
+  },
+  {
+    name: "Gestión CGAL",
+    logo: "/img/auspiciadores/gal.png",
+    web: "http://m.munialbarracin.gob.pe/",
+    social_networks: [
+      {
+        name: "Facebook",
+        href: "https://www.facebook.com/muni.cgal?mibextid=ZbWKwL",
+      },
+    ],
+  },
+  {
+    name: "Hotel terrazas",
+    logo: "/img/auspiciadores/logo-terrazas.png",
+    web: null,
+    social_networks: [],
+  },
+];
+
+export const talleresData = [
+  {
+    name: "Inteligencia Artificial aplicada a la Música",
+    start: "11:30am",
+    end: "13:00hrs",
+    place: "UNJBG - Laboratorios de la ESIS",
+    speaker: "Ph.D. Arlindo Galvão (CEIA)",
+    flyer: null,
+  },
+  {
+    name: "Revisiones Sistemáticas en Ciencia de la Computación",
+    start: "11:30am",
+    end: "13:00hrs",
+    place: "UNJBG - Laboratorios de la ESIS",
+    speaker: "Ph.D. Yvan Tupac (UCSP)",
+    flyer: null,
+  },
+  {
+    name: "Análisis Automático de Código Fuente",
+    start: "11:30am",
+    end: "13:00hrs",
+    place: "UNJBG - Laboratorios de la ESIS",
+    speaker: "Dr. Edgar Sarmiento (UNSA)",
+    flyer: null,
+  },
+  {
+    name: "AWS Academy Cloud Foundations",
+    start: "11:30am",
+    end: "13:00hrs",
+    place: "UNJBG - Laboratorios de la ESIS",
+    speaker: "Dr. Alvaro Mamani (UNSA)",
+    flyer: null,
   },
 ];
 

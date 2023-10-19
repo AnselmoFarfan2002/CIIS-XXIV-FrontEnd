@@ -5,7 +5,7 @@ async function handleResponse(res) {
   if (res.ok) return res.json();
   else {
     let error = await res.json();
-    console.log(error)
+    console.log(error);
     return Promise.reject(error);
   }
 }
@@ -34,6 +34,13 @@ export function fetchPost(uri, data, save = () => {}, abort = console.log) {
     .catch(abort);
 }
 
+export function fetchGET(uri, save = console.log, abort = console.log) {
+  fetch(uri, { credentials: "include" })
+    .then(handleResponse)
+    .then(save)
+    .catch(abort);
+}
+
 export function fetchPostWithFile(
   uri,
   data,
@@ -51,10 +58,11 @@ export function fetchPostWithFile(
     .catch(abort);
 }
 
-export function abortFetch(fail) {
+export function abortFetch(fail = {}) {
   const {
     error = "Ha ocurrido un error",
     reason = "En este momento el servidor no está disponible, inténtelo más tarde",
   } = fail;
+
   Swal.fire(error, reason, "error");
 }

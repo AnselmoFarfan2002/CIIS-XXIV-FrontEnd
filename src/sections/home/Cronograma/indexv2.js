@@ -16,7 +16,7 @@ import {
 } from "@mui/material";
 import colors from "@/styles/colors";
 import { useState } from "react";
-import cronogramaData, { cronogramaDatav0 } from "./data";
+import { cronogramaDatav0 } from "./data";
 import { v4 } from "uuid";
 import { useInView } from "react-intersection-observer";
 import BarLeftTitle from "@/components/Sections/BarLeftTitle";
@@ -315,7 +315,7 @@ export default function HomeCronogramav2() {
                                     variant="contained"
                                     onClick={handleNext}
                                     disabled={
-                                      index === cronogramaData.length - 1
+                                      index === cronogramaDatav0.length - 1
                                     }
                                     sx={{ mt: 1, mr: 1 }}
                                   >

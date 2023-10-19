@@ -7,6 +7,7 @@ import { createTheme as localTheme } from "@/theme";
 import { TopNav } from "./top-nav";
 import { Box } from "@mui/material";
 import colors from "@/styles/colors";
+import { AuthGuard } from "@/guards/auth-guard";
 
 const SIDE_NAV_WIDTH = 280;
 
@@ -60,15 +61,17 @@ const DashboardLayout = withAuthGuard((props) => {
   });
 
   return (
-    <ThemeProvider theme={theme}>
-      <TopNav onNavOpen={() => setOpenNav(true)} />
-      <SideNav onClose={() => setOpenNav(false)} open={openNav} />
-      <LayoutRoot>
-        <LayoutContainer>
-          <Box sx={{ px: { xs: 2 }, py: { xs: 8 } }}>{children}</Box>
-        </LayoutContainer>
-      </LayoutRoot>
-    </ThemeProvider>
+    <AuthGuard>
+      <ThemeProvider theme={theme}>
+        <TopNav onNavOpen={() => setOpenNav(true)} />
+        <SideNav onClose={() => setOpenNav(false)} open={openNav} />
+        <LayoutRoot>
+          <LayoutContainer>
+            <Box sx={{ px: { xs: 2 }, py: { xs: 8 } }}>{children}</Box>
+          </LayoutContainer>
+        </LayoutRoot>
+      </ThemeProvider>
+    </AuthGuard>
   );
 });
 
