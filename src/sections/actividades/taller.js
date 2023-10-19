@@ -38,6 +38,7 @@ export default function ActividadTaller({
   const router = useRouter();
   function inscribirseTaller(id) {
     if (user) router.push("/dashboard/talleres?id=" + id);
+    else router.push("/registro");
   }
 
   return (
