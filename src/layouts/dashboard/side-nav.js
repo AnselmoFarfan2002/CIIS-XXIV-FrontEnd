@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useAuth } from "@/context/auth";
 import {
   Box,
+  CardActionArea,
   Divider,
   Drawer,
   Stack,
@@ -37,29 +38,31 @@ export const SideNav = (props) => {
       }}
     >
       <Box sx={{ p: 3 }}>
-        <Box
+        <CardActionArea
           onClick={() => router.push("/")}
           sx={{
             display: "inline-flex",
             flexDirection: "column",
             width: "100%",
             cursor: "pointer",
-            px: 10,
+            py: 2,
           }}
         >
-          <img
-            src="/img/CIIS/XXIV/logo.png"
-            alt="Logo Sportainment"
-            style={{ width: "100%" }}
-          />
-        </Box>
-        <Typography
-          variant="body2"
-          color={"white"}
-          sx={{ textAlign: "center", mb: 3, fontWeight: 500 }}
-        >
-          CIIS-TACNA
-        </Typography>
+          <Box sx={{ px: 10, py: 1, mt: 0 }}>
+            <img
+              src="/img/CIIS/XXIV/logo.png"
+              alt="Logo Sportainment"
+              style={{ width: "100%" }}
+            />
+          </Box>
+          <Typography
+            variant="body2"
+            color={"white"}
+            sx={{ textAlign: "center", fontWeight: 500 }}
+          >
+            CIIS-TACNA
+          </Typography>
+        </CardActionArea>
         <Box
           sx={{
             alignItems: "center",

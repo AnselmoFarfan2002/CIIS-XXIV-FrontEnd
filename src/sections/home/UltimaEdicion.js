@@ -40,7 +40,7 @@ const UltimaEdicion = ({ action = true }) => {
       id="share"
       component={"section"}
       sx={{
-        background: colors.bg.main,
+        background: colors.bg.gradientSolid(0),
         zIndex: 1,
         position: "relative",
         padding: {

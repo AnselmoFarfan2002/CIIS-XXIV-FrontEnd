@@ -25,7 +25,7 @@ export function register(formRef, type, setInscriptionCiis = () => {}) {
 
   const formData = new FormData(formRef.current);
   fetchPostWithFile(
-    directory.inscription.ciis(type),
+    directory.events.one(24).reservation.ciis(type),
     formData,
     successRegisterLocal,
     abortFetch

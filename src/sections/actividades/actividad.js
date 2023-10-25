@@ -1,6 +1,6 @@
 import colors from "@/styles/colors";
 import typography from "@/styles/typography";
-import { CheckCircle } from "@mui/icons-material";
+import { ArrowLeft, ArrowRight, CheckCircle } from "@mui/icons-material";
 import {
   Box,
   Card,
@@ -24,10 +24,11 @@ import { useAuth } from "@/context/auth";
 import Swal from "sweetalert2";
 
 export default function ActividadMain({
-  title = "Actividades",
+  title = "Evento principal",
   subHeader = "Detalles de todas las actividades disponibles durante este evento",
   fromDash = false,
   setView = () => {},
+  handleOpenViewImage = () => {},
 }) {
   const router = useRouter();
   const { user } = useAuth();
@@ -46,7 +47,14 @@ export default function ActividadMain({
       <Grid item xs={12} md={6} lg={5}>
         <LocalFade>
           <Card sx={{ backgroundColor: colors.bg.light }}>
-            <CardMedia component={"img"} src="/img/CIIS/XXIV/flyer-main.png" />
+            <CardMedia
+              component={"img"}
+              src="/img/CIIS/XXIV/flyer-main.png"
+              sx={{ "&:hover": { cursor: "pointer" } }}
+              onClick={() =>
+                handleOpenViewImage("/img/CIIS/XXIV/flyer-main.png")
+              }
+            />
             <CardContent sx={{ textAlign: "center" }}>
               <Typography fontFamily={typography.h6}>
                 Evento principal
@@ -102,7 +110,10 @@ export default function ActividadMain({
               <Card sx={{ backgroundColor: colors.bg.light, p: 1 }}>
                 <CardActionArea
                   onClick={() => {
-                    if (!user) router.push("/registro");
+                    if (!user)
+                      router.push(
+                        `/registro?next=${"/dashboard/ciis?type=" + costo.id}`
+                      );
                     else if (!fromDash)
                       router.push("/dashboard/ciis?type=" + costo.id);
                     else {
@@ -116,30 +127,43 @@ export default function ActividadMain({
                       }
                     }
                   }}
-                  sx={{
-                    p: 2,
-                    display: "flex",
-                    justifyContent: "space-between",
-                  }}
                 >
-                  <Box>
-                    <Typography fontFamily={typography.h6}>
-                      {costo.descuento
-                        ? "Tarifa con descuento • CIIS XXIV"
-                        : "Tarifa estándar • CIIS XXIV"}
-                    </Typography>
-                    <Typography fontFamily={typography.h3}>
-                      {costo.name}
-                    </Typography>
-                    <Typography fontFamily={typography.body2}>
-                      {costo.desc}
-                    </Typography>
-                  </Box>
-                  <Box minWidth={80}>
-                    <Typography fontFamily={typography.h3}>
-                      S/. {costo.value}
-                    </Typography>
-                  </Box>
+                  <Grid
+                    sx={{ px: 2, py: 2 }}
+                    container
+                    justifyContent={"space-between"}
+                    alignItems={"center"}
+                  >
+                    <Grid item>
+                      <Box>
+                        <Typography fontFamily={typography.h6}>
+                          {costo.descuento
+                            ? "Tarifa con descuento • CIIS XXIV"
+                            : "Tarifa estándar • CIIS XXIV"}
+                        </Typography>
+                        <Typography fontFamily={typography.h3}>
+                          {costo.name}
+                        </Typography>
+                        <Typography fontFamily={typography.body2}>
+                          {costo.desc}
+                        </Typography>
+                        <Typography
+                          fontFamily={typography.body2}
+                          fontWeight={500}
+                        >
+                          Continuar aquí
+                          <ArrowRight />
+                        </Typography>
+                      </Box>
+                    </Grid>
+                    <Grid item>
+                      <Box sx={{ minWidth: { xs: 150, sm: null } }}>
+                        <Typography fontFamily={typography.h3}>
+                          S/. {costo.value}
+                        </Typography>
+                      </Box>
+                    </Grid>
+                  </Grid>
                 </CardActionArea>
               </Card>
             </LocalZoom>

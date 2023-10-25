@@ -95,7 +95,7 @@ const Header = (props) => {
                   onClick={() => router.push("/actividades")}
                 >
                   <Typography fontSize={12} fontWeight={"bold"}>
-                    Actividades
+                    Inscripciones
                   </Typography>
                 </Button>
                 <Button

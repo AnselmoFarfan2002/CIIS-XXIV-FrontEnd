@@ -37,6 +37,8 @@ export default function HomeAuspiciadores() {
           lg: 10,
           xs: 5,
         },
+        pt: "0em !important",
+        pb: "5em !important",
         flexDirection: "column",
         display: "flex",
         justifyContent: "center",

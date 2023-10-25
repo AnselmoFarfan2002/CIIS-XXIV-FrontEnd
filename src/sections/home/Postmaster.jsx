@@ -162,6 +162,7 @@ const PostmasterCard = (props) => {
           xs: 5,
         },
         paddingTop: "0 !important",
+        paddingBottom: "0 !important",
         display: "flex",
         alignItems: "center",
         flexDirection: "column",

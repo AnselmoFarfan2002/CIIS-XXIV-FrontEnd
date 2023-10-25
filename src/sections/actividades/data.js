@@ -17,7 +17,7 @@ export const costosCIIS = [
     id: "op3",
     name: "Delegaciones",
     descuento: true,
-    value: "65",
+    value: "50",
     desc: "Estudiantes de universidades invitadas.",
   },
   {

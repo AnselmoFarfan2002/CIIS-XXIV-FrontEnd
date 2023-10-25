@@ -6,7 +6,6 @@ import colors from "@/styles/colors";
 import {
   Box,
   Container,
-  Fade,
   Grid,
   ThemeProvider,
   createTheme,

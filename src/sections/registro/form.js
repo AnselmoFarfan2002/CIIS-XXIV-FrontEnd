@@ -10,26 +10,32 @@ import getFieldStyle from "@/utils/getFieldStyle";
 import { directory } from "@/context/url-context";
 
 import Swal from "sweetalert2";
+import { useRouter } from "next/router";
+import { useAuth } from "@/context/auth";
 
 export default function RegistroForm() {
   const [dniError, setDniError] = useState("");
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const refDniInput = useRef(null);
   const refNameInput = useRef(null);
   const refLastnameInput = useRef(null);
+  const router = useRouter();
+  const { csfr } = useAuth();
 
   const abort = abortFetch;
 
-  const success = (data) => {
-    Swal.fire(
-      "Registro exitoso",
-      "Ya puedes iniciar sesión en el sistema 😃",
-      "success"
-    );
+  const success = (user) => {
+    Swal.fire({
+      title: "Registro exitoso",
+      text: "Estás a un solo paso de ser parte de este evento.",
+      icon: "success",
+    });
+    csfr(user, router.query.next ?? "/dashboard");
   };
 
-  const form = useFormik(getSchemaForm({ success, abort }));
+  const form = useFormik(getSchemaForm({ success, abort, setLoading }));
 
   const handleFillData = (data) => {
     setUser(data);
@@ -156,6 +162,7 @@ export default function RegistroForm() {
               color: colors.fonts.main,
             }}
             onClick={form.handleSubmit}
+            disabled={loading}
           >
             Registrarse
           </Button>
@@ -165,7 +172,11 @@ export default function RegistroForm() {
   );
 }
 
-function getSchemaForm({ success = () => {}, abort = () => {} }) {
+function getSchemaForm({
+  success = () => {},
+  abort = () => {},
+  setLoading = () => {},
+}) {
   return {
     initialValues: {
       dni: "",
@@ -193,7 +204,11 @@ function getSchemaForm({ success = () => {}, abort = () => {} }) {
         .required("Este campo es obligatorio"),
     }),
     onSubmit: (values) => {
-      fetchPost(directory.user.src, values, success, abort);
+      setLoading(true);
+      fetchPost(directory.user.src, values, success, (err) => {
+        abort(err);
+        setLoading(false);
+      });
     },
   };
 }

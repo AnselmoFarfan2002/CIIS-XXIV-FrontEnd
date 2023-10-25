@@ -28,6 +28,7 @@ import StepLabel from "@mui/material/StepLabel";
 import StepContent from "@mui/material/StepContent";
 import Paper from "@mui/material/Paper";
 import {
+  Download,
   EmojiEvents,
   LibraryBooks,
   RecordVoiceOver,
@@ -104,14 +105,26 @@ export default function HomeCronogramav2() {
           <Grid item xs={12}>
             <Grid container spacing={3} sx={{ height: "max-content" }}>
               <Grid item xs={12} md={12}>
-                <Card sx={{ bgcolor: alpha(colors.bg.light, .9), px: { sm: 2 } }}>
+                <Card
+                  sx={{ bgcolor: alpha(colors.bg.light, 0.9), px: { sm: 2 } }}
+                >
                   <CardContent>
                     <Stepper activeStep={activeStep} orientation="vertical">
+                      <Button
+                        fullWidth
+                        variant="contained"
+                        sx={{ fontWeight: 500 }}
+                        startIcon={<Download />}
+                        href="/docs/cronogramas/Cronograma CIIS XXIV - 2023.pdf"
+                        target="_blank"
+                      >
+                        Descargar cronograma
+                      </Button>
                       {cronogramaDatav0.map((plan, index) => (
                         <Step key={v4()}>
                           <StepLabel
                             icon={<Today sx={{ mt: -1 }} />}
-                            onClick={() => handleSet(index)}
+                            onClick={() => handleSet(index + 1)}
                             sx={{
                               "&:hover": {
                                 cursor: "pointer",
@@ -136,7 +149,9 @@ export default function HomeCronogramav2() {
                           <StepContent>
                             <Grid container columnSpacing={3}>
                               <Grid item xs={12} md={6}>
-                                <Typography variant="h6" mt={2}>Primera parte</Typography>
+                                <Typography variant="h6" mt={2}>
+                                  Primera parte
+                                </Typography>
                                 <Box sx={{ mb: 2 }}>
                                   {plan.early.map((activity, idx) => {
                                     return (
@@ -223,7 +238,9 @@ export default function HomeCronogramav2() {
                                 </Box>
                               </Grid>
                               <Grid item xs={12} md={6}>
-                                <Typography variant="h6" mt={2}>Segunda parte</Typography>
+                                <Typography variant="h6" mt={2}>
+                                  Segunda parte
+                                </Typography>
                                 <Box sx={{ mb: 2 }}>
                                   {plan.late.map((activity, idx) => {
                                     return (

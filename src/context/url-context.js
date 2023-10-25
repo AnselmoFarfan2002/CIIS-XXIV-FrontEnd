@@ -13,7 +13,7 @@
 // };
 
 // const domain = "http://localhost";
-const domain = "";
+const domain = "https://www.ciistacna.com";
 export const directory = {
   events: {
     topics: {
@@ -23,6 +23,12 @@ export const directory = {
       get: (type = null) =>
         `${domain}/api/v1/events/gallery${type != null ? "?type=" + type : ""}`,
     },
+    one: (id) => ({
+      src: `${domain}/api/v2/event/${id}`,
+      reservation: {
+        ciis: (type) => `${domain}/api/v2/event/${id}/reservation/ciis?type=${type}`,
+      },
+    }),
   },
   user: {
     src: `${domain}/api/v2/user`,

@@ -14,6 +14,7 @@ import HomeCounters from "@/sections/home/Counters";
 import HomeCronograma from "@/sections/home/Cronograma";
 import HomeAuspiciadores from "@/sections/home/Auspiciadores";
 import HomeCronogramav2 from "@/sections/home/Cronograma/indexv2";
+import HomeConcursos from "@/sections/home/concurso";
 
 const Page = (props) => {
   const [edicion, setEdicion] = useState(24);
@@ -42,9 +43,10 @@ const Page = (props) => {
         <Topics {...{ ejes, setEjes, setTematicas }} />
         {/* <HomeCronograma /> */}
         <HomeCronogramav2 />
-        <HomeAuspiciadores />
+        <HomeConcursos />
         <PostmasterCard />
         <Share edicion={edicion} setEdicion={setEdicion} />
+        <HomeAuspiciadores />
         <UltimaEdicion />
       </Box>
     </>

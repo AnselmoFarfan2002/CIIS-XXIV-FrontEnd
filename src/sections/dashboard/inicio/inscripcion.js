@@ -26,16 +26,20 @@ export default function InfoCardInscription({ user = {} }) {
   const states = ["grey", "lightgreen", "red"];
   const [ins, setIns] = useState(null);
   const [loading, setLoading] = useState(true);
+
   function handleSucess(ins) {
     setLoading(false);
-    if (!ins.talleres.length) setIns(null);
-    else setIns(ins);
+    setIns(ins);
   }
   function handleFail() {
     setLoading(false);
   }
   function handleGetInscription() {
-    fetchGET(directory.user.inscription, handleSucess, handleFail);
+    fetchGET(
+      directory.user.inscription + "?event=24",
+      handleSucess,
+      handleFail
+    );
   }
   useEffect(handleGetInscription, []);
   return (
@@ -47,7 +51,11 @@ export default function InfoCardInscription({ user = {} }) {
       <CardContent>
         <Box display={"flex"} alignItems={"center"} mt={-3} columnGap={1}>
           <Typography variant="body2">Estado de inscripción CIIS:</Typography>
-          <Chip component={"span"} {...estados[ins ? ins.ciis : 3]} />
+          {loading ? (
+            <Skeleton width={50} />
+          ) : (
+            <Chip component={"span"} {...estados[ins ? ins.ciis : 3]} />
+          )}
         </Box>
         <Typography variant="body2">
           Cierre de inscripciones: 13 de noviembre del 2023
@@ -63,7 +71,7 @@ export default function InfoCardInscription({ user = {} }) {
             <Skeleton />
           </>
         )}
-        {ins && (
+        {Boolean(ins?.talleres.length) && (
           <LocalFade>
             <Box sx={{ my: 1 }}>
               {ins.talleres.map((tll) => (
@@ -105,7 +113,7 @@ export default function InfoCardInscription({ user = {} }) {
           </LocalFade>
         )}
 
-        {!ins && !loading && (
+        {!ins?.talleres.length && !loading && (
           <Typography variant="body2" sx={{ my: 0.5 }}>
             Sin inscripciones registradas
           </Typography>

@@ -20,13 +20,13 @@ import {
 import BarLeftTitle from "@/components/Sections/BarLeftTitle";
 
 const emojis = {
-  "Inteligencia artificial": <SmartToy />,
-  Ciberseguridad: <Security />,
-  "Desarrollo de software": <Terminal />,
-  "Ciencia de datos": <BarChart />,
-  "Computación en la nube": <Cloud />,
-  "Ingeniería de Software": <Engineering />,
-  "Remote Sensing & IoT": <SettingsRemote />,
+  "Inteligencia artificial": <SmartToy color="info"/>,
+  Ciberseguridad: <Security color="info"/>,
+  "Desarrollo de software": <Terminal color="info"/>,
+  "Ciencia de datos": <BarChart color="info"/>,
+  "Computación en la nube": <Cloud color="info"/>,
+  "Ingeniería de Software": <Engineering color="info"/>,
+  "Remote Sensing & IoT": <SettingsRemote color="info"/>,
 };
 
 const Topics = ({ setEjes, setTematicas, ejes }) => {
@@ -137,25 +137,26 @@ const Topics = ({ setEjes, setTematicas, ejes }) => {
                       >
                         <Card sx={{ bgcolor: colors.bg.light }}>
                           <CardContent>
-                            <Typography
-                              gutterBottom
-                              variant="h6"
-                              component="div"
-                              fontWeight={"bold"}
-                            >
-                              <span
-                                style={{ color: colors.primary.dark }}
-                                display={"inline-block"}
-                              >
-                                {eje.emoji}
-                              </span>
-                              <Box marginTop={-4.5} marginLeft={4}>
-                                {eje.name}
-                              </Box>
-                            </Typography>
-                            <Typography variant="body2">
-                              {eje.description}
-                            </Typography>
+                            <Grid container>
+                              <Grid item>
+                                <Grid container sx={{ gap: 1 }}>
+                                  {eje.emoji}
+                                  <Typography
+                                    gutterBottom
+                                    variant="h6"
+                                    component="div"
+                                    fontWeight={"bold"}
+                                  >
+                                    {eje.name}
+                                  </Typography>
+                                </Grid>
+                                <Grid item>
+                                  <Typography variant="body2">
+                                    {eje.description}
+                                  </Typography>
+                                </Grid>
+                              </Grid>
+                            </Grid>
                           </CardContent>
                         </Card>
                       </motion.div>

@@ -153,7 +153,7 @@ const Cover = () => {
                         color: colors.fonts.main,
                         bgcolor: colors.primary.light,
                       }}
-                      href="#topics"
+                      onClick={() => router.push("/actividades")}
                     >
                       <Typography
                         variant="title2"
@@ -163,7 +163,7 @@ const Cover = () => {
                           py: 0,
                         }}
                       >
-                        Ver más
+                        Inscríbete
                       </Typography>
                     </Button>
                   </Box>
@@ -287,8 +287,8 @@ const Cover = () => {
             onClick={() => router.push("/actividades#location")}
           >
             <Typography variant="body2" textAlign={"center"}>
-            Tacna Perú • Universidad Nacional Jorge Basadre Grohmann • Auditorio Juan
-              Figueroa Salgado
+              Tacna Perú • Universidad Nacional Jorge Basadre Grohmann •
+              Auditorio Juan Figueroa Salgado
             </Typography>
           </Button>
         </Grid>

@@ -1,6 +1,7 @@
 import { ArrowForward } from "@mui/icons-material";
-import { Box, Icon, Typography } from "@mui/material";
+import { Box, Grid, Icon, Typography } from "@mui/material";
 import Link from "@mui/material";
+import { useRouter } from "next/router";
 
 function FilledInfoCard({
   variant = "contained",
@@ -35,6 +36,8 @@ function FilledInfoCard({
     iconColor = "dark";
   }
 
+  const router = useRouter();
+
   return (
     <Box
       display={{ xs: "block", md: "flex" }}
@@ -46,27 +49,24 @@ function FilledInfoCard({
       px={3}
     >
       <Box pl={{ xs: 0, md: 2 }} lineHeight={1}>
-        <Box display={"flex"} alignItems={"center"}>
-          <Typography
-            display="block"
-            variant="h3"
-            color={iconColor}
-            mt={-1}
-          >
-            {icon}
-          </Typography>
-          <Typography
-            display="block"
-            variant="h6"
-            color={
-              variant === "contained" || bgColor === "light" ? "dark" : "white"
-            }
-            fontWeight="bold"
-            mb={1}
-          >
-            {title}
-          </Typography>
-        </Box>
+        <Grid container spacing={0.5}>
+          <Grid item>{icon}</Grid>
+          <Grid item>
+            <Typography
+              display="block"
+              variant="h6"
+              color={
+                variant === "contained" || bgColor === "light"
+                  ? "dark"
+                  : "white"
+              }
+              fontWeight="bold"
+              mb={1}
+            >
+              {title}
+            </Typography>
+          </Grid>
+        </Grid>
         <Typography
           display="block"
           variant="body2"
@@ -102,15 +102,27 @@ function FilledInfoCard({
           </Box>
         ) : null}
         {action && action.type === "internal" ? (
-          <Typography
-            to={action.route}
-            variant="body2"
-            fontWeight="regular"
-            color={variant === "contained" ? bgColor : "white"}
-            sx={buttonStyles}
+          <Box
+            sx={{
+              display: "flex",
+              gap: 0.5,
+              transition: ".1s",
+              "&:hover": { gap: 1, cursor: "pointer" },
+            }}
+            onClick={() => {
+              router.push(action.route);
+            }}
           >
-            {action.label} <ArrowForward fontWeight="bold" />
-          </Typography>
+            <Typography
+              variant="body2"
+              fontWeight="regular"
+              color={variant === "contained" ? bgColor : "white"}
+              sx={buttonStyles}
+            >
+              {action.label}
+            </Typography>
+            <ArrowForward fontWeight="bold" />
+          </Box>
         ) : null}
       </Box>
     </Box>

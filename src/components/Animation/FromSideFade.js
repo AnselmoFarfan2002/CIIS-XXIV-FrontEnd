@@ -11,12 +11,13 @@ export default function FromSideFade({
   });
 
   return (
-    <Box ref={ref}>
+    <Box ref={ref} sx={{ height: "100%" }}>
       <Slide direction={side} in={inView} timeout={timeout}>
-        <Box>
-          <Fade in={inView} timeout={timeout}>
+        <Box sx={{ height: "100%" }}>
+          <Fade in={inView} timeout={{ enter: timeout.enter * 2 }}>
             <Box
               sx={{
+                height: "100%",
                 opacity: 0,
               }}
             >
@@ -33,7 +34,7 @@ export function FromSideFadeNoObserver({
   children,
   side = "right",
   timeout = { enter: 500 },
-  trigger = true
+  trigger = true,
 }) {
   return (
     <Box>

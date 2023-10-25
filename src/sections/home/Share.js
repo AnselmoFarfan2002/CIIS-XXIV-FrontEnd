@@ -106,7 +106,7 @@ const Share = ({ edicion }) => {
           lg: 10,
           xs: 5,
         },
-        paddingTop: "0 !important",
+        py: "5em !important",
         display: "flex",
         alignItems: "center",
         flexDirection: "column",

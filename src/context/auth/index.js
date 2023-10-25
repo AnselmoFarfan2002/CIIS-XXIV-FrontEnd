@@ -34,6 +34,16 @@ export function AuthProvider({ children }) {
     router.push("/dashboard");
   }
 
+  function csfr(user, dest = "/dashboard") {
+    let now = new Date();
+    now.setHours(now.getHours() + 2);
+    window.localStorage.setItem("userSession", JSON.stringify(user));
+
+    setUser(user);
+    setLogged(true);
+    router.push(dest);
+  }
+
   const login = (email, password) => {
     fetchPost(
       directory.session.src,
@@ -59,7 +69,14 @@ export function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider
-      value={{ user, login, logout, logged, setInscriptionCiis }}
+      value={{
+        user,
+        login,
+        logout,
+        logged,
+        setInscriptionCiis,
+        csfr,
+      }}
     >
       {children}
     </AuthContext.Provider>

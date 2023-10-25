@@ -25,7 +25,7 @@ export const AuthGuard = (props) => {
         .replace({
           pathname: "/",
           query:
-            router.asPath !== "/" ? { continueUrl: router.asPath } : undefined,
+            router.asPath !== "/" ? { next: router.asPath } : undefined,
         })
         .then((a) => setChecked(true))
         .catch(console.error);

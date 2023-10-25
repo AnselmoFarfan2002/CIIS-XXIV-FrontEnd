@@ -23,9 +23,6 @@ import { v4 } from "uuid";
 import LocalFade from "@/components/Animation/LocalFade";
 import { useRouter } from "next/router";
 import { useAuth } from "@/context/auth";
-import { useEffect, useState } from "react";
-import { fetchGET } from "@/utils/data.fetch";
-import { directory } from "@/context/url-context";
 
 export default function ActividadTaller({
   talleres = [],
@@ -38,7 +35,7 @@ export default function ActividadTaller({
   const router = useRouter();
   function inscribirseTaller(id) {
     if (user) router.push("/dashboard/talleres?id=" + id);
-    else router.push("/registro");
+    else router.push(`/registro?next=${"/dashboard/talleres?id=" + id}`);
   }
 
   return (
