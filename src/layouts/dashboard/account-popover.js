@@ -40,7 +40,7 @@ export const AccountPopover = (props) => {
           px: 2,
         }}
       >
-        <Typography variant="overline">Cuenta Administrativa</Typography>
+        <Typography variant="overline">Mi cuenta</Typography>
         <Typography color="text.secondary" variant="body2">
           {capitalizeWords(user?.name.toLocaleLowerCase())}
         </Typography>

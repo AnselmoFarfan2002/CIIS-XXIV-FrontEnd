@@ -35,6 +35,7 @@ export const cronogramaDatav0 = [
         type: "Ponencia",
         name: `Más allá de la Visión Humana: Técnicas para estudiar Fenómenos Biológicos basados en IA`,
         speaker: "Ph.D. Daniel Ochoa (ESPOL)",
+        idSpeaker: 23,
         country: "Ecuador",
       },
       {
@@ -43,6 +44,7 @@ export const cronogramaDatav0 = [
         type: "Ponencia",
         name: `La Inteligencia Artificial mejora la Realidad de Brasil`,
         speaker: "Ph.D. Arlindo Galvão (CEIA)",
+        idSpeaker: 17,
         country: "Brasil",
       },
       {
@@ -65,6 +67,7 @@ export const cronogramaDatav0 = [
         type: "Ponencia",
         name: "Detección de Neoantígenos mediante Transformadores y Aprendizaje por Transferencia",
         speaker: "MSc. Vicente Machaca (USALLE)",
+        idSpeaker: 33,
         country: "Perú",
       },
       {
@@ -72,7 +75,8 @@ export const cronogramaDatav0 = [
         end: "11:00am",
         type: "Ponencia",
         name: "Grounded Theory como Complemento para Obtener y Validar Requerimientos de Software",
-        speaker: "Ítalo Donoso (UCN)",
+        speaker: "Dr. Ítalo Donoso (UCN)",
+        idSpeaker: 26,
         country: "Chile",
       },
       {
@@ -81,6 +85,7 @@ export const cronogramaDatav0 = [
         type: "Taller",
         name: "Inteligencia Artificial aplicada a la Música",
         speaker: "Ph.D. Arlindo Galvão (CEIA)",
+        idSpeaker: 17,
         country: "Brasil",
       },
       {
@@ -107,6 +112,7 @@ export const cronogramaDatav0 = [
         type: "Ponencia",
         name: "Fake news en las Redes Sociales: Análisis de su Relación con las Emociones y las Intenciones",
         speaker: "Ph.D. Claudio Meneses (UCN)",
+        idSpeaker: 24,
         country: "Chile",
       },
       {
@@ -115,6 +121,7 @@ export const cronogramaDatav0 = [
         type: "Ponencia",
         name: "Experiencias y Herramientas de DevOps",
         speaker: "MSc. Diego Urrutia (UCN)",
+        idSpeaker: 25,
         country: "Chile",
       },
     ],
@@ -129,7 +136,8 @@ export const cronogramaDatav0 = [
         type: "Ponencia",
         name: "Más allá de la Caja Negra: Inteligencia Artificial Responsable y Explicabilidad",
         speaker: "MSc. Rosa Paccotacya (UNICAMP)",
-        country: "Brasil",
+        idSpeaker: 32,
+        country: "Perú",
       },
       {
         start: "10:00am",
@@ -137,6 +145,7 @@ export const cronogramaDatav0 = [
         type: "Ponencia",
         name: "¿Cómo Investigar en Ciencia de la Computación?",
         speaker: "Ph.D. Yvan Tupac (UCSP)",
+        idSpeaker: 18,
         country: "Perú",
       },
       {
@@ -145,6 +154,7 @@ export const cronogramaDatav0 = [
         type: "Taller",
         name: "Revisiones Sistemáticas en Ciencia de la Computación",
         speaker: "Ph.D. Yvan Tupac (UCSP)",
+        idSpeaker: 18,
         country: "Perú",
       },
       {
@@ -171,6 +181,7 @@ export const cronogramaDatav0 = [
         type: "Ponencia",
         name: "ITS & Smart City of  Necessity",
         speaker: "Ph.D. Yeon Soo Kim",
+        idSpeaker: 22,
         country: "Corea del sur",
       },
       {
@@ -179,6 +190,7 @@ export const cronogramaDatav0 = [
         type: "Ponencia",
         name: "Aprendizaje Profundo en Visión Computacional en Dispositivos con Recursos Computacionales Limitados",
         speaker: "Ph.D. Arlindo Galvão (CEIA)",
+        idSpeaker: 17,
         country: "Brasil",
       },
     ],
@@ -193,6 +205,7 @@ export const cronogramaDatav0 = [
         type: "Ponencia",
         name: "Desarrollo de Software Guiado por Dominio",
         speaker: "Dr. Edgar Sarmiento (UNSA)",
+        idSpeaker: 19,
         country: "Perú",
       },
       {
@@ -201,6 +214,7 @@ export const cronogramaDatav0 = [
         type: "Ponencia",
         name: "Ajuste de Hiperparametros en la Selección de un Modelo de Aprendizaje Automático",
         speaker: "Dr. Roberto Espinosa (UTA)",
+        idSpeaker: 28,
         country: "Chile",
       },
       {
@@ -209,6 +223,7 @@ export const cronogramaDatav0 = [
         type: "Taller",
         name: "Análisis Automático de Código Fuente",
         speaker: "Dr. Edgar Sarmiento (UNSA)",
+        idSpeaker: 19,
         country: "Perú",
       },
       {
@@ -235,6 +250,7 @@ export const cronogramaDatav0 = [
         type: "Ponencia",
         name: "Identificación Automática de Defectos en Software",
         speaker: "Ph.D. Jesús Bellido (UTEC)",
+        idSpeaker: 30,
         country: "Perú",
       },
       {
@@ -242,7 +258,8 @@ export const cronogramaDatav0 = [
         end: "18:00hrs",
         type: "Ponencia",
         name: "Inteligencia Artificial Generativa y Multimodalidad",
-        speaker: "Dr. Cesar Beltran (PUCP)",
+        speaker: "Dr. Cesar Beltrán (PUCP)",
+        idSpeaker: 29,
         country: "Perú",
       },
     ],
@@ -257,6 +274,7 @@ export const cronogramaDatav0 = [
         type: "Ponencia",
         name: "Serverless Computing: Retos y Líneas de Investigación",
         speaker: "Dr. Alvaro Mamani (UNSA)",
+        idSpeaker: 20,
         country: "Perú",
       },
       {
@@ -265,6 +283,7 @@ export const cronogramaDatav0 = [
         type: "Ponencia",
         name: "Inteligencia Artificial y Ciberseguridad",
         speaker: "Dr. Julio Santisteban (UCSP)",
+        idSpeaker: 31,
         country: "Perú",
       },
       {
@@ -273,6 +292,7 @@ export const cronogramaDatav0 = [
         type: "Taller",
         name: "AWS Academy Cloud Foundations",
         speaker: "Dr. Alvaro Mamani (UNSA)",
+        idSpeaker: 20,
         country: "Perú",
       },
       {
@@ -299,6 +319,7 @@ export const cronogramaDatav0 = [
         type: "Ponencia",
         name: "Programación de Restricciones",
         speaker: "Dr. Ricardo Valdivia (UTA)",
+        idSpeaker: 27,
         country: "Chile",
       },
       {
@@ -307,6 +328,7 @@ export const cronogramaDatav0 = [
         type: "Ponencia",
         name: "Mejora de la Seguridad de las Imágenes en Color con Técnicas de Marca de Agua Robustas contra los Ataques de Ambigüedad",
         speaker: "Ph.D. Joshi Sandeep",
+        idSpeaker: 21,
         country: "India",
       },
       {

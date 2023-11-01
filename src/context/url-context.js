@@ -26,13 +26,19 @@ export const directory = {
     one: (id) => ({
       src: `${domain}/api/v2/event/${id}`,
       reservation: {
-        ciis: (type) => `${domain}/api/v2/event/${id}/reservation/ciis?type=${type}`,
+        ciis: (type) =>
+          `${domain}/api/v2/event/${id}/reservation/ciis?type=${type}`,
       },
     }),
   },
   user: {
     src: `${domain}/api/v2/user`,
     inscription: `${domain}/api/v2/user/inscription`,
+  },
+  speaker: {
+    one: (id) => ({
+      src: `${domain}/api/v2/speaker/${id}`,
+    }),
   },
   taller: {
     src: `${domain}/api/v2/taller`,

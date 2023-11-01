@@ -39,7 +39,7 @@ export default function ActividadTaller({
   }
 
   return (
-    <Grid container spacing={3} alignItems={"center"} maxWidth={"lg"}>
+    <Grid id="talleres" container spacing={3} alignItems={"center"} maxWidth={"lg"}>
       <Grid item xs={12}>
         <LocalFade>
           <Typography variant="h3" fontFamily={typography.h3} mb={1}>

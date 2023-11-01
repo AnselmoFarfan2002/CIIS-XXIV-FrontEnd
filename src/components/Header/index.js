@@ -177,7 +177,7 @@ const Header = (props) => {
                         color: colors.fonts.main,
                         bgcolor: colors.primary.light,
                       }}
-                      startIcon={<GroupAddIcon />}
+                      startIcon={<Event />}
                       variant="contained"
                       color="info"
                       onClick={() => {
@@ -186,7 +186,7 @@ const Header = (props) => {
                       }}
                     >
                       <Typography fontSize={12} fontWeight={"bold"}>
-                        Actividades
+                        Inscripciones
                       </Typography>
                     </Button>
                   </Grid>

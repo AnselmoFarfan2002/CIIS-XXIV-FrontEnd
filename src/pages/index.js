@@ -2,7 +2,6 @@ import Head from "next/head";
 import { Box } from "@mui/material";
 import Cover from "@/sections/home/Cover.js";
 
-import Header from "@/components/Header";
 import Topics from "@/sections/home/Topics";
 import PostmasterCard from "@/sections/home/Postmaster";
 import Particles from "@/components/Particles/Particles";
@@ -11,7 +10,6 @@ import { useState } from "react";
 import CIISLayout from "@/layouts/CIIS/CIISLayout";
 import UltimaEdicion from "@/sections/home/UltimaEdicion";
 import HomeCounters from "@/sections/home/Counters";
-import HomeCronograma from "@/sections/home/Cronograma";
 import HomeAuspiciadores from "@/sections/home/Auspiciadores";
 import HomeCronogramav2 from "@/sections/home/Cronograma/indexv2";
 import HomeConcursos from "@/sections/home/concurso";

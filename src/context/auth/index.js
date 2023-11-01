@@ -31,7 +31,9 @@ export function AuthProvider({ children }) {
 
     setUser(user);
     setLogged(true);
-    router.push("/dashboard");
+    if (router.query.next)
+      router.push(`${router.pathname}/${router.query.next}`);
+    else router.push("/dashboard");
   }
 
   function csfr(user, dest = "/dashboard") {

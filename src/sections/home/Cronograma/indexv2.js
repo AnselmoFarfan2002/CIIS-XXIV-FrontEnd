@@ -1,4 +1,5 @@
 import {
+  Avatar,
   Box,
   Button,
   Card,
@@ -10,18 +11,18 @@ import {
   Grow,
   Tab,
   Tabs,
+  Tooltip,
   Typography,
   Zoom,
   alpha,
 } from "@mui/material";
 import colors from "@/styles/colors";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { cronogramaDatav0 } from "./data";
 import { v4 } from "uuid";
 import { useInView } from "react-intersection-observer";
 import BarLeftTitle from "@/components/Sections/BarLeftTitle";
 import LocalFade from "@/components/Animation/LocalFade";
-import * as React from "react";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
@@ -31,6 +32,7 @@ import {
   Download,
   EmojiEvents,
   LibraryBooks,
+  LinkedIn,
   RecordVoiceOver,
   Restaurant,
   Schedule,
@@ -40,6 +42,8 @@ import removeTilde from "@/utils/removeTilde";
 import FromSideFade, {
   FromSideFadeNoObserver,
 } from "@/components/Animation/FromSideFade";
+import { fetchGET } from "@/utils/data.fetch";
+import { directory } from "@/context/url-context";
 
 const activityIcons = {
   lunch: <Restaurant fontSize="xs" sx={{ mt: 0.3 }} />,
@@ -200,15 +204,26 @@ export default function HomeCronogramav2() {
                                                         "translate(-20px, 5px)",
                                                     }}
                                                   />
-                                                  <Typography
-                                                    variant="body2"
-                                                    style={{
-                                                      transform:
-                                                        "translate(-22px, 0)",
-                                                    }}
+                                                  <TooltipSpeaker
+                                                    idSpeaker={
+                                                      activity.idSpeaker
+                                                    }
                                                   >
-                                                    {activity.speaker}
-                                                  </Typography>
+                                                    <Typography
+                                                      variant="body2"
+                                                      style={{
+                                                        transform:
+                                                          "translate(-22px, 0)",
+                                                      }}
+                                                      sx={{
+                                                        "&:hover": {
+                                                          cursor: "help",
+                                                        },
+                                                      }}
+                                                    >
+                                                      {activity.speaker}
+                                                    </Typography>
+                                                  </TooltipSpeaker>
                                                 </Box>
                                               )}
 
@@ -289,15 +304,26 @@ export default function HomeCronogramav2() {
                                                         "translate(-20px, 5px)",
                                                     }}
                                                   />
-                                                  <Typography
-                                                    variant="body2"
-                                                    style={{
-                                                      transform:
-                                                        "translate(-22px, 0)",
-                                                    }}
+                                                  <TooltipSpeaker
+                                                    idSpeaker={
+                                                      activity.idSpeaker
+                                                    }
                                                   >
-                                                    {activity.speaker}
-                                                  </Typography>
+                                                    <Typography
+                                                      variant="body2"
+                                                      style={{
+                                                        transform:
+                                                          "translate(-22px, 0)",
+                                                      }}
+                                                      sx={{
+                                                        "&:hover": {
+                                                          cursor: "help",
+                                                        },
+                                                      }}
+                                                    >
+                                                      {activity.speaker}
+                                                    </Typography>
+                                                  </TooltipSpeaker>
                                                 </Box>
                                               )}
 
@@ -364,25 +390,46 @@ export default function HomeCronogramav2() {
   );
 }
 
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
-  };
-}
-
-function CustomTabPanel(props) {
-  const { children, value, index, ...other } = props;
+function TooltipSpeaker({ idSpeaker, children }) {
+  let [speaker, setSpeaker] = useState({});
+  useEffect(() => {
+    fetchGET(directory.speaker.one(idSpeaker).src, setSpeaker);
+  }, []);
 
   return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
+    <Tooltip
+      TransitionComponent={Zoom}
+      leaveDelay={200}
+      title={
+        <Grid container sx={{ px: 2, py: 1 }} spacing={1}>
+          <Grid item>
+            <Avatar src={speaker.dir_img_speaker} sizes="lg" />
+          </Grid>
+          <Grid item>
+            <Typography variant="h5">{`${speaker.name_speaker} ${speaker.lastname_speaker}`}</Typography>
+            <Typography variant="h6">{`${speaker.university_speaker}`}</Typography>
+          </Grid>
+          {speaker.about_profile_speaker && (
+            <Grid item>
+              <Typography variant="body2">{`${speaker.about_profile_speaker}`}</Typography>
+            </Grid>
+          )}
+          <Grid item xs={12}>
+            <Button
+              variant="contained"
+              startIcon={<LinkedIn />}
+              fullWidth
+              href={speaker.linkedin_speaker}
+              disabled={!Boolean(speaker.linkedin_speaker)}
+              target="_blank"
+            >
+              LinkedIn
+            </Button>
+          </Grid>
+        </Grid>
+      }
     >
-      {value === index && <Box p={3}>{children}</Box>}
-    </div>
+      {children}
+    </Tooltip>
   );
 }

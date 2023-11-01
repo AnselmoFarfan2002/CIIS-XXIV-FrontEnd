@@ -21,7 +21,7 @@ import { useState } from "react";
 
 export default function ActividadConcurso({
   title = "Concursos",
-  subHeader = "Todos los talleres presentes en nuestro evento",
+  subHeader = "Todos los concursos presentes en nuestro evento",
   handleOpenViewImage,
 }) {
   return (
