@@ -70,7 +70,7 @@ export default function HomeConcursos({}) {
                   variant="gradient"
                   icon={<SmartToy sx={{ mr: 0.2 }} />}
                   title="Concurso de Robótica"
-                  description="En esta competencia, dos robots LEGO Mindstorm (NXT o EV3) se enfrentarán en un emocionante duelo de ingenio y destreza."
+                  description="En esta competencia, dos robots LEGO Mindstorms (NXT o EV3) se enfrentarán en un emocionante duelo de ingenio y destreza."
                   action={{
                     type: "internal",
                     route: "/actividades#concurso-robotica",
@@ -98,7 +98,7 @@ export default function HomeConcursos({}) {
                   bgColor={`linear-gradient(195deg, rgba(73, 163, 241, .8), rgba(26, 115, 232, .8)), url("/img/bg/concurso-programacion.jpg")`}
                   icon={<Terminal sx={{ mr: 0.2 }} />}
                   title="Concurso de Programación"
-                  description="Un desafío con el propósito de prepararnos para competir en eventos internacionales, como el International Collegiate Promgramming Contest - ICPC"
+                  description="Un desafío con el propósito de prepararnos para competir en eventos internacionales, como el International Collegiate Programming Contest - ICPC"
                   action={{
                     type: "internal",
                     route: "/actividades#concurso-programacion",
@@ -126,7 +126,7 @@ export default function HomeConcursos({}) {
                   variant="gradient"
                   icon={<School sx={{ mr: 0.2 }} />}
                   title="Concurso de Conocimiento"
-                  description="Enfrentamientos donde podrás demostrar tu dominio en temas que van desde programción, gestión de bases de datos, redes y muchos más."
+                  description="Enfrentamientos donde podrás demostrar tu dominio en temas que van desde programación, gestión de bases de datos, redes y muchos más."
                   action={{
                     type: "internal",
                     route: "/actividades#concurso-conocimiento",

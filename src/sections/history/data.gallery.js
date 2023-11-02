@@ -2,7 +2,7 @@ export const imagenesGaleria = [
   {
     title: "CIIS XIII",
     description:
-      "Décimo tercera edición del congreso de informática y sistemas",
+      "Décimo tercera edición del Congreso Internacional de Informática y Sistemas",
     anio: 2012,
     items: [
       {
@@ -13,7 +13,7 @@ export const imagenesGaleria = [
   },
   {
     title: "CIIS XIV",
-    description: "Décimo cuarta edición del congreso de informática y sistemas",
+    description: "Décimo cuarta edición del Congreso Internacional de Informática y Sistemas",
     anio: 2013,
     items: [
       {
@@ -28,7 +28,7 @@ export const imagenesGaleria = [
   },
   {
     title: "POSTMASTER XI",
-    description: "Décimo primero Postmaster del Encuentro de engresados",
+    description: "Décimo primero Postmaster del Encuentro de egresados",
     anio: 2014,
     items: [
       {
@@ -39,7 +39,7 @@ export const imagenesGaleria = [
   },
   {
     title: "CIIS XV",
-    description: "Décimo quinta edición del congreso de informática y sistemas",
+    description: "Décimo quinta edición del Congreso Internacional de Informática y Sistemas",
     anio: 2014,
     items: [
       {
@@ -58,7 +58,7 @@ export const imagenesGaleria = [
   },
   {
     title: "CIIS XVI",
-    description: "Décimo quinta edición del congreso de informática y sistemas",
+    description: "Décimo quinta edición del Congreso Internacional de Informática y Sistemas",
     anio: 2015,
     items: [
       {
@@ -86,7 +86,7 @@ export const imagenesGaleria = [
   {
     title: "CIIS XVII",
     description:
-      "Décimo séptima edición del congreso de informática y sistemas",
+      "Décimo séptima edición del Congreso Internacional de Informática y Sistemas",
     anio: 2016,
     items: [
       {
@@ -117,7 +117,7 @@ export const imagenesGaleria = [
   },
   {
     title: "CIIS XVIII",
-    description: "Décimo octava edición del congreso de informática y sistemas",
+    description: "Décimo octava edición del Congreso Internacional de Informática y Sistemas",
     anio: 2017,
     items: [
       {
@@ -136,7 +136,7 @@ export const imagenesGaleria = [
   },
   {
     title: "POSTMASTER XV",
-    description: "Décimo quinto Postmaster del Encuentro de engresados",
+    description: "Décimo quinto Postmaster del Encuentro de egresados",
     anio: 2018,
     items: [
       {
@@ -151,7 +151,7 @@ export const imagenesGaleria = [
   },
   {
     title: "CIIS XIX",
-    description: "Décimo novena edición del congreso de informática y sistemas",
+    description: "Décimo novena edición del Congreso Internacional de Informática y Sistemas",
     anio: 2018,
     items: [
       {
@@ -178,7 +178,7 @@ export const imagenesGaleria = [
   },
   {
     title: "POSTMASTER XVI",
-    description: "Décimo sexto Postmaster del Encuentro de engresados",
+    description: "Décimo sexto Postmaster del Encuentro de egresados",
     anio: 2019,
     items: [
       {
@@ -189,7 +189,7 @@ export const imagenesGaleria = [
   },
   {
     title: "CIIS XX",
-    description: "Vigésima edición del congreso de informática y sistemas",
+    description: "Vigésima edición del Congreso Internacional de Informática y Sistemas",
     anio: 2019,
     items: [
       {
@@ -216,7 +216,7 @@ export const imagenesGaleria = [
   },
   {
     title: "POSTMASTER XVII",
-    description: "Décimo séptimo Postmaster del Encuentro de engresados",
+    description: "Décimo séptimo Postmaster del Encuentro de egresados",
     anio: 2020,
     items: [
       {
@@ -228,7 +228,7 @@ export const imagenesGaleria = [
   {
     title: "CIIS XXI",
     description:
-      "Vigésimo primera edición del congreso de informática y sistemas",
+      "Vigésimo primera edición del Congreso Internacional de Informática y Sistemas",
     anio: 2020,
     items: [
       {
@@ -255,7 +255,7 @@ export const imagenesGaleria = [
   },
   {
     title: "POSTMASTER XVIII",
-    description: "Décimo octavo Postmaster del Encuentro de engresados",
+    description: "Décimo octavo Postmaster del Encuentro de egresados",
     anio: 2021,
     items: [
       {
@@ -267,7 +267,7 @@ export const imagenesGaleria = [
   {
     title: "CIIS XXII",
     description:
-      "Vigésimo segunda edición del congreso de informática y sistemas",
+      "Vigésimo segunda edición del Congreso Internacional de Informática y Sistemas",
     anio: 2021,
     items: [
       {
@@ -294,7 +294,7 @@ export const imagenesGaleria = [
   },
   {
     title: "POSTMASTER XIX",
-    description: "Décimo noveno Postmaster del Encuentro de engresados",
+    description: "Décimo noveno Postmaster del Encuentro de egresados",
     anio: 2022,
     items: [
       {
@@ -306,7 +306,7 @@ export const imagenesGaleria = [
   {
     title: "CIIS XXIII",
     description:
-      "Vigésimo tercera edición del congreso de informática y sistemas",
+      "Vigésimo tercera edición del Congreso Internacional de Informática y Sistemas",
     anio: 2022,
     items: [
       {
@@ -333,7 +333,7 @@ export const imagenesGaleria = [
   },
   {
     title: "POSTMASTER XX",
-    description: "Vigésimo Postmaster del Encuentro de engresados",
+    description: "Vigésimo Postmaster del Encuentro de egresados",
     anio: 2023,
     items: [
       {
@@ -349,7 +349,7 @@ export const imagenesGaleria = [
   // {
   //   title: "CIIS XXIV",
   //   description:
-  //     "Vigésimo cuarta edición del congreso de informática y sistemas",
+  //     "Vigésimo cuarta edición del Congreso Internacional de Informática y Sistemas",
   //   anio: 2023,
   //   items: [],
   // },
