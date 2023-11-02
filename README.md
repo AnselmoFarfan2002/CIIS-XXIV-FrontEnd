@@ -1,6 +1,6 @@
 # CIIS-XXIV-FRONTEND-CLIENT
 
-Carpetas de archivos (imágenes y videos) ignorados. 
+Sitio web realizado para el Congreso Internacional de Informática y Sistemas XXIV (2023)
 
 ## Tecnología involucrada
 * Realizado con NextJS
@@ -15,4 +15,4 @@ Directorio de api backend: /src/context/url-context
 
 **URL:** https://www.ciistacna.com/
 
-Edición 2023
+_Nota:_ Directorio de imágenes y videos ignorados en el repositorio.
