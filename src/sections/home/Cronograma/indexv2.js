@@ -36,6 +36,7 @@ import {
   RecordVoiceOver,
   Restaurant,
   Schedule,
+  Store,
   Today,
 } from "@mui/icons-material";
 import removeTilde from "@/utils/removeTilde";
@@ -152,6 +153,31 @@ export default function HomeCronogramav2() {
                           </StepLabel>
                           <StepContent>
                             <Grid container columnSpacing={3}>
+                              {plan.day == "Viernes" && (
+                                <Grid item xs={12}>
+                                  <Typography variant="h6" mt={2}>
+                                    Evento especial
+                                  </Typography>
+                                  <Box mt={2} sx={{ display: "flex", gap: 1 }}>
+                                    <Schedule />
+                                    <Typography
+                                      variant="h6"
+                                      sx={{ fontWeight: 425 }}
+                                    >
+                                      09:00am • 15:00hrs
+                                    </Typography>
+                                  </Box>
+                                  <Box
+                                    mt={0.5}
+                                    sx={{ display: "flex", gap: 1 }}
+                                  >
+                                    <Store />
+                                    <Typography variant="body2">
+                                      Feria tecnológica
+                                    </Typography>
+                                  </Box>
+                                </Grid>
+                              )}
                               <Grid item xs={12} md={6}>
                                 <Typography variant="h6" mt={2}>
                                   Primera parte

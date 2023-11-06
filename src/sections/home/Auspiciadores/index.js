@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import { v4 } from "uuid";
 import auspiciadoresData from "./data";
-import { Facebook, LinkedIn, Public, Web, YouTube } from "@mui/icons-material";
+import { Facebook, Instagram, LinkedIn, Public, Web, YouTube } from "@mui/icons-material";
 import LocalFade from "@/components/Animation/LocalFade";
 import BarLeftTitle from "@/components/Sections/BarLeftTitle";
 import { useInView } from "react-intersection-observer";
@@ -21,6 +21,7 @@ const snIcon = {
   Facebook: <Facebook />,
   LinkedIn: <LinkedIn />,
   YouTube: <YouTube />,
+  Instagram: <Instagram />,
 };
 
 export default function HomeAuspiciadores() {
@@ -57,7 +58,7 @@ export default function HomeAuspiciadores() {
         ref={ref}
       >
         {auspiciadoresData.map((auspiciador, idx) => (
-          <Grid item xs={12} sm={4} md={3} lg={2.4} key={v4()}>
+          <Grid item xs={12} sm={4} md={3} lg={2} key={v4()}>
             <Grow in={inView} timeout={{ enter: 200 * idx }}>
               <Card
                 sx={{

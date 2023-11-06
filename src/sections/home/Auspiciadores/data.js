@@ -74,6 +74,59 @@ const auspiciadoresData = [
     ],
   },
   {
+    name: "Bambinos pizza",
+    logo: "/img/auspiciadores/bambinos-pizza.png",
+    web: null,
+    social_networks: [
+      {
+        name: "Facebook",
+        href: "https://www.facebook.com/profile.php?id=100071320934211",
+      },
+    ],
+  },
+  {
+    name: "Hotel Copacabana",
+    logo: "/img/auspiciadores/hotel-copacabana.png",
+    web: "https://www.copahotel.com/",
+    social_networks: [
+      { name: "Facebook", href: "https://www.facebook.com/hotelestacna" },
+      {
+        name: "Instagram",
+        href: "https://www.instagram.com/invites/contact/?i=1vtjq2r5qd3sg&utm_content=swbmzpb",
+      },
+    ],
+  },
+  {
+    name: "Cascanueces",
+    logo: "/img/auspiciadores/cascanueces.png",
+    web: null,
+    social_networks: [
+      {
+        name: "Facebook",
+        href: "https://www.facebook.com/LaTrufaDorada21?mibextid=9R9pXO",
+      },
+      {
+        name: "Instagram",
+        href: "hhttps://www.instagram.com/El_cascanu?fbclid=IwAR08Jo9J8dvyYmRRR_5eZI2X2qtK8dcnlGXy66nQ2XkghW-jhEOMpUR3lPc",
+      },
+    ],
+  },
+  {
+    name: "Digital láser",
+    logo: "/img/auspiciadores/imprenta-digital-laser.png",
+    web: null,
+    social_networks: [
+      {
+        name: "Facebook",
+        href: "https://www.facebook.com/digitallasertc/?paipv=0&eav=AfYl1KO7cHTligQeO3cemGuqxkU6ShXkAolTIAwiKFBMT4QXi1BS8-a2tLOSMSvZWLo&_rdr",
+      },
+      {
+        name: "Instagram",
+        href: "https://www.instagram.com/digitallaserimprenta/",
+      },
+    ],
+  },
+  {
     name: "Hotel terrazas",
     logo: "/img/auspiciadores/logo-terrazas.png",
     web: null,

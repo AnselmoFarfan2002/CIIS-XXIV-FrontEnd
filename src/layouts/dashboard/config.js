@@ -41,13 +41,13 @@ export const items = [
     ),
   },
   {
-    title: "Concursos",
-    path: "/dashboard/concursos",
+    title: "Asistencia",
+    path: "/dashboard/asistencia",
     icon: (
       <SvgIcon fontSize="small">
-        <EmojiEvents />
+        <People />
       </SvgIcon>
     ),
-    disabled: true,
+    disabled: false,
   },
 ];

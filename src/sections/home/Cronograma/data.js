@@ -168,14 +168,6 @@ export const cronogramaDatav0 = [
     ],
     late: [
       {
-        start: "14:00hrs",
-        end: "16:00hrs",
-        type: "Ponencia",
-        name: "Feria Tecnológica",
-        speaker: null,
-        country: null,
-      },
-      {
         start: "16:00hrs",
         end: "17:30hrs",
         type: "Ponencia",
