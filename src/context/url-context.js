@@ -12,8 +12,8 @@
 //   },
 // };
 
-// const domain = "http://localhost";
-const domain = "https://www.ciistacna.com";
+const domain = "http://localhost";
+// const domain = "https://www.ciistacna.com";
 export const directory = {
   events: {
     topics: {
@@ -34,6 +34,8 @@ export const directory = {
   user: {
     src: `${domain}/api/v2/user`,
     inscription: `${domain}/api/v2/user/inscription`,
+    phone: `${domain}/api/v2/user/phone`,
+    password: `${domain}/api/v2/user/password`,
   },
   speaker: {
     one: (id) => ({

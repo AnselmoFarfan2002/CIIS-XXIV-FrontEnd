@@ -125,13 +125,23 @@ export default function RegistroForm() {
           <TextField
             fullWidth
             variant="filled"
+            label="Número de teléfono"
+            InputLabelProps={{ sx: { fontSize: 14 } }}
+            {...form.getFieldProps("phone")}
+            {...getFieldStyle(form, "phone", "")}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            fullWidth
+            variant="filled"
             label="Correo electrónico"
             InputLabelProps={{ sx: { fontSize: 14 } }}
             {...form.getFieldProps("email")}
             {...getFieldStyle(form, "email", "")}
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} md={6}>
           <TextField
             fullWidth
             variant="filled"
@@ -142,7 +152,7 @@ export default function RegistroForm() {
             {...getFieldStyle(form, "password", "")}
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} md={6}>
           <TextField
             fullWidth
             variant="filled"
@@ -185,6 +195,7 @@ function getSchemaForm({
       email: "",
       password: "",
       confPassword: "",
+      phone: "",
     },
     validationSchema: Yup.object().shape({
       dni: Yup.string()
@@ -202,6 +213,12 @@ function getSchemaForm({
       confPassword: Yup.string()
         .oneOf([Yup.ref("password"), null], "Las contraseñas deben coincidir")
         .required("Este campo es obligatorio"),
+      phone: Yup.string()
+        .matches(
+          /^([1-9]{9})|(\+[1-9]{2,3} [1-9]{9})$/,
+          "El formato no es válido"
+        )
+        .required("Es necesario para poder contactarlo"),
     }),
     onSubmit: (values) => {
       setLoading(true);

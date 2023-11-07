@@ -34,6 +34,18 @@ export function fetchPost(uri, data, save = () => {}, abort = console.log) {
     .catch(abort);
 }
 
+export function fetchPatch(uri, data, save = () => {}, abort = console.log) {
+  fetch(uri, {
+    method: "PATCH",
+    body: JSON.stringify(data),
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+  })
+    .then(handleResponse)
+    .then(save)
+    .catch(abort);
+}
+
 export function fetchGET(uri, save = console.log, abort = console.log) {
   fetch(uri, { credentials: "include" })
     .then(handleResponse)
@@ -59,6 +71,7 @@ export function fetchPostWithFile(
 }
 
 export function abortFetch(fail = {}) {
+  console.log(fail);
   const {
     error = "Ha ocurrido un error",
     reason = "En este momento el servidor no está disponible, inténtelo más tarde",

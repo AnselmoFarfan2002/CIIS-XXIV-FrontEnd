@@ -7,6 +7,7 @@ import {
   Event,
   Home,
   People,
+  Person,
 } from "@mui/icons-material";
 import { SvgIcon } from "@mui/material";
 
@@ -48,6 +49,15 @@ export const items = [
         <People />
       </SvgIcon>
     ),
-    disabled: false,
+    disabled: true,
+  },
+  {
+    title: "Cuenta",
+    path: "/dashboard/cuenta",
+    icon: (
+      <SvgIcon fontSize="small">
+        <Person />
+      </SvgIcon>
+    ),
   },
 ];
