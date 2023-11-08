@@ -11,7 +11,7 @@ export const costosCIIS = [
     name: "Estudiante visitante",
     descuento: true,
     value: "80",
-    desc: "Para estudiantes interesados en el evento.",
+    desc: "Para estudiantes visitantes y egresados de la ESIS.",
   },
   {
     id: "op3",

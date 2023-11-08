@@ -12,7 +12,7 @@ const CIISLayout = (props) => {
 
   useEffect(() => {
     if (!logged && router.query.next) setLogin(true);
-  });
+  }, [router.query.next]);
 
   return (
     <>

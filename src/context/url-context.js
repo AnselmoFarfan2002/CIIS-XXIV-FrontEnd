@@ -12,8 +12,8 @@
 //   },
 // };
 
-const domain = "http://localhost";
-// const domain = "https://www.ciistacna.com";
+// const domain = "http://localhost";
+const domain = "https://www.ciistacna.com";
 export const directory = {
   events: {
     topics: {

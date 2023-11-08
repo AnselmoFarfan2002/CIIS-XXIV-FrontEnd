@@ -128,7 +128,7 @@ export default function RegistroForm() {
             label="Número de teléfono"
             InputLabelProps={{ sx: { fontSize: 14 } }}
             {...form.getFieldProps("phone")}
-            {...getFieldStyle(form, "phone", "")}
+            {...getFieldStyle(form, "phone")}
           />
         </Grid>
         <Grid item xs={12}>
@@ -215,7 +215,7 @@ function getSchemaForm({
         .required("Este campo es obligatorio"),
       phone: Yup.string()
         .matches(
-          /^([1-9]{9})|(\+[1-9]{2,3} [1-9]{9})$/,
+          /^([0-9]{9})|(\+[0-9]{2,3} [0-9]{9})$/,
           "El formato no es válido"
         )
         .required("Es necesario para poder contactarlo"),

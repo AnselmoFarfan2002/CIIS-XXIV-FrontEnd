@@ -64,7 +64,8 @@ export default function ActividadConcurso({
                 date: new Date("11-16-2023").toLocaleDateString(),
                 hour: "14:00hrs - 16:00hrs",
                 subtitle: "Premios primer y segundo puesto",
-                bases: "/docs/bases/bases-concurso-programacion-2023.pdf",
+                bases:
+                  "https://docs.google.com/document/d/1nwsQIkaygvEjakd0tvw9Xu2qRK34FJCDAhvEC4IDeAM/edit?usp=sharing",
                 form: "https://forms.gle/uRL34UMY7EWVVhBb7",
                 flyer: "/img/CIIS/XXIV/contests/programacion.png",
                 handleOpenViewImage,
