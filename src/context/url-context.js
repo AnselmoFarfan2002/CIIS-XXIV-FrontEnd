@@ -29,6 +29,8 @@ export const directory = {
         ciis: (type) =>
           `${domain}/api/v2/event/${id}/reservation/ciis?type=${type}`,
       },
+      attendance: (dni) =>
+        `${domain}/api/v2/event/${id}/attendance?user=${dni}`,
     }),
   },
   user: {
@@ -55,5 +57,13 @@ export const directory = {
   inscription: {
     src: `${domain}/api/v2/inscription`,
     ciis: (type) => `${domain}/api/v2/inscription/ciis?type=${type}`,
+  },
+  conference: {
+    "schedule-day": (day) =>
+      `${domain}/api/v2/conference/schedule-day?day=${day}`,
+    one: (id) => ({
+      src: `${domain}/api/v2/conference/${id}`,
+      attendance: `${domain}/api/v2/conference/${id}/attendance`,
+    }),
   },
 };

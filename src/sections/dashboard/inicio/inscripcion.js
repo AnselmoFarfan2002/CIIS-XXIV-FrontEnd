@@ -1,4 +1,5 @@
 import LocalFade from "@/components/Animation/LocalFade";
+import { useAuth } from "@/context/auth";
 import { directory } from "@/context/url-context";
 import { fetchGET } from "@/utils/data.fetch";
 import { CheckCircle } from "@mui/icons-material";
@@ -13,6 +14,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 import { v4 } from "uuid";
 
 const estados = [
@@ -27,11 +29,19 @@ export default function InfoCardInscription({ user = {} }) {
   const [ins, setIns] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const { logout } = useAuth();
+
   function handleSucess(ins) {
     setLoading(false);
     setIns(ins);
   }
-  function handleFail() {
+  function handleFail(err) {
+    if (err.code) {
+      if (err.code == 401) {
+        Swal.fire("¡Ups!", "Sesión expirada", "error");
+        logout("/actividades?next=/dashboard");
+      }
+    }
     setLoading(false);
   }
   function handleGetInscription() {

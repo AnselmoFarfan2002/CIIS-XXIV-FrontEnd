@@ -1,4 +1,12 @@
-import { Avatar, Box, Grid, Typography, alpha } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  ButtonGroup,
+  Grid,
+  Tooltip,
+  Typography,
+  alpha,
+} from "@mui/material";
 import Atropos from "atropos/react";
 import "atropos/css";
 import Crono from "../../components/Crono/Crono";
@@ -6,7 +14,15 @@ import colors from "../../styles/colors";
 import { fonts } from "@/styles/fonts";
 
 import { Button } from "@mui/material";
-import { AccountBalance, Map, MapSharp, Place } from "@mui/icons-material";
+import {
+  AccountBalance,
+  Help,
+  Info,
+  Map,
+  MapSharp,
+  Place,
+  QuestionAnswerSharp,
+} from "@mui/icons-material";
 import removeTilde from "@/utils/removeTilde";
 import typography from "@/styles/typography";
 import { useRouter } from "next/router";
@@ -147,25 +163,41 @@ const Cover = () => {
                   </Box>
 
                   <Box paddingTop={3}>
-                    <Button
-                      variant="contained"
-                      sx={{
-                        color: colors.fonts.main,
-                        bgcolor: colors.primary.light,
-                      }}
-                      onClick={() => router.push("/actividades")}
-                    >
-                      <Typography
-                        variant="title2"
-                        fontWeight={"bold"}
+                    <ButtonGroup>
+                      <Button
+                        variant="contained"
                         sx={{
-                          px: 2,
-                          py: 0,
+                          color: colors.fonts.main,
+                          borderStartEndRadius: 0,
+                          borderEndEndRadius: 0,
                         }}
+                        onClick={() => router.push("/actividades")}
                       >
-                        Inscríbete
-                      </Typography>
-                    </Button>
+                        <Typography
+                          variant="title2"
+                          fontWeight={"bold"}
+                          sx={{
+                            px: 2,
+                            py: 0,
+                          }}
+                        >
+                          Inscríbete
+                        </Typography>
+                      </Button>
+                      <Tooltip title="¿Cómo hacerlo?">
+                        <Button
+                          sx={{
+                            bgcolor: colors.primary.light,
+                            borderStartStartRadius: 0,
+                            borderEndStartRadius: 0,
+                          }}
+                          variant="contained"
+                          href="https://www.facebook.com/ciistacna/posts/pfbid0iFPef4VCbx6XCuUoX9oMJ8grXJ1zgE83a4EzvKc2icUL46hBpq85CBj89e8aA1v1l?mibextid=YxdKMJ"
+                        >
+                          <Help />
+                        </Button>
+                      </Tooltip>
+                    </ButtonGroup>
                   </Box>
                 </Box>
               </Box>

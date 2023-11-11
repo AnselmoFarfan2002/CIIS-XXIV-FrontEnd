@@ -11,14 +11,15 @@ const CIISLayout = (props) => {
   const { logged } = useAuth();
 
   useEffect(() => {
-    if (!logged && router.query.next) setLogin(true);
+    if (!logged && router.query.next && !router.pathname.includes("/registro"))
+      setLogin(true);
   }, [router.query.next]);
 
   return (
     <>
       <Header onLogin={() => setLogin(true)} />
       <div>{props.children}</div>
-      <Footer />
+      <Footer /> 
       <Login open={login} onClose={() => setLogin(false)} />
     </>
   );

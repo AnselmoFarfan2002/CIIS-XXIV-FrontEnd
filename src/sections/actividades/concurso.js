@@ -59,6 +59,21 @@ export default function ActividadConcurso({
           <Grid item xs={12} md={6} lg={4}>
             <ContestCard
               {...{
+                id: "concurso-conocimiento",
+                title: "Concurso de Conocimiento",
+                date: new Date("11-15-2023").toLocaleDateString(),
+                hour: "14:00hrs - 16:00hrs",
+                subtitle: "Premios primer y segundo puesto",
+                bases: "/docs/bases/bases-concurso-conocimiento-2023.pdf",
+                form: "https://forms.gle/LobXe3Dsr4C1Zqmm7",
+                flyer: "/img/CIIS/XXIV/contests/conocimiento.png",
+                handleOpenViewImage,
+              }}
+            />
+          </Grid>
+          <Grid item xs={12} md={6} lg={4}>
+            <ContestCard
+              {...{
                 id: "concurso-programacion",
                 title: "Concurso de Programación",
                 date: new Date("11-16-2023").toLocaleDateString(),
@@ -68,21 +83,6 @@ export default function ActividadConcurso({
                   "https://docs.google.com/document/d/1nwsQIkaygvEjakd0tvw9Xu2qRK34FJCDAhvEC4IDeAM/edit?usp=sharing",
                 form: "https://forms.gle/uRL34UMY7EWVVhBb7",
                 flyer: "/img/CIIS/XXIV/contests/programacion.png",
-                handleOpenViewImage,
-              }}
-            />
-          </Grid>
-          <Grid item xs={12} md={6} lg={4}>
-            <ContestCard
-              {...{
-                id: "concurso-conocimiento",
-                title: "Concurso de Conocimiento",
-                date: new Date("11-17-2023").toLocaleDateString(),
-                hour: "14:00hrs - 16:00hrs",
-                subtitle: "Premios primer y segundo puesto",
-                bases: "/docs/bases/bases-concurso-conocimiento-2023.pdf",
-                form: "https://forms.gle/LobXe3Dsr4C1Zqmm7",
-                flyer: "/img/CIIS/XXIV/contests/conocimiento.png",
                 handleOpenViewImage,
               }}
             />

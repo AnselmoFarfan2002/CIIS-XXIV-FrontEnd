@@ -8,6 +8,7 @@ import {
   Home,
   People,
   Person,
+  QrCode2,
 } from "@mui/icons-material";
 import { SvgIcon } from "@mui/material";
 
@@ -42,6 +43,15 @@ export const items = [
     ),
   },
   {
+    title: "Cuenta (QR)",
+    path: "/dashboard/cuenta",
+    icon: (
+      <SvgIcon fontSize="small">
+        <QrCode2 />
+      </SvgIcon>
+    ),
+  },
+  {
     title: "Asistencia",
     path: "/dashboard/asistencia",
     icon: (
@@ -49,15 +59,6 @@ export const items = [
         <People />
       </SvgIcon>
     ),
-    disabled: true,
-  },
-  {
-    title: "Cuenta",
-    path: "/dashboard/cuenta",
-    icon: (
-      <SvgIcon fontSize="small">
-        <Person />
-      </SvgIcon>
-    ),
+    disabled: false,
   },
 ];

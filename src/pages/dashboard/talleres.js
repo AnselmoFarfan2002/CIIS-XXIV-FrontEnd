@@ -1,4 +1,5 @@
 import { directory } from "@/context/url-context";
+import ActividadLocation from "@/sections/actividades/location";
 import ActividadPayment from "@/sections/actividades/payment";
 import ActividadTaller from "@/sections/actividades/taller";
 import TallerRegistro from "@/sections/dashboard/talleres/formInscripcion";
@@ -57,6 +58,12 @@ function Page() {
 
           <Grid item xs={12}>
             <ActividadPayment fromDash />
+          </Grid>
+          <Grid item xs={12}>
+            <ActividadLocation
+              place="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d290.2524823542849!2d-70.25072069367124!3d-18.025927990238742!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915acff346a84b5f%3A0xe192654136c7ee37!2sEscuela%20de%20Metal%C3%BArgica-Mec%C3%A1nica%2C%20Inform%C3%A1tica%20y%20Sistemas!5e0!3m2!1ses!2spe!4v1699724538996!5m2!1ses!2spe"
+              fromDash
+            />
           </Grid>
         </Grid>
       </Container>

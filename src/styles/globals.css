@@ -195,3 +195,7 @@ a {
 .swal2-container {
   z-index: 2000;
 }
+
+.swal2-actions{
+  flex-direction: row-reverse;
+}

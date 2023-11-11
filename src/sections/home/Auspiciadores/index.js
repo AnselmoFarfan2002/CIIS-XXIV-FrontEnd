@@ -9,10 +9,20 @@ import {
   Typography,
   IconButton,
   Grow,
+  Tooltip,
 } from "@mui/material";
 import { v4 } from "uuid";
 import auspiciadoresData from "./data";
-import { Facebook, Instagram, LinkedIn, Public, Web, YouTube } from "@mui/icons-material";
+import {
+  Facebook,
+  Instagram,
+  LinkedIn,
+  Phone,
+  Public,
+  Web,
+  WhatsApp,
+  YouTube,
+} from "@mui/icons-material";
 import LocalFade from "@/components/Animation/LocalFade";
 import BarLeftTitle from "@/components/Sections/BarLeftTitle";
 import { useInView } from "react-intersection-observer";
@@ -22,6 +32,7 @@ const snIcon = {
   LinkedIn: <LinkedIn />,
   YouTube: <YouTube />,
   Instagram: <Instagram />,
+  Telefono: <Phone />,
 };
 
 export default function HomeAuspiciadores() {
@@ -59,7 +70,7 @@ export default function HomeAuspiciadores() {
       >
         {auspiciadoresData.map((auspiciador, idx) => (
           <Grid item xs={12} sm={4} md={3} lg={2} key={v4()}>
-            <Grow in={inView} timeout={{ enter: 200 * idx }}>
+            <LocalFade sx={{ height: "100%" }}>
               <Card
                 sx={{
                   textAlign: "center",
@@ -90,20 +101,29 @@ export default function HomeAuspiciadores() {
                         <Public />
                       </IconButton>
                     )}
-                    {auspiciador.social_networks.map((sn) => (
-                      <IconButton
-                        key={v4()}
-                        href={sn.href}
-                        target="_blank"
-                        title="Red social"
-                      >
-                        {snIcon[sn.name]}
-                      </IconButton>
-                    ))}
+                    {auspiciador.social_networks.map((sn) =>
+                      sn.name == "Telefono" ? (
+                        <Tooltip
+                          title={sn.number}
+                          href={`tel:${sn.number.replace(" ", "")}`}
+                        >
+                          <IconButton>{snIcon[sn.name]}</IconButton>
+                        </Tooltip>
+                      ) : (
+                        <IconButton
+                          key={v4()}
+                          href={sn.href}
+                          target="_blank"
+                          title="Red social"
+                        >
+                          {snIcon[sn.name]}
+                        </IconButton>
+                      )
+                    )}
                   </Box>
                 </CardContent>
               </Card>
-            </Grow>
+            </LocalFade>
           </Grid>
         ))}
       </Grid>

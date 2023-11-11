@@ -22,10 +22,9 @@ export const AuthGuard = (props) => {
 
     if (!JSON.parse(window.localStorage.getItem("userSession"))) {
       router
-        .replace({
+        .push({
           pathname: "/",
-          query:
-            router.asPath !== "/" ? { next: router.asPath } : undefined,
+          query: router.asPath !== "/" ? { next: router.asPath } : undefined,
         })
         .then((a) => setChecked(true))
         .catch(console.error);

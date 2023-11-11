@@ -221,10 +221,21 @@ function getSchemaForm({
         .required("Es necesario para poder contactarlo"),
     }),
     onSubmit: (values) => {
-      setLoading(true);
-      fetchPost(directory.user.src, values, success, (err) => {
-        abort(err);
-        setLoading(false);
+      Swal.fire({
+        title: "Compruebe sus datos",
+        text: "Usaremos los datos de registro para la emisión de certificados. Verifique tildes en su nombre y que no haya errores en el correo",
+        icon: "question",
+        confirmButtonText: "¡Regístrame!",
+        cancelButtonText: "Cancelar",
+        showCancelButton: true,
+      }).then((res) => {
+        if (res.isConfirmed) {
+          setLoading(true);
+          fetchPost(directory.user.src, values, success, (err) => {
+            abort(err);
+            setLoading(false);
+          });
+        }
       });
     },
   };

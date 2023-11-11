@@ -32,7 +32,7 @@ export function AuthProvider({ children }) {
     setUser(user);
     setLogged(true);
     if (router.query.next)
-      router.push(`${router.pathname}/${router.query.next}`);
+      router.push(`${router.query.next ?? router.pathname}`);
     else router.push("/dashboard");
   }
 
@@ -62,8 +62,8 @@ export function AuthProvider({ children }) {
     setUser(user2);
   }
 
-  const logout = () => {
-    router.push("/");
+  const logout = (destinity = "/") => {
+    router.push(destinity);
     setUser(null);
     setLogged(false);
     window.localStorage.removeItem("userSession");

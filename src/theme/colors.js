@@ -72,3 +72,8 @@ export const error = withAlphas({
   darkest: "#7A271A",
   contrastText: "#FFFFFF",
 });
+
+export const grey = {
+  main: "#909399",
+  contrastText: "#fff",
+};

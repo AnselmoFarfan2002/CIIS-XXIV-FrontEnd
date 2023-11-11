@@ -161,6 +161,11 @@ export default function ActividadMain({
                         <Typography fontFamily={typography.h3}>
                           S/. {costo.value}
                         </Typography>
+                        {costo.original && (
+                          <Typography sx={{ textDecoration: "line-through", textAlign: "right" }}>
+                            S/. {costo.original}
+                          </Typography>
+                        )}
                       </Box>
                     </Grid>
                   </Grid>

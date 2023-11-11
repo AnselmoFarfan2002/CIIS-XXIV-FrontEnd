@@ -34,7 +34,7 @@ import { useEffect } from "react";
 const { default: DashboardLayout } = require("@/layouts/dashboard/layout");
 
 function Page() {
-  const { user, setInscriptionCiis } = useAuth();
+  const { user, setInscriptionCiis, logout } = useAuth();
 
   const formikPhone = useFormik(
     getValidationPhoneEdit({ onSubmit: handleUpdatePhone })
@@ -52,6 +52,15 @@ function Page() {
     );
   }, []);
 
+  function failServer(err) {
+    if (err.code) {
+      if (err.code == 401) {
+        Swal.fire("¡Ups!", "Sesión expirada", "error");
+        logout("/actividades?next=/dashboard/cuenta");
+      } else abortFetch(err);
+    } else abortFetch(err);
+  }
+
   function handleUpdatePhone(values) {
     fetchPatch(
       directory.user.phone,
@@ -66,7 +75,7 @@ function Page() {
         user.phone = values.phone;
         setInscriptionCiis(user);
       },
-      abortFetch
+      failServer
     );
   }
 
@@ -82,7 +91,7 @@ function Page() {
           icon: "success",
         });
       },
-      abortFetch
+      failServer
     );
   }
 

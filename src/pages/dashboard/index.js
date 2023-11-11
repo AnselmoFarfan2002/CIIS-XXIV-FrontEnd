@@ -1,3 +1,4 @@
+import LocalFade from "@/components/Animation/LocalFade";
 import { useAuth } from "@/context/auth";
 import DashboardLayout from "@/layouts/dashboard/layout.js";
 import InfoCardAsistencias from "@/sections/dashboard/inicio/asistencias";
@@ -58,36 +59,38 @@ export default function Page() {
         <link rel="icon" href="/favicon.png" />
       </Head>
       <Box sx={{ p: 4 }}>
-        <Grid container spacing={3}>
-          <Grid item md={6} lg={4}>
-            <Grid container spacing={3}>
-              <Grid item xs={12}>
-                <InfoCardPonencia
-                  title="Próximamente"
-                  subheader="13 de noviembre del 2023"
-                />
-              </Grid>
-              {/* <Grid item xs={12}>
+        <LocalFade>
+          <Grid container spacing={3}>
+            <Grid item md={6} lg={4}>
+              <Grid container spacing={3}>
+                <Grid item xs={12}>
+                  <InfoCardPonencia
+                    title="Próximamente"
+                    subheader="13 de noviembre del 2023"
+                  />
+                </Grid>
+                {/* <Grid item xs={12}>
                 <InfoCardPonencia image="/img/CIIS/XXIV/lectures/example2.png" />
               </Grid> */}
-            </Grid>
-          </Grid>
-          <Grid item md={6} lg={7}>
-            <Grid container spacing={3}>
-              <Grid item xs={12}>
-                <InfoCardInscription {...{ user }} />
               </Grid>
-              {/* <Grid item xs={12}>
+            </Grid>
+            <Grid item md={6} lg={7}>
+              <Grid container spacing={3}>
+                <Grid item xs={12}>
+                  <InfoCardInscription {...{ user }} />
+                </Grid>
+                {/* <Grid item xs={12}>
                 <SummaryProgram {...{ ponencias }} />
               </Grid> */}
-              {/* <Grid item xs={12}>
+                {/* <Grid item xs={12}>
                 <InfoCardAsistencias
                   {...{ user, attTotal, attAct, tasaAceptacion }}
                 />
               </Grid> */}
+              </Grid>
             </Grid>
           </Grid>
-        </Grid>
+        </LocalFade>
       </Box>
     </>
   );

@@ -24,7 +24,8 @@ export const costosCIIS = [
     id: "op4",
     name: "Estudiante UNJBG",
     descuento: true,
-    value: "50",
-    desc: "Para miembros de nuestra casa de estudios.",
+    value: "30",
+    original: "50",
+    desc: "Para miembros de nuestra casa de estudios. (Periodo 2023-II)",
   },
 ];

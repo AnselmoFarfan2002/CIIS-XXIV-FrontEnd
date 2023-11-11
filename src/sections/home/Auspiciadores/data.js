@@ -6,7 +6,7 @@ const auspiciadoresData = [
     social_networks: [
       {
         name: "LinkedIn",
-        href: "https://www.linkedin.com/company/gointegreat/?originalSubdomain=pe",
+        href: "https://www.linkedin.com/company/gointegreat",
       },
       {
         name: "YouTube",
@@ -21,14 +21,14 @@ const auspiciadoresData = [
     social_networks: [
       {
         name: "Facebook",
-        href: "https://www.facebook.com/basadreaparthotel/?locale=es_LA",
+        href: "https://www.facebook.com/basadreaparthotel",
       },
     ],
   },
   {
     name: "El Padrino",
     logo: "/img/auspiciadores/el-padrino-pizza.png",
-    web: "https://ecartac.com/r/el-padrino-la-vera-pizza?fbclid=IwAR0PMQ9v8cvUTUhTwN8lAIMAIrOb0BV4jqMaEeBCT9FRR0nPP2xgs9S2B2U",
+    web: "https://ecartac.com/r/el-padrino-la-vera-pizza",
     social_networks: [
       {
         name: "Facebook",
@@ -43,7 +43,7 @@ const auspiciadoresData = [
     social_networks: [
       {
         name: "Facebook",
-        href: "https://www.facebook.com/LaGlorietaPeru/?locale=es_LA",
+        href: "https://www.facebook.com/LaGlorietaPeru",
       },
     ],
   },
@@ -54,11 +54,11 @@ const auspiciadoresData = [
     social_networks: [
       {
         name: "Facebook",
-        href: "https://www.facebook.com/DataConsulting.pe/?locale=es_LA",
+        href: "https://www.facebook.com/DataConsulting.pe",
       },
       {
         name: "LinkedIn",
-        href: "https://www.linkedin.com/company/dcptacna/?originalSubdomain=pe",
+        href: "https://www.linkedin.com/company/dcptacna",
       },
     ],
   },
@@ -69,7 +69,7 @@ const auspiciadoresData = [
     social_networks: [
       {
         name: "Facebook",
-        href: "https://www.facebook.com/muni.cgal?mibextid=ZbWKwL",
+        href: "https://www.facebook.com/muni.cgal",
       },
     ],
   },
@@ -80,22 +80,22 @@ const auspiciadoresData = [
     social_networks: [
       {
         name: "Facebook",
-        href: "https://www.facebook.com/profile.php?id=100071320934211",
+        href: "https://www.facebook.com/profile.php",
       },
     ],
   },
-  {
-    name: "Hotel Copacabana",
-    logo: "/img/auspiciadores/hotel-copacabana.png",
-    web: "https://www.copahotel.com/",
-    social_networks: [
-      { name: "Facebook", href: "https://www.facebook.com/hotelestacna" },
-      {
-        name: "Instagram",
-        href: "https://www.instagram.com/invites/contact/?i=1vtjq2r5qd3sg&utm_content=swbmzpb",
-      },
-    ],
-  },
+  // {
+  //   name: "Hotel Copacabana",
+  //   logo: "/img/auspiciadores/hotel-copacabana.png",
+  //   web: "https://www.copahotel.com/",
+  //   social_networks: [
+  //     { name: "Facebook", href: "https://www.facebook.com/hotelestacna" },
+  //     {
+  //       name: "Instagram",
+  //       href: "https://www.instagram.com/invites/contact/?i=1vtjq2r5qd3sg&utm_content=swbmzpb",
+  //     },
+  //   ],
+  // },
   {
     name: "Cascanueces",
     logo: "/img/auspiciadores/cascanueces.png",
@@ -103,11 +103,11 @@ const auspiciadoresData = [
     social_networks: [
       {
         name: "Facebook",
-        href: "https://www.facebook.com/LaTrufaDorada21?mibextid=9R9pXO",
+        href: "https://www.facebook.com/LaTrufaDorada21",
       },
       {
         name: "Instagram",
-        href: "hhttps://www.instagram.com/El_cascanu?fbclid=IwAR08Jo9J8dvyYmRRR_5eZI2X2qtK8dcnlGXy66nQ2XkghW-jhEOMpUR3lPc",
+        href: "https://www.instagram.com/El_cascanu",
       },
     ],
   },
@@ -118,7 +118,7 @@ const auspiciadoresData = [
     social_networks: [
       {
         name: "Facebook",
-        href: "https://www.facebook.com/digitallasertc/?paipv=0&eav=AfYl1KO7cHTligQeO3cemGuqxkU6ShXkAolTIAwiKFBMT4QXi1BS8-a2tLOSMSvZWLo&_rdr",
+        href: "https://www.facebook.com/digitallasertc",
       },
       {
         name: "Instagram",
@@ -127,8 +127,98 @@ const auspiciadoresData = [
     ],
   },
   {
+    name: "Pastelerías Dulzuras",
+    logo: "/img/auspiciadores/pasteleria-dulzuras.png",
+    web: null,
+    social_networks: [
+      {
+        name: "Facebook",
+        href: "https://web.facebook.com/p/Pasteleria-dulzuras-100063625131873",
+      },
+    ],
+  },
+  {
+    name: "Restaurante el Buen Sabor",
+    logo: "/img/auspiciadores/el-buen-lugar-vegetariano.png",
+    web: null,
+    social_networks: [
+      {
+        name: "Facebook",
+        href: "https://web.facebook.com/elbuenlugar/",
+      },
+      {
+        name: "Instagram",
+        href: "https://www.instagram.com/elbuenlugartacna/",
+      },
+    ],
+  },
+  {
+    name: "CEID",
+    logo: "/img/auspiciadores/ceid.png",
+    web: "http://ceid.unjbg.edu.pe/",
+    social_networks: [
+      {
+        name: "Facebook",
+        href: "https://web.facebook.com/CEIDUNJBG",
+      },
+      {
+        name: "Instagram",
+        href: "https://www.instagram.com/ceid.unjbg/",
+      },
+    ],
+  },
+  {
+    name: "ITEL",
+    logo: "/img/auspiciadores/itel.png",
+    web: "http://itel.unjbg.edu.pe/",
+    social_networks: [
+      {
+        name: "Facebook",
+        href: "https://web.facebook.com/itel.unjbgtacna/",
+      },
+      {
+        name: "Instagram",
+        href: "https://www.instagram.com/itel_unjbg/",
+      },
+    ],
+  },
+  {
+    name: "La fabrica de bolsas",
+    logo: "/img/auspiciadores/fabrica-bolsas.png",
+    web: null,
+    social_networks: [
+      {
+        name: "Telefono",
+        number: "+51 948070039",
+      },
+    ],
+  },
+  {
+    name: "Pastelería Unión",
+    logo: "/img/auspiciadores/pasterleria-union.png",
+    web: null,
+    social_networks: [
+      {
+        name: "Telefono",
+        number: "+51 977832614",
+      },
+    ],
+  },
+  {
     name: "Hotel terrazas",
     logo: "/img/auspiciadores/logo-terrazas.png",
+    web: null,
+    social_networks: [],
+  },
+  {
+    name: "Sur Andino",
+    logo: "/img/auspiciadores/sur-andino.png",
+    web: null,
+    social_networks: [],
+  },
+  {
+    name: "Criadero Don Julio Vega",
+    logo: "/img/auspiciadores/criadero-don-julio-vega.png",
     web: null,
     social_networks: [],
   },

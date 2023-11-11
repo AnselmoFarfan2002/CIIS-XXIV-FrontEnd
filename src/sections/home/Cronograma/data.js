@@ -30,6 +30,7 @@ export const cronogramaDatav0 = [
         country: "Perú",
       },
       {
+        id: 9,
         start: "16:00hrs",
         end: "17:00hrs",
         type: "Ponencia",
@@ -39,6 +40,7 @@ export const cronogramaDatav0 = [
         country: "Ecuador",
       },
       {
+        id: 10,
         start: "17:00hrs",
         end: "18:30hrs",
         type: "Ponencia",
@@ -62,6 +64,7 @@ export const cronogramaDatav0 = [
     date: new Date("11/14/2023"),
     early: [
       {
+        id: 11,
         start: "09:00am",
         end: "10:00am",
         type: "Ponencia",
@@ -71,6 +74,7 @@ export const cronogramaDatav0 = [
         country: "Perú",
       },
       {
+        id: 12,
         start: "10:00am",
         end: "11:00am",
         type: "Ponencia",
@@ -80,6 +84,7 @@ export const cronogramaDatav0 = [
         country: "Chile",
       },
       {
+        id: 13,
         start: "11:30am",
         end: "13:00hrs",
         type: "Taller",
@@ -107,6 +112,7 @@ export const cronogramaDatav0 = [
         country: null,
       },
       {
+        id: 14,
         start: "16:00hrs",
         end: "17:00hrs",
         type: "Ponencia",
@@ -116,6 +122,7 @@ export const cronogramaDatav0 = [
         country: "Chile",
       },
       {
+        id: 15,
         start: "17:00hrs",
         end: "18:00hrs",
         type: "Ponencia",
@@ -131,6 +138,7 @@ export const cronogramaDatav0 = [
     date: new Date("11/15/2023"),
     early: [
       {
+        id: 16,
         start: "09:00am",
         end: "10:00am",
         type: "Ponencia",
@@ -140,6 +148,7 @@ export const cronogramaDatav0 = [
         country: "Perú",
       },
       {
+        id: 17,
         start: "10:00am",
         end: "11:00am",
         type: "Ponencia",
@@ -168,6 +177,7 @@ export const cronogramaDatav0 = [
     ],
     late: [
       {
+        id: 19,
         start: "16:00hrs",
         end: "17:30hrs",
         type: "Ponencia",
@@ -177,6 +187,7 @@ export const cronogramaDatav0 = [
         country: "Corea del sur",
       },
       {
+        id: 20,
         start: "17:30hrs",
         end: "19:00hrs",
         type: "Ponencia",
@@ -192,6 +203,7 @@ export const cronogramaDatav0 = [
     date: new Date("11/16/2023"),
     early: [
       {
+        id: 21,
         start: "09:00am",
         end: "10:00am",
         type: "Ponencia",
@@ -201,6 +213,7 @@ export const cronogramaDatav0 = [
         country: "Perú",
       },
       {
+        id: 22,
         start: "10:00am",
         end: "11:00am",
         type: "Ponencia",
@@ -237,6 +250,7 @@ export const cronogramaDatav0 = [
         country: null,
       },
       {
+        id: 24,
         start: "16:00hrs",
         end: "17:00hrs",
         type: "Ponencia",
@@ -246,6 +260,7 @@ export const cronogramaDatav0 = [
         country: "Perú",
       },
       {
+        id: 25,
         start: "17:00hrs",
         end: "18:00hrs",
         type: "Ponencia",
@@ -261,6 +276,7 @@ export const cronogramaDatav0 = [
     date: new Date("11/17/2023"),
     early: [
       {
+        id: 26,
         start: "09:00am",
         end: "10:00am",
         type: "Ponencia",
@@ -270,6 +286,7 @@ export const cronogramaDatav0 = [
         country: "Perú",
       },
       {
+        id: 27,
         start: "10:00am",
         end: "11:00am",
         type: "Ponencia",
@@ -306,6 +323,7 @@ export const cronogramaDatav0 = [
         country: null,
       },
       {
+        id: 29,
         start: "16:00hrs",
         end: "17:00hrs",
         type: "Ponencia",
@@ -315,6 +333,7 @@ export const cronogramaDatav0 = [
         country: "Chile",
       },
       {
+        id: 30,
         start: "17:00hrs",
         end: "18:30hrs",
         type: "Ponencia",
