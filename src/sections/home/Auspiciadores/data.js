@@ -183,6 +183,36 @@ const auspiciadoresData = [
     ],
   },
   {
+    name: "Jallalla Coffee Bar",
+    logo: "/img/auspiciadores/jallalla-coffee-bar.png",
+    web: null,
+    social_networks: [
+      {
+        name: "Facebook",
+        href: "https://www.facebook.com/jallalla.cafe.bar.restaurant.tacna/",
+      },
+      {
+        name: "Telefono",
+        number: "+51 933429165",
+      },
+    ],
+  },
+  {
+    name: "Cable Tacna",
+    logo: "/img/auspiciadores/cable-tacna.png",
+    web: null,
+    social_networks: [
+      {
+        name: "Facebook",
+        href: "https://www.facebook.com/cabletacnatvoficial/",
+      },
+      {
+        name: "Instagram",
+        href: "https://www.instagram.com/cabletacnatv/",
+      },
+    ],
+  },
+  {
     name: "La fabrica de bolsas",
     logo: "/img/auspiciadores/fabrica-bolsas.png",
     web: null,

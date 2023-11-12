@@ -177,6 +177,14 @@ export const cronogramaDatav0 = [
     ],
     late: [
       {
+        start: "14:00hrs",
+        end: "16:00hrs",
+        type: "contest",
+        name: "Concurso de Conocimientos",
+        speaker: null,
+        country: null,
+      },
+      {
         id: 19,
         start: "16:00hrs",
         end: "17:30hrs",
@@ -254,9 +262,9 @@ export const cronogramaDatav0 = [
         start: "16:00hrs",
         end: "17:00hrs",
         type: "Ponencia",
-        name: "Identificación Automática de Defectos en Software",
-        speaker: "Ph.D. Jesús Bellido (UTEC)",
-        idSpeaker: 30,
+        name: "Mapa Virtual del Potencial Turístico Natural y Arquitectónico con Sistema de Recomendación Fuzzy para la Provincia de Arequipa - Perú",
+        speaker: "Dr. Edward Hinojosa Cardenas (UNSA)",
+        idSpeaker: 34,
         country: "Perú",
       },
       {
@@ -314,14 +322,6 @@ export const cronogramaDatav0 = [
       },
     ],
     late: [
-      {
-        start: "14:00hrs",
-        end: "16:00hrs",
-        type: "contest",
-        name: "Concurso de Conocimientos",
-        speaker: null,
-        country: null,
-      },
       {
         id: 29,
         start: "16:00hrs",
