@@ -82,6 +82,10 @@ const auspiciadoresData = [
         name: "Facebook",
         href: "https://www.facebook.com/profile.php",
       },
+      {
+        name: "Instagram",
+        href: "https://instagram.com/bambinospizz",
+      },
     ],
   },
   // {

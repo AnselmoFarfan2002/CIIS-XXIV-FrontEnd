@@ -45,7 +45,7 @@ export default function RecuperacionForm() {
           Swal.fire({
             icon: "info",
             title: "Atención",
-            text: "Se enviará el código único de usuario a la cuenta asociada, en caso existiese",
+            text: "Al realizar la restauración su código único de usuario cambiará por seguridad. El nuevo código y contraseña se le serán enviados al correo electrónico.",
             confirmButtonText: "Enviar",
             showCancelButton: true,
             cancelButtonText: "Cancelar",
@@ -58,7 +58,7 @@ export default function RecuperacionForm() {
                   () =>
                     Swal.fire(
                       "Listo",
-                      "Se ha enviado el código a su email",
+                      "Se han enviado las credenciales a su correo electrónico",
                       "success"
                     ),
                   (err) => {
@@ -99,7 +99,7 @@ export default function RecuperacionForm() {
         Swal.fire({
           icon: "info",
           title: "Atención",
-          text: "Al realizar la restauración su código único de usuario cambiará por seguridad. El nuevo código y contraseña se le serán enviados al correo electrónico.",
+          text: "Se enviará el código único de usuario a la cuenta asociada, en caso existiese",
           confirmButtonText: "Enviar",
           showCancelButton: true,
           cancelButtonText: "Cancelar",
@@ -112,7 +112,7 @@ export default function RecuperacionForm() {
                 () => {
                   Swal.fire(
                     "Listo",
-                    "Se han enviado las credenciales a su correo electrónico",
+                    "Se ha enviado el código a su correo electrónico",
                     "success"
                   );
                   setLoading(false);
