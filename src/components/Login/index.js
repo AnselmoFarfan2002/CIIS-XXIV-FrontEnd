@@ -123,6 +123,18 @@ const Login = (props) => {
                       Regístrate
                     </Link>
                   </FormHelperText>
+                  <FormHelperText>
+                    ¿Olvidaste tu contraseña?{" "}
+                    <Link
+                      sx={{ cursor: "pointer" }}
+                      onClick={() => {
+                        handleClose();
+                        router.push("/recuperacion");
+                      }}
+                    >
+                      Recupérala
+                    </Link>
+                  </FormHelperText>
                 </Grid>
               </Grid>
             </Grid>

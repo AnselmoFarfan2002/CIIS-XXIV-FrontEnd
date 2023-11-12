@@ -38,6 +38,8 @@ export const directory = {
     inscription: `${domain}/api/v2/user/inscription`,
     phone: `${domain}/api/v2/user/phone`,
     password: `${domain}/api/v2/user/password`,
+    code: `${domain}/api/v2/user/code`,
+    restore: `${domain}/api/v2/user/restore`,
   },
   speaker: {
     one: (id) => ({

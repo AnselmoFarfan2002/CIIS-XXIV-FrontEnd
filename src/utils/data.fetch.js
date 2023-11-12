@@ -22,7 +22,13 @@ export function fetchByDNI(dni, save = () => {}, abort = () => {}) {
     });
 }
 
-export function fetchPost(uri, data, save = () => {}, abort = console.log) {
+export function fetchPost(
+  uri,
+  data,
+  save = () => {},
+  abort = console.log,
+  atTheEnd = () => {}
+) {
   fetch(uri, {
     method: "POST",
     body: JSON.stringify(data),
@@ -31,7 +37,8 @@ export function fetchPost(uri, data, save = () => {}, abort = console.log) {
   })
     .then(handleResponse)
     .then(save)
-    .catch(abort);
+    .catch(abort)
+    .finally(atTheEnd);
 }
 
 export function fetchPatch(uri, data, save = () => {}, abort = console.log) {
