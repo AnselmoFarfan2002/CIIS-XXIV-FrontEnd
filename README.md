@@ -17,5 +17,5 @@ Directorio de api backend: /src/context/url-context
 
 _Nota:_ Directorio de imágenes y videos ignorados en el repositorio.
 
-##Historial de Colaboradores:
+## Historial de Colaboradores:
 * CIIS-XXIV: Anselmo César Farfan Pajuelo (2023)
