@@ -67,9 +67,6 @@ export default function InfoCardInscription({ user = {} }) {
             <Chip component={"span"} {...estados[ins ? ins.ciis : 3]} />
           )}
         </Box>
-        <Typography variant="body2">
-          Cierre de inscripciones: 13 de noviembre del 2023
-        </Typography>
 
         <Typography variant="body2" sx={{ mt: 2, fontWeight: 500 }}>
           Otras inscripciones

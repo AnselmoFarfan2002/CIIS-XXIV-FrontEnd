@@ -39,7 +39,13 @@ const { default: DashboardLayout } = require("@/layouts/dashboard/layout");
 
 function Page() {
   const theme = createTheme({ palette: { mode: "dark" } });
-  const [day, setDay] = useState("2023-11-13");
+
+  let today = new Date();
+  today = today - 5 * 60 * 60 * 1000;
+
+  const [day, setDay] = useState(
+    new Date(today).toISOString().substring(0, 10)
+  );
   const [serverError, setServerError] = useState(false);
   const [ponenciaFromServer, setPonenciaFromServer] = useState(null);
 
@@ -133,7 +139,7 @@ function Page() {
                     Día de ponencia
                   </InputLabel>
                   <Select value={day} onChange={handleOnChageDay}>
-                    <MenuItem value="2023-11-13">Lunes 03/11/2023</MenuItem>
+                    <MenuItem value="2023-11-13">Lunes 13/11/2023</MenuItem>
                     <MenuItem value="2023-11-14">Martes 14/11/2023</MenuItem>
                     <MenuItem value="2023-11-15">Miércoles 15/11/2023</MenuItem>
                     <MenuItem value="2023-11-16">Jueves 16/11/2023</MenuItem>

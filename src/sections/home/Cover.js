@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import Atropos from "atropos/react";
 import "atropos/css";
-import Crono from "../../components/Crono/Crono";
+import Crono from "../../components/Crono/Crono.js";
 import colors from "../../styles/colors";
 import { fonts } from "@/styles/fonts";
 
@@ -143,7 +143,10 @@ const Cover = () => {
 
                   <Box py={2}>
                     <Typography variant="h4" style={title}>
-                      <Crono date="11-13-2023" />
+                      <Crono
+                        date="2023-11-13T16:00:00"
+                        endDate="2023-11-17T20:30:00"
+                      />
                     </Typography>
                     <Typography variant="body2">
                       Días : Horas : Minutos : Segundos

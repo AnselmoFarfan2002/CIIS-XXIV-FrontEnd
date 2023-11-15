@@ -140,7 +140,10 @@ function Page() {
                     width={"100%"}
                     height={"100%"}
                     id="QRcredencial"
-                    style={{ padding: "5%", backgroundColor: "white" }}
+                    style={{
+                      padding: "5%",
+                      backgroundColor: "white !important",
+                    }}
                     value={JSON.stringify(user, [
                       "id",
                       "dni",
@@ -238,7 +241,7 @@ function Page() {
                     variant="h6"
                     fontFamily={typography.h3.fontFamily}
                   >
-                    Credenciales
+                    Cambiar contraseña
                   </Typography>
                 </LocalFade>
               </Grid>

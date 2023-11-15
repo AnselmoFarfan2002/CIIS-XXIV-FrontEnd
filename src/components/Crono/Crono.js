@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 
 export default function Crono(props) {
+  const { endDate } = props;
   const getTimeRemaining = (e) => {
     const total = e - new Date();
     let days = total / (1000 * 60 * 60 * 24);
@@ -30,7 +31,8 @@ export default function Crono(props) {
         (seconds > 9 ? seconds : "0" + seconds)
       );
     } else {
-      return "00 : 00 : 00 : 00";
+      if (new Date() <= new Date(endDate)) return "En curso";
+      else return "Finalizado";
     }
   }
 

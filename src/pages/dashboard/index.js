@@ -65,7 +65,7 @@ export default function Page() {
               <Grid container spacing={3}>
                 <Grid item xs={12}>
                   <InfoCardPonencia
-                    title="Próximamente"
+                    title="CIIS - XXIV"
                     subheader="13 de noviembre del 2023"
                   />
                 </Grid>
