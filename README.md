@@ -16,3 +16,6 @@ Directorio de api backend: /src/context/url-context
 **URL:** https://www.ciistacna.com/
 
 _Nota:_ Directorio de imágenes y videos ignorados en el repositorio.
+
+##Historial de Colaboradores:
+* CIIS-XXIV: Anselmo César Farfan Pajuelo (2023)
