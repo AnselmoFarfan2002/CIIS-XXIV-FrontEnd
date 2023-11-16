@@ -32,6 +32,7 @@ export default function ActividadMain({
 }) {
   const router = useRouter();
   const { user } = useAuth();
+  const endDate = new Date() > new Date("2023-11-15"); //cierrre de isncripciones
 
   return (
     <Grid container spacing={3} alignItems={"center"} maxWidth={"lg"}>
@@ -110,7 +111,13 @@ export default function ActividadMain({
               <Card sx={{ backgroundColor: colors.bg.light, p: 1 }}>
                 <CardActionArea
                   onClick={() => {
-                    if (!user)
+                    if (endDate)
+                      Swal.fire(
+                        "Lo sentimos",
+                        "Las inscripciones están cerradas",
+                        "warning"
+                      );
+                    else if (!user)
                       router.push(
                         `/registro?next=${"/dashboard/ciis?type=" + costo.id}`
                       );
@@ -162,7 +169,12 @@ export default function ActividadMain({
                           S/. {costo.value}
                         </Typography>
                         {costo.original && (
-                          <Typography sx={{ textDecoration: "line-through", textAlign: "right" }}>
+                          <Typography
+                            sx={{
+                              textDecoration: "line-through",
+                              textAlign: "right",
+                            }}
+                          >
                             S/. {costo.original}
                           </Typography>
                         )}

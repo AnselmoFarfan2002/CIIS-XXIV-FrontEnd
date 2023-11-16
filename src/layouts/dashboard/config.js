@@ -31,7 +31,7 @@ export const items = [
         <AccountBalance />
       </SvgIcon>
     ),
-    disabled: false,
+    disabled: true,
   },
   {
     title: "Talleres",
