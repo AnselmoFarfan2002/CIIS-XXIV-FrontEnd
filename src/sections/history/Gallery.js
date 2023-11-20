@@ -95,7 +95,7 @@ const Gallery = (props) => {
                     sx={{ "&:hover": { cursor: "pointer" } }}
                   >
                     <img
-                      src={"/" + image}
+                      src={image}
                       alt={name}
                       style={{ width: "100%", maxHeight: "100%" }}
                     />

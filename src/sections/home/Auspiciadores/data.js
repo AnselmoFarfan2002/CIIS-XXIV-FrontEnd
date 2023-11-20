@@ -80,7 +80,7 @@ const auspiciadoresData = [
     social_networks: [
       {
         name: "Facebook",
-        href: "https://www.facebook.com/profile.php",
+        href: "https://www.facebook.com/profile.php?id=100071320934211&mibextid=9R9pXO",
       },
       {
         name: "Instagram",

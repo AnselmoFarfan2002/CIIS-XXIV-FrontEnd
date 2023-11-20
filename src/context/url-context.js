@@ -37,6 +37,8 @@ export const directory = {
     src: `${domain}/api/v2/user`,
     inscription: `${domain}/api/v2/user/inscription`,
     phone: `${domain}/api/v2/user/phone`,
+    name: `${domain}/api/v2/user/name`,
+    lastname: `${domain}/api/v2/user/lastname`,
     password: `${domain}/api/v2/user/password`,
     code: `${domain}/api/v2/user/code`,
     restore: `${domain}/api/v2/user/restore`,

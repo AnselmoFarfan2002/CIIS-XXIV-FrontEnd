@@ -21,6 +21,7 @@ import {
   Typography,
   createTheme as MUICT,
   FormHelperText,
+  Tooltip,
 } from "@mui/material";
 import { useFormik } from "formik";
 import Head from "next/head";
@@ -42,6 +43,12 @@ function Page() {
   const formikPass = useFormik(
     getValidationPwdEdit({ onSubmit: handleUpdatePass })
   );
+  const formikName = useFormik(
+    getValidationName({ onSubmit: handleUpdateName })
+  );
+  const formikLastname = useFormik(
+    getValidationLastname({ onSubmit: handleUpdateLastname })
+  );
   const theme = MUICT({ palette: { mode: "dark" } });
   const themeC = createTheme({ palette: { mode: "dark" } });
 
@@ -49,6 +56,18 @@ function Page() {
     formikPhone.setFieldValue(
       "phone",
       Boolean(user.phone) ? user.phone : "No especificado"
+    );
+  }, []);
+  useEffect(() => {
+    formikName.setFieldValue(
+      "name",
+      Boolean(user?.name) ? capitalizeWords(user.name) : ""
+    );
+  }, []);
+  useEffect(() => {
+    formikLastname.setFieldValue(
+      "lastname",
+      Boolean(user?.lastname) ? capitalizeWords(user.lastname) : ""
     );
   }, []);
 
@@ -68,11 +87,47 @@ function Page() {
       () => {
         Swal.fire({
           title: "Teléfono actualizado",
-          text: "Se ha actualizado el teléfono en tu cuenta",
+          text: "Se ha actualizado el teléfono en su cuenta",
           confirmButtontext: "Aceptar",
           icon: "success",
         });
         user.phone = values.phone;
+        setInscriptionCiis(user);
+      },
+      failServer
+    );
+  }
+
+  function handleUpdateName(values) {
+    fetchPatch(
+      directory.user.name,
+      values,
+      () => {
+        Swal.fire({
+          title: "Nombres actualizados",
+          text: "Se han actualizado sus nombres en su cuenta",
+          confirmButtontext: "Aceptar",
+          icon: "success",
+        });
+        user.name = values.name;
+        setInscriptionCiis(user);
+      },
+      failServer
+    );
+  }
+
+  function handleUpdateLastname(values) {
+    fetchPatch(
+      directory.user.lastname,
+      values,
+      () => {
+        Swal.fire({
+          title: "Apellidos actualizados",
+          text: "Se han actualizado sus apellidos en su cuenta",
+          confirmButtontext: "Aceptar",
+          icon: "success",
+        });
+        user.lastname = values.lastname;
         setInscriptionCiis(user);
       },
       failServer
@@ -174,21 +229,61 @@ function Page() {
               </Grid>
 
               <ThemeProvider theme={theme}>
-                <Grid item xs={12} md={6}>
+                <Grid item xs={12} md={6} sx={{ display: "flex" }}>
                   <TextField
                     fullWidth
                     variant="filled"
                     label="Nombres"
-                    value={capitalizeWords(user?.name)}
+                    {...formikName.getFieldProps("name")}
+                    {...getFieldStyle(formikName, "name")}
                   />
+                  <ThemeProvider theme={themeC}>
+                    <Tooltip title="Actualizar nombres">
+                      <Button
+                        variant="contained"
+                        color="blue"
+                        sx={{
+                          borderRadius: 0,
+                          mb:
+                            formikPhone.errors.phone &&
+                            formikPhone.touched.phone
+                              ? 3
+                              : 0,
+                        }}
+                        onClick={formikName.handleSubmit}
+                      >
+                        <Save></Save>
+                      </Button>
+                    </Tooltip>
+                  </ThemeProvider>
                 </Grid>
-                <Grid item xs={12} md={6}>
+                <Grid item xs={12} md={6} sx={{ display: "flex" }}>
                   <TextField
                     fullWidth
                     variant="filled"
                     label="Apellidos"
-                    value={capitalizeWords(user?.lastname)}
+                    {...formikLastname.getFieldProps("lastname")}
+                    {...getFieldStyle(formikLastname, "lastname")}
                   />
+                  <ThemeProvider theme={themeC}>
+                    <Tooltip title="Actualizar apellidos">
+                      <Button
+                        variant="contained"
+                        color="blue"
+                        sx={{
+                          borderRadius: 0,
+                          mb:
+                            formikPhone.errors.phone &&
+                            formikPhone.touched.phone
+                              ? 3
+                              : 0,
+                        }}
+                        onClick={formikLastname.handleSubmit}
+                      >
+                        <Save></Save>
+                      </Button>
+                    </Tooltip>
+                  </ThemeProvider>
                 </Grid>
                 <Grid item xs={12} md={6}>
                   <TextField
@@ -217,20 +312,23 @@ function Page() {
                     {...getFieldStyle(formikPhone, "phone")}
                   />
                   <ThemeProvider theme={themeC}>
-                    <Button
-                      variant="contained"
-                      color="blue"
-                      sx={{
-                        borderRadius: 0,
-                        mb:
-                          formikPhone.errors.phone && formikPhone.touched.phone
-                            ? 3
-                            : 0,
-                      }}
-                      onClick={formikPhone.handleSubmit}
-                    >
-                      <Save></Save>
-                    </Button>
+                    <Tooltip title="Actualizar teléfono">
+                      <Button
+                        variant="contained"
+                        color="blue"
+                        sx={{
+                          borderRadius: 0,
+                          mb:
+                            formikPhone.errors.phone &&
+                            formikPhone.touched.phone
+                              ? 3
+                              : 0,
+                        }}
+                        onClick={formikPhone.handleSubmit}
+                      >
+                        <Save></Save>
+                      </Button>
+                    </Tooltip>
                   </ThemeProvider>
                 </Grid>
               </ThemeProvider>
@@ -319,6 +417,25 @@ function getValidationPwdEdit({ onSubmit = console.log }) {
   };
 }
 
+function getValidationName({ onSubmit = console.log }) {
+  return {
+    initialValues: { name: "" },
+    validationSchema: Yup.object().shape({
+      name: Yup.string().required("Este campo es obligatorio"),
+    }),
+    onSubmit,
+  };
+}
+
+function getValidationLastname({ onSubmit = console.log }) {
+  return {
+    initialValues: { lastname: "" },
+    validationSchema: Yup.object().shape({
+      lastname: Yup.string().required("Este campo es obligatorio"),
+    }),
+    onSubmit,
+  };
+}
 Page.getLayout = (page) => <DashboardLayout>{page}</DashboardLayout>;
 
 export default Page;

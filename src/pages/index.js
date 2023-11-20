@@ -6,13 +6,14 @@ import Topics from "@/sections/home/Topics";
 import PostmasterCard from "@/sections/home/Postmaster";
 import Particles from "@/components/Particles/Particles";
 import Share from "@/sections/home/Share.js";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CIISLayout from "@/layouts/CIIS/CIISLayout";
 import UltimaEdicion from "@/sections/home/UltimaEdicion";
 import HomeCounters from "@/sections/home/Counters";
 import HomeAuspiciadores from "@/sections/home/Auspiciadores";
 import HomeCronogramav2 from "@/sections/home/Cronograma/indexv2";
 import HomeConcursos from "@/sections/home/concurso";
+import CoverXXV from "@/sections/home/Cover-2/index";
 
 const Page = (props) => {
   const [edicion, setEdicion] = useState(24);
@@ -21,6 +22,16 @@ const Page = (props) => {
   const [concursos, setConcursos] = useState(3);
   const [talleres, setTalleres] = useState(4);
   const [tematicas, setTematicas] = useState(0);
+
+  const [viewXXV, setViewXXV] = useState(false);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    setInterval(() => {
+      if (new Date("2023-11-17T19:30:00") <= new Date())
+        setTimeout(() => setViewXXV(true), 1000);
+    }, 1000);
+  }, []);
 
   return (
     <>
@@ -33,6 +44,7 @@ const Page = (props) => {
       </Head>
 
       <Box component="main">
+        <CoverXXV viewXXV={viewXXV} />
         <Particles />
         <Cover />
         <HomeCounters

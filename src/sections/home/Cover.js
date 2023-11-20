@@ -145,7 +145,7 @@ const Cover = () => {
                     <Typography variant="h4" style={title}>
                       <Crono
                         date="2023-11-13T16:00:00"
-                        endDate="2023-11-17T20:30:00"
+                        endDate="2023-11-17T19:00:00"
                       />
                     </Typography>
                     <Typography variant="body2">
